@@ -196,7 +196,7 @@ export default function SocialProof({
             color: subtitleColor,
             lineHeight: 1.75,
             margin: 0,
-            opacity: isDark ? 0.75 : 0.7,
+            opacity: isDark ? 0.82 : 0.88,
           }}>
             Wilson Hotel recibe calificaciones sobresalientes en las
             principales plataformas de viaje. Nuestros huéspedes

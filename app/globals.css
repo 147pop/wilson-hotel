@@ -5,9 +5,11 @@
 :root {
   --blue: #123E7A;
   --blue-deep: #0B2C57;
+  --blue-muted: #3A5C7E;   /* nav/secondary text on ivory → 6.2:1 */
   --sand: #D8C2A0;
   --ivory: #F5F1EA;
   --graphite: #444444;
+  --graphite-secondary: #616161; /* secondary body text on ivory → 5.1:1 */
   --gold: #d4a970;
   --font-g: var(--font-garamond), Georgia, serif;
   --font-m: var(--font-montserrat), sans-serif;
@@ -88,12 +90,11 @@ html { scroll-behavior: smooth; }
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--blue-deep);
+  color: var(--blue-muted); /* explicit muted navy → 6.2:1 on ivory, no opacity trick */
   text-decoration: none;
-  opacity: 0.6;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
 }
-.nav-link-dark:hover { opacity: 1; }
+.nav-link-dark:hover { color: var(--blue-deep); }
 
 .nav-link-light {
   font-family: var(--font-m);

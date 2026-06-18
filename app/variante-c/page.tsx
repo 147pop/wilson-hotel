@@ -133,7 +133,7 @@ export default function VarianteC() {
                 <div key={i} style={{ display: "flex", gap: 12, alignItems: "center" }}>
                   <div style={{ fontFamily: g.fontG, fontSize: 24, color: g.gold, lineHeight: 1 }}>{s.num}</div>
                   <div style={{ height: 20, width: 1, background: g.gold, opacity: 0.2 }} />
-                  <div style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.5, lineHeight: 1.3 }}>{s.label}</div>
+                  <div style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.78, lineHeight: 1.3 }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -164,12 +164,12 @@ export default function VarianteC() {
                   <div>
                     <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 8, opacity: 0.9 }}>{room.occ}</span>
                     <h3 style={{ fontFamily: g.fontG, fontSize: 32, color: g.ivory, margin: "0 0 10px 0" }}>{room.name}</h3>
-                    <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, margin: 0, lineHeight: 1.7, opacity: 0.65, maxWidth: 400 }}>{room.desc} Desayuno buffet incluido.</p>
+                    <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, margin: 0, lineHeight: 1.7, opacity: 0.82, maxWidth: 400 }}>{room.desc} Desayuno buffet incluido.</p>
                   </div>
                   <div style={{ flexShrink: 0, paddingLeft: 48 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
                       <div style={{ width: 20, height: 1, background: g.gold, opacity: 0.5 }} />
-                      <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.4 }}>Disponible</span>
+                      <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.72 }}>Disponible</span>
                     </div>
                     <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 9, padding: "10px 24px", display: "block", textAlign: "center" }}>Reservar</a>
                   </div>
@@ -214,7 +214,7 @@ export default function VarianteC() {
                   <div style={{ width: 6, height: 6, background: g.gold, flexShrink: 0, transform: "rotate(45deg)", opacity: 0.7 }} />
                   <div>
                     <span style={{ fontFamily: g.fontG, fontSize: 22, color: g.ivory, display: "block" }}>{s.name}</span>
-                    <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.sand, opacity: 0.55 }}>{s.desc}</span>
+                    <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.sand, opacity: 0.82 }}>{s.desc}</span>
                   </div>
                 </div>
               ))}
@@ -278,7 +278,7 @@ export default function VarianteC() {
 
         <div style={{ maxWidth: 1400, margin: "24px auto 0", padding: "0 80px", display: "flex", justifyContent: "flex-end" }}>
           <a href="https://instagram.com/wilsonhotel.salta" target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, textDecoration: "none", opacity: 0.6 }}>
+            style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, textDecoration: "none", opacity: 0.88 }}>
             @wilsonhotel.salta →
           </a>
         </div>
@@ -296,7 +296,7 @@ export default function VarianteC() {
             <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(56px, 9vw, 140px)", color: g.ivory, margin: "0 auto 24px", lineHeight: 0.85, letterSpacing: "-0.03em", maxWidth: 900 }}>
               Reservá tu<br /><em style={{ color: g.gold }}>estadía</em>
             </h2>
-            <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, opacity: 0.55, lineHeight: 1.7, margin: "0 auto 48px", maxWidth: 520 }}>
+            <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, opacity: 0.82, lineHeight: 1.7, margin: "0 auto 48px", maxWidth: 520 }}>
               Desayuno incluido · Cancelación gratuita 72hs antes<br />
               IVA 21% incluido · Mejor precio garantizado
             </p>
@@ -326,12 +326,12 @@ export default function VarianteC() {
                 { label: "Check-in / out", val: "14:00 hs / 10:00 hs" },
               ].map(item => (
                 <div key={item.label} style={{ borderTop: `1px solid rgba(212,169,112,0.1)`, padding: "18px 0", display: "flex", gap: 32 }}>
-                  <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, opacity: 0.65, width: 80, flexShrink: 0, paddingTop: 3 }}>{item.label}</span>
+                  <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, opacity: 0.9, width: 80, flexShrink: 0, paddingTop: 3 }}>{item.label}</span>
                   {item.href ? (
                     <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
                       style={{ fontFamily: g.fontM, fontSize: 13, color: g.ivory, textDecoration: "none", opacity: 0.8 }}>{item.val}</a>
                   ) : (
-                    <span style={{ fontFamily: g.fontM, fontSize: 13, color: g.sand, opacity: 0.65 }}>{item.val}</span>
+                    <span style={{ fontFamily: g.fontM, fontSize: 13, color: g.sand, opacity: 0.88 }}>{item.val}</span>
                   )}
                 </div>
               ))}
@@ -354,8 +354,8 @@ export default function VarianteC() {
               <span style={{ color: g.gold, fontSize: 10, opacity: 0.4 }}>★ ★ ★</span>
             </div>
           </div>
-          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.25, textAlign: "center" }}>© {new Date().getFullYear()} Wilson Hotel S.A.</p>
-          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.25 }}>IVA 21% incluido</p>
+          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65, textAlign: "center" }}>© {new Date().getFullYear()} Wilson Hotel S.A.</p>
+          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65 }}>IVA 21% incluido</p>
         </div>
       </footer>
     </main>

@@ -107,7 +107,7 @@ export default function VarianteA() {
               <div style={{ height: 1, width: 80, background: g.sand }} />
             </div>
 
-            <p style={{ fontFamily: g.fontG, fontSize: 22, fontStyle: "italic", color: g.deep, opacity: 0.65, lineHeight: 1.55, margin: "0 0 48px 0", maxWidth: 440 }}>
+            <p style={{ fontFamily: g.fontG, fontSize: 22, fontStyle: "italic", color: g.deep, opacity: 0.82, lineHeight: 1.55, margin: "0 0 48px 0", maxWidth: 440 }}>
               Hospedate en el corazón de Salta. Tradición, confort y calidez en cada estadía desde 1980.
             </p>
 
@@ -116,10 +116,10 @@ export default function VarianteA() {
               <a href="https://wa.me/543874312211" target="_blank" rel="noopener noreferrer" className="btn-outline-gold">WhatsApp</a>
             </div>
             <div style={{ display: "flex", gap: 24, flexWrap: "wrap", marginTop: 20 }}>
-              <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.graphite, opacity: 0.65, display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.graphite, opacity: 0.85, display: "flex", alignItems: "center", gap: 6 }}>
                 <span style={{ color: g.gold }}>✓</span> Mejor precio al reservar directo
               </span>
-              <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.graphite, opacity: 0.65, display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.graphite, opacity: 0.85, display: "flex", alignItems: "center", gap: 6 }}>
                 <span style={{ color: g.gold }}>✓</span> Mercado Pago · Cuotas sin interés
               </span>
             </div>
@@ -224,7 +224,7 @@ export default function VarianteA() {
                     <p style={{ fontFamily: g.fontM, fontSize: 13, color: g.graphite, lineHeight: 1.75, margin: "0 0 24px 0", maxWidth: 380 }}>{room.desc}</p>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                       <div style={{ height: 1, width: 28, background: g.gold }} />
-                      <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep, opacity: 0.45 }}>Desayuno incluido</span>
+                      <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep, opacity: 0.75 }}>Desayuno incluido</span>
                     </div>
                     <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ alignSelf: "flex-start", fontSize: 11, padding: "10px 24px" }}>Reservar</a>
                   </div>
@@ -237,7 +237,7 @@ export default function VarianteA() {
                     <p style={{ fontFamily: g.fontM, fontSize: 13, color: g.graphite, lineHeight: 1.75, margin: "0 0 24px 0", maxWidth: 380 }}>{room.desc}</p>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                       <div style={{ height: 1, width: 28, background: g.gold }} />
-                      <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep, opacity: 0.45 }}>Desayuno incluido</span>
+                      <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep, opacity: 0.75 }}>Desayuno incluido</span>
                     </div>
                     <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ alignSelf: "flex-start", fontSize: 11, padding: "10px 24px" }}>Reservar</a>
                   </div>
@@ -288,7 +288,7 @@ export default function VarianteA() {
               <div key={i} style={{ padding: "36px 32px", background: g.ivory }}>
                 <div style={{ width: 36, height: 1, background: g.gold, marginBottom: 20 }} />
                 <h3 style={{ fontFamily: g.fontG, fontSize: 24, color: g.deep, margin: "0 0 10px 0" }}>{s.name}</h3>
-                <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.graphite, lineHeight: 1.7, margin: 0, opacity: 0.75 }}>{s.desc}</p>
+                <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.graphite, lineHeight: 1.7, margin: 0, opacity: 0.88 }}>{s.desc}</p>
               </div>
             ))}
           </div>
@@ -331,7 +331,7 @@ export default function VarianteA() {
           <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(48px, 7vw, 96px)", color: g.deep, margin: "0 0 12px 0", lineHeight: 0.88, letterSpacing: "-0.02em" }}>
             Reservá<br /><em>tu estadía</em>
           </h2>
-          <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.deep, opacity: 0.6, margin: "24px 0 40px 0", lineHeight: 1.7 }}>
+          <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.deep, opacity: 0.82, margin: "24px 0 40px 0", lineHeight: 1.7 }}>
             Desayuno buffet incluido en todas las tarifas.<br />
             Cancelación gratuita hasta 72hs antes del check-in.
           </p>
@@ -366,7 +366,7 @@ export default function VarianteA() {
                 </div>
               ))}
             </div>
-            <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.graphite, opacity: 0.45, marginTop: 24, lineHeight: 1.7 }}>
+            <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.graphite, opacity: 0.75, marginTop: 24, lineHeight: 1.7 }}>
               Check-in: 14:00 hs · Check-out: 10:00 hs<br />
               Cancelación gratuita hasta 72hs antes · IVA 21% incluido
             </p>
@@ -385,10 +385,10 @@ export default function VarianteA() {
             <div style={{ fontFamily: g.fontG, fontSize: 18, letterSpacing: "0.45em", color: g.ivory, fontWeight: 600 }}>WILSON</div>
             <div style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.35em", color: g.gold, textTransform: "uppercase" }}>HOTEL ★★★</div>
           </div>
-          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.4, textAlign: "center" }}>
+          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.72, textAlign: "center" }}>
             © {new Date().getFullYear()} Wilson Hotel S.A. · Todos los derechos reservados
           </p>
-          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.4, textAlign: "right" }}>
+          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.72, textAlign: "right" }}>
             reservas@wilsonhotel.com.ar<br />IVA 21% incluido
           </p>
         </div>

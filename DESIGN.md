@@ -4,10 +4,13 @@ description: Landing page del Hotel Wilson 3★ — Hospedate en el corazón de 
 colors:
   azul-institucional: "#123E7A"
   azul-profundo: "#0B2C57"
+  azul-muted: "#3A5C7E"
+  azul-nocturno: "#091f40"
   oro-calido: "#d4a970"
   arena-calida: "#D8C2A0"
   marfil: "#F5F1EA"
   grafito: "#444444"
+  grafito-secundario: "#616161"
 typography:
   display:
     fontFamily: "Cormorant Garamond, Georgia, serif"
