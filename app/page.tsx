@@ -87,8 +87,7 @@ export default function IndexPage() {
               </div>
 
               <div style={{ padding: "16px 20px 24px" }}>
-                <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 6 }}>{v.label}</span>
-                <h2 style={{ fontFamily: g.fontG, fontSize: 22, color: g.deep, margin: "0 0 4px 0" }}>{v.concept}</h2>
+                <h2 style={{ fontFamily: g.fontG, fontSize: 22, color: g.deep, margin: "0 0 4px 0" }}>{v.label}</h2>
                 <p style={{ fontFamily: g.fontM, fontSize: 9, color: g.gold, letterSpacing: "0.1em", margin: "0 0 12px 0", textTransform: "uppercase", opacity: 0.8 }}>{v.tagline}</p>
                 <p style={{ fontFamily: g.fontM, fontSize: 11, color: g.deep, opacity: 0.6, lineHeight: 1.65, margin: "0 0 14px 0" }}>{v.description}</p>
                 <p style={{ fontFamily: g.fontM, fontSize: 9, color: g.deep, opacity: 0.35, fontStyle: "italic", margin: "0 0 16px 0" }}>{v.feel}</p>
