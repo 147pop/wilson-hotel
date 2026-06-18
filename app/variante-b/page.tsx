@@ -46,7 +46,7 @@ export default function VarianteB() {
               </div>
               <div>
                 <div style={{ fontFamily: g.fontG, fontSize: 16, letterSpacing: "0.3em", color: g.deep, fontWeight: 600, lineHeight: 1 }}>WILSON</div>
-                <div style={{ fontFamily: g.fontM, fontSize: 7, letterSpacing: "0.3em", color: g.gold, textTransform: "uppercase" }}>HOTEL ★★★</div>
+                <div style={{ fontFamily: g.fontM, fontSize: 7, letterSpacing: "0.3em", color: "var(--blue-muted)", textTransform: "uppercase" }}>HOTEL ★★★</div>
               </div>
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function VarianteB() {
       <section style={{ background: g.ivory, padding: "80px 40px" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <div style={{ marginBottom: 48 }}>
-            <span style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 10 }}>Planes tarifarios</span>
+            <span style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--blue-muted)", display: "block", marginBottom: 10 }}>Planes tarifarios</span>
             <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 3.5vw, 52px)", color: g.deep, margin: 0 }}>Elegí tu tarifa</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
@@ -191,7 +191,7 @@ export default function VarianteB() {
             ].map((t, i) => (
               <div key={i} style={{ border: `2px solid ${t.featured ? g.gold : g.sand}`, padding: "36px 32px", position: "relative", background: t.featured ? "rgba(212,169,112,0.08)" : "white" }}>
                 {t.featured && <div style={{ position: "absolute", top: -12, left: 24, background: g.gold, padding: "4px 16px", fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep }}>Recomendada</div>}
-                <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 10 }}>{t.tag}</span>
+                <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--blue-muted)", display: "block", marginBottom: 10 }}>{t.tag}</span>
                 <h3 style={{ fontFamily: g.fontG, fontSize: 26, color: g.deep, margin: "0 0 14px 0" }}>{t.name}</h3>
                 <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.graphite, lineHeight: 1.7, margin: 0, opacity: 0.88 }}>{t.desc}</p>
               </div>
@@ -303,7 +303,7 @@ export default function VarianteB() {
       <section id="contacto" style={{ background: g.ivory, padding: "80px 40px" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}>
           <div>
-            <span style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 10 }}>Cómo llegar</span>
+            <span style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--blue-muted)", display: "block", marginBottom: 10 }}>Cómo llegar</span>
             <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 3.5vw, 52px)", color: g.deep, margin: "0 0 32px 0" }}>Ubicación</h2>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
               {[
@@ -315,7 +315,7 @@ export default function VarianteB() {
                 { label: "Check-out", val: "10:00 hs" },
               ].map(item => (
                 <div key={item.label} style={{ padding: "16px 0", borderBottom: `1px solid ${g.sand}` }}>
-                  <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 4 }}>{item.label}</span>
+                  <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--blue-muted)", display: "block", marginBottom: 4 }}>{item.label}</span>
                   {item.href ? (
                     <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
                       style={{ fontFamily: g.fontM, fontSize: 13, color: g.deep, textDecoration: "none" }}>{item.val}</a>

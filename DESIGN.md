@@ -67,6 +67,16 @@ components:
   button-outline-gold-hover:
     backgroundColor: "{colors.oro-calido}"
     textColor: "{colors.azul-profundo}"
+  button-outline-deep:
+    backgroundColor: "transparent"
+    textColor: "{colors.azul-profundo}"
+    borderColor: "{colors.azul-profundo}"
+    padding: "14px 40px"
+    rounded: "{rounded.none}"
+    note: "Secondary CTA on light/ivory backgrounds only — 8.8:1 on ivory"
+  button-outline-deep-hover:
+    backgroundColor: "{colors.azul-profundo}"
+    textColor: "{colors.marfil}"
 ---
 
 # Design System: Wilson Hotel

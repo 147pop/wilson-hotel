@@ -5,11 +5,36 @@ import SocialProof from "@/components/sections/SocialProof";
 const BOOKING = "https://motor.winpax.com.ar/search.php?hotel_id=133";
 
 const rooms = [
-  { num: "01", name: "Habitación Simple", occ: "1 persona", img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80", desc: "Confort y privacidad para el viajero individual. Cama matrimonial, baño privado completo, aire acondicionado y WiFi de alta velocidad." },
-  { num: "02", name: "Doble Matrimonial", occ: "1–2 personas", img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=80", desc: "Ambiente íntimo y acogedor para parejas. Cama king, baño renovado, televisor LED y atención personalizada." },
-  { num: "03", name: "Doble Twin", occ: "1–2 personas + cama extra", img: "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=900&q=80", desc: "Dos camas individuales para viajeros independientes. Luminoso, espacioso y con posibilidad de cama extra." },
-  { num: "04", name: "Suite Matrimonial", occ: "1–2 personas + cama extra", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=900&q=80", desc: "La habitación más amplia y equipada del hotel. Mayor espacio, decoración cuidada y vista mejorada." },
-  { num: "05", name: "Triple", occ: "1–3 personas", img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=900&q=80", desc: "Tres plazas cómodas en un ambiente familiar y funcional. Ideal para grupos y familias en Salta." },
+  {
+    name: "Habitación Simple",
+    occ: "1 persona",
+    img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80",
+    desc: "Confort y privacidad para el viajero individual. Cama matrimonial, baño privado completo, aire acondicionado y WiFi de alta velocidad.",
+  },
+  {
+    name: "Doble Matrimonial",
+    occ: "1–2 personas",
+    img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=80",
+    desc: "Ambiente íntimo y acogedor para parejas. Cama king, baño renovado, televisor LED y atención personalizada.",
+  },
+  {
+    name: "Doble Twin",
+    occ: "1–2 personas + cama extra",
+    img: "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=900&q=80",
+    desc: "Dos camas individuales para viajeros independientes. Luminoso, espacioso y con posibilidad de cama extra.",
+  },
+  {
+    name: "Suite Matrimonial",
+    occ: "1–2 personas + cama extra",
+    img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=900&q=80",
+    desc: "La habitación más amplia y equipada del hotel. Mayor espacio, decoración cuidada y vista mejorada.",
+  },
+  {
+    name: "Triple",
+    occ: "1–3 personas",
+    img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=900&q=80",
+    desc: "Tres plazas cómodas en un ambiente familiar y funcional. Ideal para grupos y familias en Salta.",
+  },
 ];
 
 const services = [
@@ -21,14 +46,46 @@ const services = [
   { name: "Cuotas y Mercado Pago", desc: "Hasta 3 cuotas sin interés. Visa, Mastercard, Amex y Mercado Pago." },
 ];
 
-const g = {
-  blue: "#123E7A", deep: "#0B2C57", sand: "#D8C2A0",
-  ivory: "#F5F1EA", graphite: "#444444", gold: "#d4a970",
-  fontG: "var(--font-garamond)", fontM: "var(--font-montserrat)",
-};
+const tariffs = [
+  {
+    name: "Alojamiento y Desayuno",
+    tag: "Reembolsable · Pago en hotel",
+    desc: "Cancelación gratuita hasta 72hs antes del arribo. Garantía con tarjeta de crédito.",
+    featured: false,
+  },
+  {
+    name: "Último Minuto",
+    tag: "Oferta — No reembolsable",
+    desc: "15% de descuento sobre la tarifa base. Pago anticipado total con tarjeta de crédito.",
+    featured: true,
+  },
+  {
+    name: "No Reembolsable",
+    tag: "10% descuento · Sin reembolso",
+    desc: "Precio especial con pago anticipado. Sin posibilidad de reembolso una vez confirmada.",
+    featured: false,
+  },
+];
+
+const galleryPhotos = [
+  { img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80", alt: "Habitación doble", span: "col-span-2 row-span-2" },
+  { img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&q=80", alt: "Doble twin", span: "" },
+  { img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&q=80", alt: "Baño privado", span: "" },
+  { img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80", alt: "Desayuno buffet", span: "" },
+  { img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80", alt: "Suite", span: "" },
+];
+
+const contactInfo = [
+  { label: "Dirección", text: "Alvarado 950, Salta Capital" },
+  { label: "Teléfono", text: "(+54 387) 4-312211", href: "tel:+543874312211" },
+  { label: "Email", text: "info@wilsonhotel.com.ar", href: "mailto:info@wilsonhotel.com.ar" },
+  { label: "WhatsApp", text: "Consultas directas", href: "https://wa.me/543874312211" },
+  { label: "Instagram", text: "@wilsonhotel.salta", href: "https://instagram.com/wilsonhotel.salta" },
+];
 
 export default function VarianteA() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 30);
@@ -36,259 +93,388 @@ export default function VarianteA() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  return (
-    <main style={{ backgroundColor: g.ivory, color: g.deep, overflowX: "hidden" }}>
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
+  };
 
-      {/* ── NAVBAR ── centered logo, editorial */}
-      <header style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        background: scrolled ? "rgba(245,241,234,0.97)" : "transparent",
-        backdropFilter: scrolled ? "blur(8px)" : "none",
-        borderBottom: scrolled ? `1px solid ${g.sand}` : "none",
-        transition: "all 0.4s ease",
-      }}>
+  return (
+    <main className="bg-wilson-ivory text-wilson-blue-deep overflow-x-hidden">
+
+      {/* ── NAVBAR ── */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+          scrolled
+            ? "bg-wilson-ivory/97 backdrop-blur-md border-b border-wilson-sand"
+            : "bg-transparent"
+        }`}
+      >
         {/* Gold top accent */}
-        <div style={{ height: 2, background: `linear-gradient(90deg, transparent, ${g.gold}, transparent)` }} />
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px", height: 72, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <nav style={{ display: "flex", gap: 36 }}>
-            {["Habitaciones", "Servicios"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="nav-link-dark">{l}</a>
+        <div
+          className="h-[2px]"
+          style={{ background: "linear-gradient(90deg, transparent, #d4a970, transparent)" }}
+        />
+        <div className="max-w-6xl mx-auto px-4 md:px-8 h-[72px] flex items-center justify-between">
+          {/* Left nav (desktop) */}
+          <nav className="hidden lg:flex gap-9">
+            {["Habitaciones", "Servicios"].map((l) => (
+              <button
+                key={l}
+                onClick={() => scrollTo(l.toLowerCase())}
+                className="nav-link-dark"
+              >
+                {l}
+              </button>
             ))}
           </nav>
 
-          <div style={{ textAlign: "center" }}>
-            <div style={{ fontFamily: g.fontG, fontSize: 20, letterSpacing: "0.45em", color: g.deep, fontWeight: 600, lineHeight: 1 }}>WILSON</div>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 3 }}>
-              <div style={{ height: 1, width: 20, background: g.gold }} />
-              <span style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.35em", color: g.gold, textTransform: "uppercase" }}>HOTEL ★★★</span>
-              <div style={{ height: 1, width: 20, background: g.gold }} />
+          {/* Center logo */}
+          <div className="text-center">
+            <div className="font-garamond text-xl tracking-[0.45em] text-wilson-blue-deep font-semibold leading-none">
+              WILSON
+            </div>
+            <div className="flex items-center justify-center gap-2 mt-1">
+              <div className="h-px w-5 bg-wilson-gold" />
+              <span className="font-montserrat text-[10px] tracking-[0.35em] text-[var(--blue-muted)] uppercase">
+                HOTEL ★★★
+              </span>
+              <div className="h-px w-5 bg-wilson-gold" />
             </div>
           </div>
 
-          <nav style={{ display: "flex", gap: 36, alignItems: "center" }}>
-            {["Galería", "Contacto"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="nav-link-dark">{l}</a>
+          {/* Right nav (desktop) */}
+          <nav className="hidden lg:flex gap-9 items-center">
+            {["Galería", "Contacto"].map((l) => (
+              <button
+                key={l}
+                onClick={() => scrollTo(l.toLowerCase().replace("í", "i"))}
+                className="nav-link-dark"
+              >
+                {l}
+              </button>
             ))}
-            <a href="tel:+543874312211" style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.08em", color: g.gold, textDecoration: "none" }}>
+            <a
+              href="tel:+543874312211"
+              className="font-montserrat text-xs tracking-wider text-wilson-blue-deep no-underline"
+            >
               (387) 431-2211
             </a>
-            <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-navy" style={{ padding: "10px 24px" }}>Reservar</a>
+            <a
+              href={BOOKING}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-navy py-2.5 px-6"
+            >
+              Reservar
+            </a>
           </nav>
+
+          {/* Mobile hamburger */}
+          <button
+            className="lg:hidden text-wilson-blue-deep"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menú"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {menuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="lg:hidden bg-wilson-ivory border-t border-wilson-sand px-4 py-4 space-y-3">
+            {["Habitaciones", "Servicios", "Galería", "Contacto"].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollTo(item.toLowerCase().replace("í", "i"))}
+                className="block w-full text-left font-montserrat text-sm text-wilson-blue-deep hover:text-wilson-gold transition-colors py-1"
+              >
+                {item}
+              </button>
+            ))}
+            <a
+              href={BOOKING}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full btn-navy text-xs py-2.5 text-center mt-2"
+            >
+              Reservar ahora
+            </a>
+          </div>
+        )}
       </header>
 
-      {/* ── HERO ── grand editorial, ivory bg */}
-      <section style={{ minHeight: "100vh", paddingTop: 72, position: "relative", display: "flex", alignItems: "center" }}>
-        {/* Ghosted background word */}
-        <div style={{
-          position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-          fontFamily: g.fontG, fontSize: "22vw", color: g.deep, opacity: 0.03,
-          letterSpacing: "0.3em", whiteSpace: "nowrap", pointerEvents: "none", fontWeight: 700, userSelect: "none",
-        }}>SALTA</div>
-
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "60px 32px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", width: "100%" }}>
+      {/* ── HERO ── editorial, ivory bg, clean asymmetric */}
+      <section className="min-h-screen pt-[72px] relative flex items-center">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
 
           {/* LEFT: text */}
-          <div className="fade-up">
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 40 }}>
-              <div style={{ height: 1, width: 48, background: g.gold }} />
-              <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold }}>Alvarado 950 · Salta, Argentina</span>
+          <div className="fade-up order-2 md:order-1">
+            <div className="flex items-center gap-3 mb-8 md:mb-10">
+              <div className="h-px w-12 bg-wilson-gold" />
+              <span className="font-montserrat text-xs tracking-[0.3em] uppercase text-[var(--blue-muted)]">
+                Alvarado 950 · Salta, Argentina
+              </span>
             </div>
 
-            <h1 style={{ fontFamily: g.fontG, fontSize: "clamp(72px, 9vw, 130px)", lineHeight: 0.88, color: g.deep, margin: "0 0 16px 0", letterSpacing: "-0.02em" }}>
+            <h1
+              className="font-garamond text-wilson-blue-deep mb-1 leading-[0.88] tracking-[-0.02em]"
+              style={{ fontSize: "clamp(3.5rem, 9vw, 6rem)" }}
+            >
               Wilson
             </h1>
-            <h1 style={{ fontFamily: g.fontG, fontSize: "clamp(72px, 9vw, 130px)", lineHeight: 0.88, color: g.gold, fontStyle: "italic", margin: "0 0 36px 0", letterSpacing: "-0.02em" }}>
+            <h1
+              className="font-garamond text-[var(--blue-muted)] italic mb-8 md:mb-9 leading-[0.88] tracking-[-0.02em]"
+              style={{ fontSize: "clamp(3.5rem, 9vw, 6rem)" }}
+            >
               Hotel
             </h1>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
-              <span style={{ color: g.gold, fontSize: 20, letterSpacing: 4 }}>★ ★ ★</span>
-              <div style={{ height: 1, width: 80, background: g.sand }} />
+            <div className="flex items-center gap-3 mb-8">
+              <span className="text-wilson-gold text-xl tracking-widest">★ ★ ★</span>
+              <div className="h-px w-20 bg-wilson-sand" />
             </div>
 
-            <p style={{ fontFamily: g.fontG, fontSize: 22, fontStyle: "italic", color: g.deep, opacity: 0.82, lineHeight: 1.55, margin: "0 0 48px 0", maxWidth: 440 }}>
+            <p className="font-garamond text-lg md:text-xl italic text-wilson-blue-deep/80 leading-relaxed mb-10 md:mb-12 max-w-md" style={{ textWrap: "pretty" } as React.CSSProperties}>
               Hospedate en el corazón de Salta. Tradición, confort y calidez en cada estadía desde 1980.
             </p>
 
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-navy">Reservar ahora</a>
-              <a href="https://wa.me/543874312211" target="_blank" rel="noopener noreferrer" className="btn-outline-gold">WhatsApp</a>
+            <div className="flex gap-4 flex-wrap">
+              <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-navy">
+                Reservar ahora
+              </a>
+              <a
+                href="https://wa.me/543874312211"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold"
+              >
+                WhatsApp
+              </a>
             </div>
-            <div style={{ display: "flex", gap: 24, flexWrap: "wrap", marginTop: 20 }}>
-              <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.graphite, opacity: 0.85, display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={{ color: g.gold }}>✓</span> Mejor precio al reservar directo
+            <div className="flex gap-5 flex-wrap mt-5">
+              <span className="font-montserrat text-xs text-wilson-graphite/85 flex items-center gap-1.5">
+                <span className="text-wilson-gold">✓</span> Mejor precio al reservar directo
               </span>
-              <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.graphite, opacity: 0.85, display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={{ color: g.gold }}>✓</span> Mercado Pago · Cuotas sin interés
+              <span className="font-montserrat text-xs text-wilson-graphite/85 flex items-center gap-1.5">
+                <span className="text-wilson-gold">✓</span> Mercado Pago · Cuotas sin interés
               </span>
             </div>
           </div>
 
-          {/* RIGHT: editorial photo collage */}
-          <div className="fade-up-1" style={{ position: "relative", height: 620 }}>
-            {/* Primary photo — diagonal clip */}
-            <div style={{
-              position: "absolute", top: 0, right: 0, width: "85%", height: "68%",
-              clipPath: "polygon(0 0, 100% 0, 100% 88%, 10% 100%)",
-              overflow: "hidden",
-            }}>
-              <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=80" alt="Habitación Wilson Hotel" className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-              <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 60%, rgba(11,44,87,0.2))` }} />
+          {/* RIGHT: clean photo composition */}
+          <div className="fade-up-1 relative order-1 md:order-2 h-[360px] md:h-[540px] lg:h-[580px]">
+            {/* Primary photo — full, clean */}
+            <div className="absolute top-0 right-0 w-full md:w-[90%] h-[75%] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=80"
+                alt="Habitación premium del Wilson Hotel con cama doble y decoración cálida"
+                className="w-full h-full object-cover img-zoom"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to bottom, transparent 65%, rgba(11,44,87,0.15))" }}
+              />
             </div>
 
-            {/* Secondary photo */}
-            <div style={{
-              position: "absolute", bottom: 48, left: 0, width: "52%", height: "38%",
-              overflow: "hidden", border: `6px solid ${g.ivory}`,
-            }}>
-              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Desayuno Wilson Hotel" className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            {/* Secondary photo — offset below-left */}
+            <div className="absolute bottom-0 left-0 w-[55%] h-[42%] overflow-hidden border-4 border-wilson-ivory shadow-lg hidden md:block">
+              <img
+                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80"
+                alt="Mesa con desayuno artesanal servido en el hotel"
+                className="w-full h-full object-cover img-zoom"
+              />
             </div>
 
-            {/* Gold decorative frame */}
-            <div style={{
-              position: "absolute", bottom: 18, left: -12, right: 56, height: "41%",
-              border: `1px solid ${g.gold}`, pointerEvents: "none", zIndex: 0,
-            }} />
 
-            {/* Caption badge */}
-            <div style={{
-              position: "absolute", bottom: 8, right: 8,
-              background: g.deep, padding: "10px 16px",
-            }}>
-              <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold }}>Hotel 3 Estrellas</span>
-            </div>
           </div>
         </div>
 
         {/* Scroll cue */}
-        <div style={{ position: "absolute", bottom: 28, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, opacity: 0.4 }}>
-          <span style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: g.deep }}>Descubrí</span>
-          <div style={{ width: 1, height: 48, background: g.gold }} />
+        <div className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+          <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-wilson-blue-deep">
+            Descubrí
+          </span>
+          <div className="w-px h-12 bg-wilson-gold" />
         </div>
       </section>
 
       {/* ── PAYMENT STRIPE ── */}
-      <section style={{ background: g.deep, padding: "13px 32px", textAlign: "center", borderBottom: `1px solid rgba(255,255,255,0.07)` }}>
-        <p style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.14em", color: g.sand, margin: 0, textTransform: "uppercase", opacity: 0.8 }}>
+      <section className="bg-wilson-blue-deep py-3 px-4 md:px-8 text-center border-b border-white/5">
+        <p className="font-montserrat text-xs tracking-[0.14em] text-wilson-sand/80 uppercase">
           Mercado Pago &nbsp;·&nbsp; Hasta 3 cuotas sin interés &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; American Express &nbsp;·&nbsp; Pago en destino
         </p>
       </section>
 
       {/* ── QUOTE BAND ── */}
-      <section style={{ background: g.deep, padding: "64px 32px", textAlign: "center" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 20, justifyContent: "center", marginBottom: 28 }}>
-            <div style={{ height: 1, flex: 1, maxWidth: 80, background: g.gold, opacity: 0.4 }} />
-            <span style={{ color: g.gold, fontSize: 18 }}>✦</span>
-            <div style={{ height: 1, flex: 1, maxWidth: 80, background: g.gold, opacity: 0.4 }} />
+      <section className="bg-wilson-blue-deep py-16 md:py-20 px-4 md:px-8 text-center">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex items-center gap-5 justify-center mb-7">
+            <div className="h-px flex-1 max-w-[80px] bg-wilson-gold/40" />
+            <span className="text-wilson-gold text-lg">✦</span>
+            <div className="h-px flex-1 max-w-[80px] bg-wilson-gold/40" />
           </div>
-          <p style={{ fontFamily: g.fontG, fontSize: "clamp(22px, 3.5vw, 40px)", fontStyle: "italic", color: g.ivory, lineHeight: 1.45, letterSpacing: "0.01em" }}>
-            "Más de 40 años recibiendo huéspedes con dedicación.<br />
-            Calidad, comodidad y calidez en cada estadía."
+          <p
+            className="font-garamond italic text-wilson-ivory leading-[1.45] tracking-[0.01em]"
+            style={{ fontSize: "clamp(1.375rem, 3.5vw, 2.5rem)", textWrap: "balance" } as React.CSSProperties}
+          >
+            &ldquo;Más de 40 años recibiendo huéspedes con dedicación.
+            <br />
+            Calidad, comodidad y calidez en cada estadía.&rdquo;
           </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 20, justifyContent: "center", marginTop: 28 }}>
-            <div style={{ height: 1, flex: 1, maxWidth: 80, background: g.gold, opacity: 0.4 }} />
-            <span style={{ color: g.gold, fontSize: 18 }}>✦</span>
-            <div style={{ height: 1, flex: 1, maxWidth: 80, background: g.gold, opacity: 0.4 }} />
+          <div className="flex items-center gap-5 justify-center mt-7">
+            <div className="h-px flex-1 max-w-[80px] bg-wilson-gold/40" />
+            <span className="text-wilson-gold text-lg">✦</span>
+            <div className="h-px flex-1 max-w-[80px] bg-wilson-gold/40" />
           </div>
         </div>
       </section>
 
       <SocialProof variant="light" />
 
-      {/* ── HABITACIONES ── editorial alternating photo-essay */}
-      <section id="habitaciones" style={{ padding: "100px 32px", background: g.ivory }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "flex-end", gap: 24, marginBottom: 72 }}>
+      {/* ── HABITACIONES ── editorial alternating layout */}
+      <section id="habitaciones" className="py-20 md:py-24 px-4 md:px-8 bg-wilson-ivory">
+        <div className="max-w-6xl mx-auto">
+          {/* Section header */}
+          <div className="flex items-end gap-6 mb-16 md:mb-20">
             <div>
-              <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 10 }}>Nuestras habitaciones</span>
-              <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(40px, 5.5vw, 72px)", color: g.deep, margin: 0, lineHeight: 0.92, letterSpacing: "-0.02em" }}>
+              <span className="font-montserrat text-xs tracking-[0.3em] uppercase text-[var(--blue-muted)] block mb-2.5">
+                Nuestras habitaciones
+              </span>
+              <h2
+                className="font-garamond text-wilson-blue-deep leading-[0.92] tracking-[-0.02em]"
+                style={{ fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)", textWrap: "balance" } as React.CSSProperties}
+              >
                 Espacios<br />para el descanso
               </h2>
             </div>
-            <div style={{ flex: 1, height: 1, background: g.sand, marginBottom: 8 }} />
+            <div className="flex-1 h-px bg-wilson-sand mb-2 hidden md:block" />
           </div>
 
+          {/* Room entries */}
           {rooms.map((room, i) => (
-            <div key={room.num} style={{ borderTop: `1px solid ${g.sand}`, padding: "52px 0", display: "grid", gridTemplateColumns: i % 2 === 0 ? "1fr 1fr" : "1fr 1fr", gap: 0 }}>
-              {i % 2 === 0 ? (
-                <>
-                  <div style={{ position: "relative", overflow: "hidden", height: 320 }}>
-                    <img src={room.img} alt={room.name} className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                    <div style={{ position: "absolute", bottom: 16, left: 16, fontFamily: g.fontG, fontSize: 80, color: "white", opacity: 0.25, lineHeight: 1, userSelect: "none" }}>{room.num}</div>
-                  </div>
-                  <div style={{ padding: "24px 56px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                    <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, marginBottom: 10, display: "block" }}>{room.occ}</span>
-                    <h3 style={{ fontFamily: g.fontG, fontSize: 36, color: g.deep, margin: "0 0 16px 0" }}>{room.name}</h3>
-                    <p style={{ fontFamily: g.fontM, fontSize: 13, color: g.graphite, lineHeight: 1.75, margin: "0 0 24px 0", maxWidth: 380 }}>{room.desc}</p>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-                      <div style={{ height: 1, width: 28, background: g.gold }} />
-                      <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep, opacity: 0.75 }}>Desayuno incluido</span>
-                    </div>
-                    <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ alignSelf: "flex-start", fontSize: 11, padding: "10px 24px" }}>Reservar</a>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div style={{ padding: "24px 56px 24px 0", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                    <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, marginBottom: 10, display: "block" }}>{room.occ}</span>
-                    <h3 style={{ fontFamily: g.fontG, fontSize: 36, color: g.deep, margin: "0 0 16px 0" }}>{room.name}</h3>
-                    <p style={{ fontFamily: g.fontM, fontSize: 13, color: g.graphite, lineHeight: 1.75, margin: "0 0 24px 0", maxWidth: 380 }}>{room.desc}</p>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-                      <div style={{ height: 1, width: 28, background: g.gold }} />
-                      <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep, opacity: 0.75 }}>Desayuno incluido</span>
-                    </div>
-                    <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ alignSelf: "flex-start", fontSize: 11, padding: "10px 24px" }}>Reservar</a>
-                  </div>
-                  <div style={{ position: "relative", overflow: "hidden", height: 320 }}>
-                    <img src={room.img} alt={room.name} className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                    <div style={{ position: "absolute", bottom: 16, right: 16, fontFamily: g.fontG, fontSize: 80, color: "white", opacity: 0.25, lineHeight: 1, userSelect: "none" }}>{room.num}</div>
-                  </div>
-                </>
-              )}
+            <div
+              key={room.name}
+              className={`border-t border-wilson-sand py-10 md:py-12 grid grid-cols-1 md:grid-cols-2 gap-0 items-center ${
+                i % 2 !== 0 ? "md:[direction:rtl]" : ""
+              }`}
+            >
+              {/* Image */}
+              <div className={`relative overflow-hidden h-64 md:h-80 ${i % 2 !== 0 ? "md:[direction:ltr]" : ""}`}>
+                <img
+                  src={room.img}
+                  alt={room.name}
+                  className="w-full h-full object-cover img-zoom"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Text */}
+              <div className={`py-6 md:py-0 md:px-10 lg:px-14 flex flex-col justify-center ${i % 2 !== 0 ? "md:[direction:ltr]" : ""}`}>
+                <span className="font-montserrat text-xs tracking-[0.25em] uppercase text-[var(--blue-muted)] mb-2.5 block">
+                  {room.occ}
+                </span>
+                <h3 className="font-garamond text-2xl md:text-3xl lg:text-4xl text-wilson-blue-deep mb-4">
+                  {room.name}
+                </h3>
+                <p className="font-montserrat text-sm text-wilson-graphite leading-7 mb-6 max-w-sm">
+                  {room.desc}
+                </p>
+                <div className="flex items-center gap-2.5 mb-5">
+                  <div className="h-px w-7 bg-wilson-gold" />
+                  <span className="font-montserrat text-xs tracking-[0.2em] uppercase text-wilson-blue-deep/75">
+                    Desayuno incluido
+                  </span>
+                </div>
+                <a
+                  href={BOOKING}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-navy self-start text-xs py-2.5 px-6"
+                >
+                  Reservar
+                </a>
+              </div>
             </div>
           ))}
-          <div style={{ borderTop: `1px solid ${g.sand}` }} />
+          <div className="border-t border-wilson-sand" />
         </div>
       </section>
 
-      {/* ── TARIFAS ── 3 columns on navy */}
-      <section id="tarifas" style={{ background: g.deep, padding: "0 0" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
-          {[
-            { name: "Alojamiento y Desayuno", tag: "Reembolsable · Pago en hotel", desc: "Cancelación gratuita hasta 72hs antes del arribo. Garantía con tarjeta de crédito.", featured: false },
-            { name: "Último Minuto", tag: "Oferta — No reembolsable", desc: "15% de descuento sobre la tarifa base. Pago anticipado total con tarjeta de crédito.", featured: true },
-            { name: "No Reembolsable", tag: "10% descuento · Sin reembolso", desc: "Precio especial con pago anticipado. Sin posibilidad de reembolso una vez confirmada.", featured: false },
-          ].map((t, i) => (
-            <div key={i} style={{ padding: "56px 40px", borderRight: i < 2 ? `1px solid rgba(255,255,255,0.08)` : "none", background: t.featured ? g.gold : "transparent" }}>
-              <span style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: t.featured ? g.deep : g.gold, display: "block", marginBottom: 14, opacity: t.featured ? 1 : 0.9 }}>{t.tag}</span>
-              <h3 style={{ fontFamily: g.fontG, fontSize: 28, color: t.featured ? g.deep : g.ivory, margin: "0 0 16px 0" }}>{t.name}</h3>
-              <p style={{ fontFamily: g.fontM, fontSize: 12, color: t.featured ? g.deep : g.sand, lineHeight: 1.75, margin: "0 0 28px 0", opacity: t.featured ? 0.8 : 0.7 }}>{t.desc}</p>
-              <a href={BOOKING} target="_blank" rel="noopener noreferrer" style={{
-                display: "inline-block", fontFamily: g.fontM, fontSize: 11,
-                letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none",
-                padding: "10px 24px", border: `1px solid ${t.featured ? g.deep : g.gold}`,
-                color: t.featured ? g.deep : g.gold,
-              }}>Reservar →</a>
+      {/* ── TARIFAS ── */}
+      <section id="tarifas" className="bg-wilson-blue-deep">
+        <div className="grid grid-cols-1 lg:grid-cols-3">
+          {tariffs.map((t, i) => (
+            <div
+              key={i}
+              className={`px-6 md:px-10 py-14 ${
+                i < 2 ? "lg:border-r lg:border-white/[0.08]" : ""
+              } ${
+                t.featured
+                  ? "bg-wilson-gold/15 border-t-2 border-t-wilson-gold lg:border-t-2"
+                  : "border-t border-t-white/[0.08] lg:border-t-0"
+              }`}
+            >
+              <span
+                className={`font-montserrat text-[10px] tracking-[0.25em] uppercase block mb-3.5 ${
+                  t.featured ? "text-wilson-gold" : "text-wilson-gold/90"
+                }`}
+              >
+                {t.tag}
+              </span>
+              <h3
+                className={`font-garamond text-2xl md:text-[28px] mb-4 ${
+                  t.featured ? "text-wilson-ivory" : "text-wilson-ivory"
+                }`}
+              >
+                {t.name}
+              </h3>
+              <p
+                className={`font-montserrat text-sm leading-7 mb-7 ${
+                  t.featured ? "text-wilson-sand/85" : "text-wilson-sand/70"
+                }`}
+              >
+                {t.desc}
+              </p>
+              <a
+                href={BOOKING}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-block font-montserrat text-xs tracking-[0.15em] uppercase no-underline py-2.5 px-6 border transition-colors duration-200 ${
+                  t.featured
+                    ? "border-wilson-gold text-wilson-gold hover:bg-wilson-gold hover:text-wilson-blue-deep"
+                    : "border-wilson-gold/60 text-wilson-gold/80 hover:border-wilson-gold hover:text-wilson-gold"
+                }`}
+              >
+                Reservar →
+              </a>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── SERVICIOS ── clean ivory grid */}
-      <section id="servicios" style={{ background: g.ivory, padding: "96px 32px" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ marginBottom: 56 }}>
-            <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 10 }}>Servicios & amenidades</span>
-            <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(36px, 4.5vw, 62px)", color: g.deep, margin: 0, lineHeight: 0.95 }}>Todo lo que necesitás</h2>
+      {/* ── SERVICIOS ── clean grid, no 1px gap hack */}
+      <section id="servicios" className="bg-wilson-ivory py-20 md:py-24 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-14">
+            <h2
+              className="font-garamond text-wilson-blue-deep leading-[0.95]"
+              style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.875rem)" }}
+            >
+              Todo lo que necesitás
+            </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: g.sand }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
             {services.map((s, i) => (
-              <div key={i} style={{ padding: "36px 32px", background: g.ivory }}>
-                <div style={{ width: 36, height: 1, background: g.gold, marginBottom: 20 }} />
-                <h3 style={{ fontFamily: g.fontG, fontSize: 24, color: g.deep, margin: "0 0 10px 0" }}>{s.name}</h3>
-                <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.graphite, lineHeight: 1.7, margin: 0, opacity: 0.88 }}>{s.desc}</p>
+              <div key={i} className="py-2">
+                <div className="w-9 h-px bg-wilson-gold mb-5" />
+                <h3 className="font-garamond text-xl md:text-2xl text-wilson-blue-deep mb-2.5">
+                  {s.name}
+                </h3>
+                <p className="font-montserrat text-sm text-wilson-graphite leading-7 opacity-[0.88]">
+                  {s.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -296,112 +482,149 @@ export default function VarianteA() {
       </section>
 
       {/* ── GALERÍA ── editorial grid */}
-      <section id="galería" style={{ padding: "96px 32px", background: g.ivory }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 48 }}>
+      <section id="galeria" className="py-20 md:py-24 px-4 md:px-8 bg-wilson-ivory">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
             <div>
-              <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 10 }}>Galería</span>
-              <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(36px, 4.5vw, 62px)", color: g.deep, margin: 0 }}>Descubrí el hotel</h2>
+              <h2
+                className="font-garamond text-wilson-blue-deep"
+                style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.875rem)" }}
+              >
+                Descubrí el hotel
+              </h2>
             </div>
-            <a href="https://instagram.com/wilsonhotel.salta" target="_blank" rel="noopener noreferrer" className="link-gold" style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+            <a
+              href="https://instagram.com/wilsonhotel.salta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-montserrat text-xs tracking-[0.2em] uppercase text-[var(--blue-muted)] hover:text-wilson-blue-deep transition-colors"
+            >
               @wilsonhotel.salta →
             </a>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "repeat(2, 240px)", gap: 8 }}>
-            {[
-              { img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80", alt: "Habitación doble", col: "span 2", row: "span 2" },
-              { img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&q=80", alt: "Doble twin", col: undefined, row: undefined },
-              { img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&q=80", alt: "Baño privado", col: undefined, row: undefined },
-              { img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80", alt: "Desayuno buffet", col: undefined, row: undefined },
-              { img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80", alt: "Suite", col: undefined, row: undefined },
-              { img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80", alt: "Fachada", col: undefined, row: undefined },
-            ].map((p, i) => (
-              <div key={i} style={{ overflow: "hidden", gridColumn: p.col, gridRow: p.row }}>
-                <img src={p.img} alt={p.alt} className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-2">
+            {galleryPhotos.map((p, i) => (
+              <div key={i} className={`overflow-hidden group ${p.span}`}>
+                <img
+                  src={p.img}
+                  alt={p.alt}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA BOOKING ── gold section */}
-      <section style={{ background: g.gold, padding: "96px 32px", textAlign: "center" }}>
-        <div style={{ maxWidth: 680, margin: "0 auto" }}>
-          <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: g.deep, opacity: 0.65, display: "block", marginBottom: 20 }}>Reservas online · Mejor precio garantizado</span>
-          <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(48px, 7vw, 96px)", color: g.deep, margin: "0 0 12px 0", lineHeight: 0.88, letterSpacing: "-0.02em" }}>
+      {/* ── CTA BOOKING ── subtle gold accent, not full gold bg */}
+      <section className="bg-wilson-blue-deep py-20 md:py-24 px-4 md:px-8 text-center relative overflow-hidden">
+        {/* Subtle gold line accent */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-wilson-gold/30" />
+        <div className="max-w-2xl mx-auto relative z-10">
+          <span className="font-montserrat text-xs tracking-[0.3em] uppercase text-wilson-gold/70 block mb-5">
+            Reservas online · Mejor precio garantizado
+          </span>
+          <h2
+            className="font-garamond text-wilson-ivory mb-3 leading-[0.88] tracking-[-0.02em]"
+            style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}
+          >
             Reservá<br /><em>tu estadía</em>
           </h2>
-          <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.deep, opacity: 0.82, margin: "24px 0 40px 0", lineHeight: 1.7 }}>
+          <p className="font-montserrat text-sm text-wilson-sand/80 mt-6 mb-10 leading-7">
             Desayuno buffet incluido en todas las tarifas.<br />
             Cancelación gratuita hasta 72hs antes del check-in.
           </p>
-          <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-navy">Ver disponibilidad →</a>
+          <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold">
+            Ver disponibilidad →
+          </a>
         </div>
       </section>
 
       {/* ── CONTACTO ── */}
-      <section id="contacto" style={{ padding: "96px 32px", background: g.ivory }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+      <section id="contacto" className="py-20 md:py-24 px-4 md:px-8 bg-wilson-ivory">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div>
-            <span style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 10 }}>Cómo llegar</span>
-            <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(36px, 4vw, 56px)", color: g.deep, margin: "0 0 40px 0" }}>Contacto</h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-              {[
-                { label: "Dirección", text: "Alvarado 950, Salta Capital", href: undefined },
-                { label: "Teléfono", text: "(+54 387) 4-312211", href: "tel:+543874312211" },
-                { label: "Email", text: "info@wilsonhotel.com.ar", href: "mailto:info@wilsonhotel.com.ar" },
-                { label: "WhatsApp", text: "Consultas directas", href: "https://wa.me/543874312211" },
-                { label: "Instagram", text: "@wilsonhotel.salta", href: "https://instagram.com/wilsonhotel.salta" },
-              ].map(item => (
-                <div key={item.label} style={{ display: "flex", gap: 24, borderBottom: `1px solid ${g.sand}`, padding: "16px 0" }}>
-                  <span style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.22em", textTransform: "uppercase", color: g.gold, width: 72, flexShrink: 0, paddingTop: 3 }}>{item.label}</span>
+            <h2
+              className="font-garamond text-wilson-blue-deep mb-10"
+              style={{ fontSize: "clamp(2.25rem, 4vw, 3.5rem)" }}
+            >
+              Contacto
+            </h2>
+            <div className="flex flex-col">
+              {contactInfo.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex gap-6 border-b border-wilson-sand py-4"
+                >
+                  <span className="font-montserrat text-[10px] tracking-[0.22em] uppercase text-[var(--blue-muted)] w-[72px] flex-shrink-0 pt-0.5">
+                    {item.label}
+                  </span>
                   {item.href ? (
-                    <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
-                      style={{ fontFamily: g.fontM, fontSize: 13, color: g.deep, textDecoration: "none" }} className="nav-link-dark" >
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="font-montserrat text-sm text-wilson-blue-deep no-underline hover:text-wilson-gold transition-colors"
+                    >
                       {item.text}
                     </a>
                   ) : (
-                    <span style={{ fontFamily: g.fontM, fontSize: 13, color: g.graphite }}>{item.text}</span>
+                    <span className="font-montserrat text-sm text-wilson-graphite">
+                      {item.text}
+                    </span>
                   )}
                 </div>
               ))}
             </div>
-            <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.graphite, opacity: 0.75, marginTop: 24, lineHeight: 1.7 }}>
+            <p className="font-montserrat text-[10px] text-wilson-graphite/75 mt-6 leading-relaxed">
               Check-in: 14:00 hs · Check-out: 10:00 hs<br />
               Cancelación gratuita hasta 72hs antes · IVA 21% incluido
             </p>
           </div>
-          <div style={{ height: 460, overflow: "hidden" }}>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.9!2d-65.4095!3d-24.7859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQ3JzA5LjIiUyA2NcKwMjQnMzQuMiJX!5e0!3m2!1ses!2sar"
-              width="100%" height="100%" style={{ border: 0, display: "block" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Ubicación Wilson Hotel" />
+          <div className="h-72 md:h-96 lg:h-[460px] overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.9!2d-65.4095!3d-24.7859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQ3JzA5LjIiUyA2NcKwMjQnMzQuMiJX!5e0!3m2!1ses!2sar"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación Wilson Hotel"
+            />
           </div>
         </div>
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ background: g.deep, padding: "40px 32px" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div>
-            <div style={{ fontFamily: g.fontG, fontSize: 18, letterSpacing: "0.45em", color: g.ivory, fontWeight: 600 }}>WILSON</div>
-            <div style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.35em", color: g.gold, textTransform: "uppercase" }}>HOTEL ★★★</div>
+      <footer className="bg-wilson-blue-deep py-10 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-center md:text-left">
+            <div className="font-garamond text-lg tracking-[0.45em] text-wilson-ivory font-semibold">
+              WILSON
+            </div>
+            <div className="font-montserrat text-[10px] tracking-[0.35em] text-wilson-gold uppercase">
+              HOTEL ★★★
+            </div>
           </div>
-          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.72, textAlign: "center" }}>
+          <p className="font-montserrat text-[10px] text-wilson-sand/70 text-center">
             © {new Date().getFullYear()} Wilson Hotel S.A. · Todos los derechos reservados
           </p>
-          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.72, textAlign: "right" }}>
+          <p className="font-montserrat text-[10px] text-wilson-sand/70 text-center md:text-right">
             reservas@wilsonhotel.com.ar<br />IVA 21% incluido
           </p>
         </div>
       </footer>
+
       {/* ── WHATSAPP FLOTANTE ── */}
-      <a href="https://wa.me/543874312211" target="_blank" rel="noopener noreferrer"
+      <a
+        href="https://wa.me/543874312211"
+        target="_blank"
+        rel="noopener noreferrer"
         title="Consultanos por WhatsApp"
-        style={{
-          position: "fixed", bottom: 28, right: 28, zIndex: 200,
-          width: 56, height: 56, borderRadius: "50%",
-          background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 4px 20px rgba(37,211,102,0.35)", textDecoration: "none",
-        }}>
+        className="fixed bottom-7 right-7 z-[200] w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-[0_4px_20px_rgba(37,211,102,0.35)] no-underline hover:scale-110 transition-transform duration-200"
+      >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>

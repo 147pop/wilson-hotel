@@ -69,6 +69,22 @@ html { scroll-behavior: smooth; }
 }
 .btn-outline-gold:hover { background: var(--gold); color: var(--blue-deep); }
 
+/* Secondary CTA on light/ivory backgrounds — navy border + text → 8.8:1 on ivory */
+.btn-outline-deep {
+  display: inline-block;
+  font-family: var(--font-m);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+  background: transparent;
+  padding: 14px 40px;
+  text-decoration: none;
+  border: 1px solid var(--blue-deep);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline-deep:hover { background: var(--blue-deep); color: var(--ivory); }
+
 .btn-outline-ivory {
   display: inline-block;
   font-family: var(--font-m);

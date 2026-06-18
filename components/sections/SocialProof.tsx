@@ -157,6 +157,7 @@ export default function SocialProof({
   const titleColor = isDark ? "#F5F1EA" : "#0B2C57";
   const subtitleColor = isDark ? "#D8C2A0" : "#444444";
   const goldColor = "#d4a970";
+  const labelColor = isDark ? goldColor : "var(--blue-muted)"; /* gold on dark ✓ · blue-muted on light (6.2:1) */
 
   return (
     <section style={{ background: bg, padding: "72px 40px" }}>
@@ -170,7 +171,7 @@ export default function SocialProof({
               fontSize: 9,
               letterSpacing: "0.3em",
               textTransform: "uppercase",
-              color: goldColor,
+              color: labelColor,
             }}>
               Opiniones verificadas
             </span>
@@ -187,7 +188,7 @@ export default function SocialProof({
             textWrap: "balance",
           } as React.CSSProperties}>
             Lo que dicen nuestros{" "}
-            <em style={{ color: goldColor }}>huéspedes</em>
+            <em style={{ color: labelColor }}>huéspedes</em>
           </h2>
 
           <p style={{
