@@ -37,7 +37,7 @@ export default function HeroB() {
               href="tel:+543874312211"
               className="font-montserrat text-xs text-wilson-graphite opacity-60 hover:opacity-100 transition-opacity"
             >
-              (387) 4-312211
+              (387) 431-2211
             </a>
             <button
               onClick={() => scrollTo("reservas")}
@@ -74,7 +74,7 @@ export default function HeroB() {
         {/* Left: Image */}
         <div className="relative min-h-[50vh] lg:min-h-screen overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80"
+            src="/hotel/amenities/home/home-01.webp"
             alt="Habitación Wilson Hotel"
             className="absolute inset-0 w-full h-full object-cover"
           />

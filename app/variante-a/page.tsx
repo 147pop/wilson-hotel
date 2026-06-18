@@ -1,38 +1,47 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import SocialProof from "@/components/sections/SocialProof";
+import LogoHorizontal from "@/components/brand/LogoHorizontal";
+import LogoIsotipo from "@/components/brand/LogoIsotipo";
 
 const BOOKING = "https://motor.winpax.com.ar/search.php?hotel_id=133";
+
+const heroCarouselImages = [
+  { src: "/hotel/amenities/fachada/fachada-mejorada-v2.webp", alt: "Fachada del Wilson Hotel" },
+  { src: "/hotel/amenities/home/home-01.webp", alt: "Lobby panorámico del Wilson Hotel" },
+  { src: "/hotel/amenities/desayuno/desayuno-03.webp", alt: "Área de desayuno buffet" },
+  { src: "/hotel/amenities/desayuno/desayuno-04.webp", alt: "Buffet de desayuno" },
+];
 
 const rooms = [
   {
     name: "Habitación Simple",
     occ: "1 persona",
-    img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80",
+    img: "/hotel/habitaciones/single-standard/single-standard-03.webp",
     desc: "Confort y privacidad para el viajero individual. Cama matrimonial, baño privado completo, aire acondicionado y WiFi de alta velocidad.",
   },
   {
     name: "Doble Matrimonial",
     occ: "1–2 personas",
-    img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=80",
+    img: "/hotel/habitaciones/doble-standard/doble-standard-01.webp",
     desc: "Ambiente íntimo y acogedor para parejas. Cama king, baño renovado, televisor LED y atención personalizada.",
   },
   {
     name: "Doble Twin",
     occ: "1–2 personas + cama extra",
-    img: "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=900&q=80",
+    img: "/hotel/habitaciones/doble-single/doble-single-01.webp",
     desc: "Dos camas individuales para viajeros independientes. Luminoso, espacioso y con posibilidad de cama extra.",
   },
   {
     name: "Suite Matrimonial",
     occ: "1–2 personas + cama extra",
-    img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=900&q=80",
+    img: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp",
     desc: "La habitación más amplia y equipada del hotel. Mayor espacio, decoración cuidada y vista mejorada.",
   },
   {
     name: "Triple",
     occ: "1–3 personas",
-    img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=900&q=80",
+    img: "/hotel/habitaciones/triple-ms/triple-ms-01.webp",
     desc: "Tres plazas cómodas en un ambiente familiar y funcional. Ideal para grupos y familias en Salta.",
   },
 ];
@@ -68,11 +77,11 @@ const tariffs = [
 ];
 
 const galleryPhotos = [
-  { img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80", alt: "Habitación doble", span: "col-span-2 row-span-2" },
-  { img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&q=80", alt: "Doble twin", span: "" },
-  { img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&q=80", alt: "Baño privado", span: "" },
-  { img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80", alt: "Desayuno buffet", span: "" },
-  { img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80", alt: "Suite", span: "" },
+  { img: "/hotel/amenities/home/home-01.webp", alt: "Lobby del hotel", span: "col-span-2 row-span-2" },
+  { img: "/hotel/habitaciones/doble-single/doble-single-01.webp", alt: "Habitación twin", span: "" },
+  { img: "/hotel/habitaciones/doble-suite-sillas/doble-suite-sillas-01.webp", alt: "Suite con living", span: "" },
+  { img: "/hotel/amenities/desayuno/desayuno-01.webp", alt: "Desayuno buffet", span: "" },
+  { img: "/hotel/amenities/salon/salon-01.webp", alt: "Salón de eventos", span: "" },
 ];
 
 const contactInfo = [
@@ -86,11 +95,19 @@ const contactInfo = [
 export default function VarianteA() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [carouselIdx, setCarouselIdx] = useState(0);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCarouselIdx((prev) => (prev + 1) % heroCarouselImages.length);
+    }, 7000);
+    return () => clearInterval(timer);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -130,16 +147,7 @@ export default function VarianteA() {
 
           {/* Center logo */}
           <div className="text-center">
-            <div className="font-garamond text-xl tracking-[0.45em] text-wilson-blue-deep font-semibold leading-none">
-              WILSON
-            </div>
-            <div className="flex items-center justify-center gap-2 mt-1">
-              <div className="h-px w-5 bg-wilson-gold" />
-              <span className="font-montserrat text-[10px] tracking-[0.35em] text-[var(--blue-muted)] uppercase">
-                HOTEL ★★★
-              </span>
-              <div className="h-px w-5 bg-wilson-gold" />
-            </div>
+            <LogoHorizontal variant="dark" size={60} />
           </div>
 
           {/* Right nav (desktop) */}
@@ -263,31 +271,37 @@ export default function VarianteA() {
             </div>
           </div>
 
-          {/* RIGHT: clean photo composition */}
-          <div className="fade-up-1 relative order-1 md:order-2 h-[360px] md:h-[540px] lg:h-[580px]">
-            {/* Primary photo — full, clean */}
-            <div className="absolute top-0 right-0 w-full md:w-[90%] h-[75%] overflow-hidden">
+          {/* RIGHT: full carousel */}
+          <div className="fade-up-1 relative order-1 md:order-2 h-[360px] md:h-[540px] lg:h-[580px] overflow-hidden">
+            {heroCarouselImages.map((img, i) => (
               <img
-                src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=80"
-                alt="Habitación premium del Wilson Hotel con cama doble y decoración cálida"
-                className="w-full h-full object-cover img-zoom"
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms]"
+                style={{ opacity: i === carouselIdx ? 1 : 0 }}
+                loading={i === 0 ? undefined : "lazy"}
               />
-              <div
-                className="absolute inset-0"
-                style={{ background: "linear-gradient(to bottom, transparent 65%, rgba(11,44,87,0.15))" }}
-              />
+            ))}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: "linear-gradient(to bottom, transparent 65%, rgba(11,44,87,0.15))" }}
+            />
+            {/* Progress dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2.5 z-10">
+              {heroCarouselImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCarouselIdx(i)}
+                  className="w-2 h-2 transition-all duration-300"
+                  style={{
+                    background: i === carouselIdx ? "#d4a970" : "rgba(255,255,255,0.5)",
+                    transform: i === carouselIdx ? "scale(1.3)" : "scale(1)",
+                  }}
+                  aria-label={`Imagen ${i + 1}`}
+                />
+              ))}
             </div>
-
-            {/* Secondary photo — offset below-left */}
-            <div className="absolute bottom-0 left-0 w-[55%] h-[42%] overflow-hidden border-4 border-wilson-ivory shadow-lg hidden md:block">
-              <img
-                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80"
-                alt="Mesa con desayuno artesanal servido en el hotel"
-                className="w-full h-full object-cover img-zoom"
-              />
-            </div>
-
-
           </div>
         </div>
 
@@ -601,12 +615,7 @@ export default function VarianteA() {
       <footer className="bg-wilson-blue-deep py-10 px-4 md:px-8">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
-            <div className="font-garamond text-lg tracking-[0.45em] text-wilson-ivory font-semibold">
-              WILSON
-            </div>
-            <div className="font-montserrat text-[10px] tracking-[0.35em] text-wilson-gold uppercase">
-              HOTEL ★★★
-            </div>
+            <LogoIsotipo variant="light" size={52} />
           </div>
           <p className="font-montserrat text-[10px] text-wilson-sand/70 text-center">
             © {new Date().getFullYear()} Wilson Hotel S.A. · Todos los derechos reservados

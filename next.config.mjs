@@ -7,10 +7,6 @@ const nextConfig = {
         protocol: "https",
         hostname: "winpax-files.s3.amazonaws.com",
       },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
     ],
   },
 };

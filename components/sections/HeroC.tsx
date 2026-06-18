@@ -80,11 +80,17 @@ export default function HeroC() {
           className="absolute right-0 top-0 w-1/2 h-full"
           style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}
         >
-          <img
-            src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
-            alt="Habitación Wilson Hotel"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/hotel/amenities/home/home-01.webp"
             className="w-full h-full object-cover opacity-40"
-          />
+            preload="metadata"
+          >
+            <source src="/hotel/amenities/home/home-video.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-wilson-blue-deep via-wilson-blue-deep/60 to-transparent" />
         </div>
 

@@ -5,12 +5,12 @@ interface GalleryProps {
 }
 
 const photos = [
-  { src: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80", alt: "Habitación doble", span: "col-span-2 row-span-2" },
-  { src: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&q=80", alt: "Habitación twin", span: "" },
-  { src: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=600&q=80", alt: "Baño privado", span: "" },
-  { src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80", alt: "Desayuno buffet", span: "" },
-  { src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80", alt: "Suite matrimonial", span: "" },
-  { src: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80", alt: "Fachada del hotel", span: "" },
+  { src: "/hotel/amenities/home/home-01.webp", alt: "Lobby del hotel", span: "col-span-2 row-span-2" },
+  { src: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp", alt: "Suite matrimonial", span: "" },
+  { src: "/hotel/amenities/desayuno/desayuno-01.webp", alt: "Desayuno buffet", span: "" },
+  { src: "/hotel/amenities/salon/salon-01.webp", alt: "Salón de eventos", span: "" },
+  { src: "/hotel/habitaciones/doble-single/doble-single-01.webp", alt: "Habitación twin", span: "" },
+  { src: "/hotel/amenities/fachada/fachada-01.webp", alt: "Fachada del hotel", span: "" },
 ];
 
 export default function Gallery({ variant = "light" }: GalleryProps) {

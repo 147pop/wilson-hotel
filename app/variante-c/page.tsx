@@ -31,6 +31,7 @@ const Rule = () => (
 
 export default function VarianteC() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useScrollReveal();
 
   useEffect(() => {
@@ -38,6 +39,11 @@ export default function VarianteC() {
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
+  };
 
   return (
     <main style={{ background: g.deep, color: g.ivory, overflowX: "hidden" }}>
@@ -50,61 +56,111 @@ export default function VarianteC() {
         borderBottom: scrolled ? "1px solid rgba(212,169,112,0.2)" : "none",
         transition: "all 0.5s ease",
       }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 40px", height: 76, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div className="max-w-[1400px] mx-auto px-5 md:px-10 h-[76px] flex items-center justify-between">
           <div><LogoHorizontal variant="light" size={40} /></div>
-          <nav style={{ display: "flex", gap: 40 }}>
+
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex gap-10">
             {["Habitaciones", "Servicios", "Galería", "Contacto"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="nav-link-light">{l}</a>
+              <button key={l} onClick={() => scrollTo(l.toLowerCase())} className="nav-link-light">{l}</button>
             ))}
           </nav>
-          <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ padding: "9px 28px" }}>Reservar</a>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:block">
+            <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ padding: "9px 28px" }}>Reservar</a>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="lg:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menú"
+            style={{ color: g.ivory }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {menuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="lg:hidden px-5 py-4 space-y-3" style={{ background: "rgba(11,44,87,0.98)", borderTop: "1px solid rgba(212,169,112,0.15)" }}>
+            {["Habitaciones", "Servicios", "Galería", "Contacto"].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollTo(item.toLowerCase())}
+                className="block w-full text-left font-montserrat text-sm transition-colors py-1"
+                style={{ color: g.sand }}
+              >
+                {item}
+              </button>
+            ))}
+            <a
+              href={BOOKING}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full btn-outline-gold text-xs py-2.5 text-center mt-2"
+            >
+              Reservar ahora
+            </a>
+          </div>
+        )}
       </header>
 
       {/* HERO */}
-      <section style={{ minHeight: "100vh", position: "relative", display: "flex", alignItems: "center", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: 0, right: 0, width: "55%", height: "100%", clipPath: "polygon(18% 0, 100% 0, 100% 100%, 0% 100%)", overflow: "hidden" }}>
-          <img src="/hotel/amenities/home/home-01.webp" alt="Wilson Hotel" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.6)" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(11,44,87,0.75) 0%, rgba(11,44,87,0.1) 60%, transparent 100%)" }} />
+      <section className="min-h-screen relative flex items-center overflow-hidden">
+        {/* Background image — full on mobile, clipped on desktop */}
+        <div className="absolute inset-0 md:left-auto md:top-0 md:right-0 md:w-[55%] md:h-full"
+          style={{ clipPath: "none" }}>
+          <style>{`@media (min-width: 768px) { .hero-clip { clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%) !important; } }`}</style>
+          <div className="hero-clip absolute inset-0 overflow-hidden">
+            <img src="/hotel/amenities/home/home-01.webp" alt="Wilson Hotel" className="w-full h-full object-cover" style={{ filter: "brightness(0.6)" }} />
+          </div>
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(11,44,87,0.75) 0%, rgba(11,44,87,0.1) 60%, transparent 100%)" }} />
         </div>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(11,44,87,0.65) 0%, rgba(11,44,87,0.25) 50%, transparent 100%)" }} />
-        <div className="reveal-draw" style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, ${g.gold} 0%, transparent 60%)`, opacity: 0.4 }} />
-        <div className="reveal-draw reveal-d2" style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, ${g.gold} 0%, transparent 70%)`, opacity: 0.25 }} />
-        <div className="reveal-draw reveal-d3" style={{ position: "absolute", left: 40, top: 80, bottom: 80, width: 1, background: `linear-gradient(to bottom, transparent, ${g.gold}, transparent)`, opacity: 0.3 }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(11,44,87,0.65) 0%, rgba(11,44,87,0.25) 50%, transparent 100%)" }} />
 
-        <div style={{ position: "relative", zIndex: 10, maxWidth: 1400, margin: "0 auto", padding: "120px 80px 120px 80px", width: "100%" }}>
+        {/* Decorative lines */}
+        <div className="reveal-draw absolute top-0 left-0 right-0 h-0.5" style={{ background: `linear-gradient(90deg, ${g.gold} 0%, transparent 60%)`, opacity: 0.4 }} />
+        <div className="reveal-draw reveal-d2 absolute bottom-0 left-0 right-0 h-px" style={{ background: `linear-gradient(90deg, ${g.gold} 0%, transparent 70%)`, opacity: 0.25 }} />
+        <div className="reveal-draw reveal-d3 absolute left-5 md:left-10 top-20 bottom-20 w-px" style={{ background: `linear-gradient(to bottom, transparent, ${g.gold}, transparent)`, opacity: 0.3 }} />
+
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 py-28 sm:px-10 md:px-16 lg:px-20 w-full">
           <div className="fade-up">
-            <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 40 }}>
-              <div style={{ height: 1, width: 56, background: g.gold, opacity: 0.6 }} />
+            <div className="flex items-center gap-4 mb-8 md:mb-10">
+              <div className="h-px w-10 md:w-14" style={{ background: g.gold, opacity: 0.6 }} />
               <span style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", color: g.gold }}>Alvarado 950 · Salta, Argentina</span>
             </div>
-            <h1 style={{ fontFamily: g.fontG, fontSize: "clamp(64px, 10vw, 148px)", lineHeight: 0.85, color: g.ivory, margin: "0 0 8px 0", letterSpacing: "-0.03em", maxWidth: "70vw" }}>
+            <h1 className="max-w-[70vw]" style={{ fontFamily: g.fontG, fontSize: "clamp(48px, 10vw, 148px)", lineHeight: 0.85, color: g.ivory, margin: "0 0 8px 0", letterSpacing: "-0.03em" }}>
               En el<br />
               <em style={{ color: g.gold }}>corazón</em><br />
               de Salta
             </h1>
-            <div style={{ margin: "36px 0" }}><Rule /></div>
-            <p style={{ fontFamily: g.fontG, fontSize: "clamp(18px, 2vw, 26px)", fontStyle: "italic", color: g.sand, lineHeight: 1.5, margin: "0 0 48px 0", maxWidth: 520, opacity: 0.85 }}>
+            <div className="my-7 md:my-9 max-w-xs"><Rule /></div>
+            <p className="max-w-[520px]" style={{ fontFamily: g.fontG, fontSize: "clamp(18px, 2vw, 26px)", fontStyle: "italic", color: g.sand, lineHeight: 1.5, margin: "0 0 48px 0", opacity: 0.85 }}>
               Más de 40 años de tradición hotelera. Confort, calidez y atención personalizada en el centro histórico.
             </p>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <div className="flex gap-4 flex-wrap">
               <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ fontSize: 12, padding: "16px 44px" }}>Reservar ahora</a>
               <a href="https://wa.me/543874312211" target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 12, padding: "16px 44px" }}>WhatsApp</a>
             </div>
           </div>
 
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "0 80px" }}>
-            <div style={{ borderTop: "1px solid rgba(212,169,112,0.15)", display: "flex", gap: 48, padding: "24px 0" }}>
+          {/* Bottom stats */}
+          <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-10 md:px-16 lg:px-20">
+            <div className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 py-5 md:py-6" style={{ borderTop: "1px solid rgba(212,169,112,0.15)" }}>
               {[
                 { num: "40+", label: "Años de trayectoria" },
                 { num: "5", label: "Tipos de habitación" },
                 { num: "3", label: "Estrellas" },
                 { num: "✓", label: "Desayuno incluido" },
               ].map((s, i) => (
-                <div key={i} className={`reveal reveal-d${i + 1}`} style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                <div key={i} className={`reveal reveal-d${i + 1} flex gap-3 items-center`}>
                   <div style={{ fontFamily: g.fontG, fontSize: 24, color: g.gold, lineHeight: 1 }}>{s.num}</div>
-                  <div style={{ height: 20, width: 1, background: g.gold, opacity: 0.2 }} />
-                  <div style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.78, lineHeight: 1.3 }}>{s.label}</div>
+                  <div className="h-5 w-px" style={{ background: g.gold, opacity: 0.2 }} />
+                  <div className="hidden sm:block" style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.78, lineHeight: 1.3 }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -113,33 +169,37 @@ export default function VarianteC() {
       </section>
 
       {/* HABITACIONES */}
-      <section id="habitaciones" style={{ background: "#091f40", padding: "96px 0" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px" }}>
-          <div style={{ marginBottom: 56 }}>
-            <div className="reveal-draw" style={{ height: 1, width: 40, background: g.gold, marginBottom: 20, opacity: 0.5 }} />
+      <section id="habitaciones" className="py-20 md:py-24" style={{ background: "#091f40" }}>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 lg:px-20">
+          <div className="mb-12 md:mb-14">
+            <div className="reveal-draw h-px w-10 mb-5" style={{ background: g.gold, opacity: 0.5 }} />
             <h2 className="reveal-blur" style={{ fontFamily: g.fontG, fontSize: "clamp(36px, 5vw, 68px)", color: g.ivory, margin: 0, lineHeight: 0.9, letterSpacing: "-0.02em" }}>
               Nuestras<br /><em style={{ color: g.gold }}>habitaciones</em>
             </h2>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+
+          <div className="flex flex-col gap-0.5">
             {rooms.map((room, i) => (
-              <div key={i} className={`reveal-clip reveal-d${i + 1}`} style={{ display: "grid", gridTemplateColumns: "280px 1fr", overflow: "hidden", background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.04)" }}>
-                <div style={{ height: 200, overflow: "hidden", position: "relative" }}>
-                  <img src={room.img} alt={room.name} className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "brightness(0.85)" }} />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, transparent 60%, rgba(9,31,64,0.3))" }} />
+              <div key={i} className={`reveal-clip reveal-d${i + 1} grid grid-cols-1 md:grid-cols-[240px_1fr] lg:grid-cols-[280px_1fr] overflow-hidden`}
+                style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.04)" }}>
+                {/* Room image */}
+                <div className="h-[200px] md:h-[200px] overflow-hidden relative">
+                  <img src={room.img} alt={room.name} className="img-zoom w-full h-full object-cover block" style={{ filter: "brightness(0.85)" }} />
+                  <div className="absolute inset-0 hidden md:block" style={{ background: "linear-gradient(to right, transparent 60%, rgba(9,31,64,0.3))" }} />
                 </div>
-                <div style={{ padding: "32px 48px", display: "flex", alignItems: "center", justifyContent: "space-between", borderLeft: "1px solid rgba(212,169,112,0.1)" }}>
-                  <div>
-                    <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 8, opacity: 0.9 }}>{room.occ}</span>
+                {/* Room info */}
+                <div className="p-5 sm:p-7 md:p-8 lg:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4" style={{ borderLeft: "none" }}>
+                  <div className="md:border-l md:pl-8 lg:pl-12" style={{ borderColor: "rgba(212,169,112,0.1)" }}>
+                    <span className="block mb-2" style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, opacity: 0.9 }}>{room.occ}</span>
                     <h3 style={{ fontFamily: g.fontG, fontSize: 32, color: g.ivory, margin: "0 0 10px 0" }}>{room.name}</h3>
-                    <p style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, margin: 0, lineHeight: 1.7, opacity: 0.82, maxWidth: 400 }}>{room.desc} Desayuno buffet incluido.</p>
+                    <p className="max-w-[400px]" style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, margin: 0, lineHeight: 1.7, opacity: 0.82 }}>{room.desc} Desayuno buffet incluido.</p>
                   </div>
-                  <div style={{ flexShrink: 0, paddingLeft: 48 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                      <div style={{ width: 20, height: 1, background: g.gold, opacity: 0.5 }} />
+                  <div className="flex-shrink-0 md:pl-8 lg:pl-12">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="w-5 h-px" style={{ background: g.gold, opacity: 0.5 }} />
                       <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.72 }}>Disponible</span>
                     </div>
-                    <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 9, padding: "10px 24px", display: "block", textAlign: "center" }}>Reservar</a>
+                    <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-outline-gold block text-center" style={{ fontSize: 9, padding: "10px 24px" }}>Reservar</a>
                   </div>
                 </div>
               </div>
@@ -149,12 +209,12 @@ export default function VarianteC() {
       </section>
 
       {/* QUOTE */}
-      <section style={{ background: g.deep, padding: "80px 80px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <section className="px-6 py-16 sm:px-10 md:px-20 md:py-20" style={{ background: g.deep }}>
+        <div className="max-w-[1100px] mx-auto">
           <div className="reveal-draw-center"><Rule /></div>
-          <p className="reveal-blur" style={{ fontFamily: g.fontG, fontSize: "clamp(28px, 4vw, 56px)", fontStyle: "italic", color: g.sand, lineHeight: 1.35, margin: "48px 0", textAlign: "center", letterSpacing: "0.01em", opacity: 0.9 }}>
-            "Calidad, comodidad y calidez.<br />
-            En el corazón de Salta desde 1980."
+          <p className="reveal-blur text-center my-10 md:my-12" style={{ fontFamily: g.fontG, fontSize: "clamp(24px, 4vw, 56px)", fontStyle: "italic", color: g.sand, lineHeight: 1.35, letterSpacing: "0.01em", opacity: 0.9 }}>
+            &quot;Calidad, comodidad y calidez.<br />
+            En el corazón de Salta desde 1980.&quot;
           </p>
           <div className="reveal-draw-center"><Rule /></div>
         </div>
@@ -163,14 +223,15 @@ export default function VarianteC() {
       <SocialProof variant="dark" />
 
       {/* SERVICIOS */}
-      <section id="servicios" style={{ background: "#091f40", padding: "80px 80px" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+      <section id="servicios" className="px-5 py-16 sm:px-8 md:px-12 lg:px-20 md:py-20" style={{ background: "#091f40" }}>
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-start">
+          {/* Services list */}
           <div>
-            <div className="reveal-draw" style={{ height: 1, width: 40, background: g.gold, marginBottom: 20, opacity: 0.5 }} />
-            <h2 className="reveal-blur" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4vw, 56px)", color: g.ivory, margin: "0 0 40px 0", lineHeight: 0.92 }}>
+            <div className="reveal-draw h-px w-10 mb-5" style={{ background: g.gold, opacity: 0.5 }} />
+            <h2 className="reveal-blur mb-8 md:mb-10" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4vw, 56px)", color: g.ivory, margin: 0, lineHeight: 0.92 }}>
               Servicios<br /><em style={{ color: g.gold }}>y amenidades</em>
             </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+            <div className="flex flex-col">
               {[
                 { name: "Desayuno buffet incluido", desc: "En todas las tarifas, sin excepción." },
                 { name: "WiFi gratuito", desc: "Alta velocidad en habitaciones y áreas comunes." },
@@ -178,10 +239,10 @@ export default function VarianteC() {
                 { name: "Ubicación céntrica", desc: "Alvarado 950, a pasos de Plaza 9 de Julio." },
                 { name: "Pago con tarjeta", desc: "Visa, Mastercard y American Express." },
               ].map((s, i) => (
-                <div key={i} className={`reveal reveal-d${i + 1}`} style={{ borderTop: "1px solid rgba(212,169,112,0.12)", padding: "20px 0", display: "flex", gap: 20, alignItems: "center" }}>
-                  <div style={{ width: 6, height: 6, background: g.gold, flexShrink: 0, transform: "rotate(45deg)", opacity: 0.7 }} />
+                <div key={i} className={`reveal reveal-d${i + 1} flex gap-4 md:gap-5 items-center py-4 md:py-5`} style={{ borderTop: "1px solid rgba(212,169,112,0.12)" }}>
+                  <div className="w-1.5 h-1.5 flex-shrink-0" style={{ background: g.gold, transform: "rotate(45deg)", opacity: 0.7 }} />
                   <div>
-                    <span style={{ fontFamily: g.fontG, fontSize: 22, color: g.ivory, display: "block" }}>{s.name}</span>
+                    <span className="block" style={{ fontFamily: g.fontG, fontSize: 22, color: g.ivory }}>{s.name}</span>
                     <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.sand, opacity: 0.82 }}>{s.desc}</span>
                   </div>
                 </div>
@@ -192,26 +253,24 @@ export default function VarianteC() {
 
           {/* Tarifas */}
           <div>
-            <div className="reveal-draw" style={{ height: 1, width: 40, background: g.gold, marginBottom: 20, opacity: 0.5 }} />
-            <h2 className="reveal-blur" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4vw, 56px)", color: g.ivory, margin: "0 0 40px 0", lineHeight: 0.92 }}>
+            <div className="reveal-draw h-px w-10 mb-5" style={{ background: g.gold, opacity: 0.5 }} />
+            <h2 className="reveal-blur mb-8 md:mb-10" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4vw, 56px)", color: g.ivory, margin: 0, lineHeight: 0.92 }}>
               Planes<br /><em style={{ color: g.gold }}>tarifarios</em>
             </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <div className="flex flex-col gap-0.5">
               {[
                 { name: "Alojamiento y Desayuno", tag: "Reembolsable · Pago en hotel", featured: false },
                 { name: "Último Minuto", tag: "−15% · No reembolsable · Pago anticipado", featured: true },
                 { name: "No Reembolsable", tag: "−10% · Pago anticipado", featured: false },
               ].map((t, i) => (
-                <div key={i} className={`reveal reveal-d${i + 1}`} style={{
-                  padding: "24px 28px",
+                <div key={i} className={`reveal reveal-d${i + 1} p-5 sm:p-6 md:p-7 relative`} style={{
                   background: t.featured ? "rgba(212,169,112,0.12)" : "rgba(255,255,255,0.03)",
                   border: t.featured ? "1px solid rgba(212,169,112,0.35)" : "1px solid rgba(255,255,255,0.05)",
-                  position: "relative",
                 }}>
                   {t.featured && (
-                    <div style={{ position: "absolute", top: -1, right: 16, background: g.gold, padding: "3px 12px", fontFamily: g.fontM, fontSize: 7, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep }}>OFERTA</div>
+                    <div className="absolute -top-px right-4" style={{ background: g.gold, padding: "3px 12px", fontFamily: g.fontM, fontSize: 7, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep }}>OFERTA</div>
                   )}
-                  <div style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, marginBottom: 6, opacity: 0.8 }}>{t.tag}</div>
+                  <div className="mb-1.5" style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, opacity: 0.8 }}>{t.tag}</div>
                   <div style={{ fontFamily: g.fontG, fontSize: 24, color: g.ivory }}>{t.name}</div>
                 </div>
               ))}
@@ -221,27 +280,30 @@ export default function VarianteC() {
       </section>
 
       {/* GALERIA */}
-      <section id="galería" style={{ background: g.deep, padding: "80px 0", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 80px", marginBottom: 40 }}>
-          <div className="reveal-draw" style={{ height: 1, width: 40, background: g.gold, marginBottom: 20, opacity: 0.5 }} />
+      <section id="galería" className="py-16 md:py-20 overflow-hidden" style={{ background: g.deep }}>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 lg:px-20 mb-8 md:mb-10">
+          <div className="reveal-draw h-px w-10 mb-5" style={{ background: g.gold, opacity: 0.5 }} />
           <h2 className="reveal-blur" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4vw, 56px)", color: g.ivory, margin: 0, lineHeight: 0.92 }}>
             Galería<br /><em style={{ color: g.gold }}>de imágenes</em>
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", height: 420, gap: 3 }}>
+
+        {/* Gallery grid — 2 cols mobile, 3 cols tablet, 5 cols desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-0.5" style={{ height: "auto" }}>
           {[
-            { img: "/hotel/habitaciones/doble-standard/doble-standard-01.webp", alt: "Habitación", style: { clipPath: "polygon(0 0, 90% 0, 100% 100%, 0 100%)" } },
-            { img: "/hotel/habitaciones/doble-single/doble-single-01.webp", alt: "Twin", style: { clipPath: "polygon(0 0, 100% 0, 90% 100%, 10% 100%)" } },
-            { img: "/hotel/amenities/desayuno/desayuno-01.webp", alt: "Desayuno", style: {} },
-            { img: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp", alt: "Suite", style: { clipPath: "polygon(10% 0, 100% 0, 90% 100%, 0 100%)" } },
-            { img: "/hotel/amenities/fachada/fachada-01.webp", alt: "Fachada", style: { clipPath: "polygon(10% 0, 100% 0, 100% 100%, 0 100%)" } },
+            { img: "/hotel/habitaciones/doble-standard/doble-standard-01.webp", alt: "Habitación" },
+            { img: "/hotel/habitaciones/doble-single/doble-single-01.webp", alt: "Twin" },
+            { img: "/hotel/amenities/desayuno/desayuno-01.webp", alt: "Desayuno" },
+            { img: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp", alt: "Suite" },
+            { img: "/hotel/amenities/fachada/fachada-01.webp", alt: "Fachada" },
           ].map((p, i) => (
-            <div key={i} className={`reveal-scale reveal-d${i + 1}`} style={{ overflow: "hidden", ...p.style }}>
-              <img src={p.img} alt={p.alt} className="img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", filter: "brightness(0.7)" }} />
+            <div key={i} className={`reveal-scale reveal-d${i + 1} overflow-hidden h-[180px] sm:h-[220px] md:h-[280px] lg:h-[420px]`}>
+              <img src={p.img} alt={p.alt} className="img-zoom w-full h-full object-cover block" style={{ filter: "brightness(0.7)" }} />
             </div>
           ))}
         </div>
-        <div style={{ maxWidth: 1400, margin: "24px auto 0", padding: "0 80px", display: "flex", justifyContent: "flex-end" }}>
+
+        <div className="max-w-[1400px] mx-auto mt-5 md:mt-6 px-5 sm:px-8 md:px-12 lg:px-20 flex justify-end">
           <a href="https://instagram.com/wilsonhotel.salta" target="_blank" rel="noopener noreferrer"
             style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, textDecoration: "none", opacity: 0.88 }}>
             @wilsonhotel.salta →
@@ -250,22 +312,22 @@ export default function VarianteC() {
       </section>
 
       {/* CTA RESERVA */}
-      <section className="reveal" style={{ background: "#050f1d", padding: "120px 80px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 600, height: 600, background: "radial-gradient(circle, rgba(212,169,112,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ position: "relative", zIndex: 1 }}>
+      <section className="reveal px-6 py-20 sm:px-10 md:px-20 md:py-[120px] text-center relative overflow-hidden" style={{ background: "#050f1d" }}>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(212,169,112,0.06) 0%, transparent 70%)" }} />
+        <div className="relative z-10">
           <div className="reveal-draw-center"><Rule /></div>
-          <div style={{ margin: "48px 0" }}>
-            <span className="reveal reveal-d1" style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 24, opacity: 0.7 }}>Reservas online · Mejor precio directo</span>
-            <h2 className="reveal-blur" style={{ fontFamily: g.fontG, fontSize: "clamp(56px, 9vw, 140px)", color: g.ivory, margin: "0 auto 24px", lineHeight: 0.85, letterSpacing: "-0.03em", maxWidth: 900 }}>
+          <div className="my-10 md:my-12">
+            <span className="reveal reveal-d1 block mb-6" style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", color: g.gold, opacity: 0.7 }}>Reservas online · Mejor precio directo</span>
+            <h2 className="reveal-blur mx-auto max-w-[900px]" style={{ fontFamily: g.fontG, fontSize: "clamp(44px, 9vw, 140px)", color: g.ivory, margin: "0 auto 24px", lineHeight: 0.85, letterSpacing: "-0.03em" }}>
               Reservá tu<br /><em style={{ color: g.gold }}>estadía</em>
             </h2>
-            <p className="reveal reveal-d2" style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, opacity: 0.82, lineHeight: 1.7, margin: "0 auto 48px", maxWidth: 520 }}>
+            <p className="reveal reveal-d2 mx-auto max-w-[520px]" style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, opacity: 0.82, lineHeight: 1.7, margin: "0 auto 48px" }}>
               Desayuno incluido · Cancelación gratuita 72hs antes<br />
               IVA 21% incluido · Mejor precio garantizado
             </p>
-            <div className="reveal reveal-d3" style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
-              <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ fontSize: 12, padding: "18px 52px" }}>Ver disponibilidad →</a>
-              <a href="https://wa.me/543874312211" target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 12, padding: "18px 52px" }}>Consultar por WhatsApp</a>
+            <div className="reveal reveal-d3 flex gap-4 md:gap-5 justify-center flex-wrap">
+              <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ fontSize: 12, padding: "16px 36px" }}>Ver disponibilidad →</a>
+              <a href="https://wa.me/543874312211" target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 12, padding: "16px 36px" }}>Consultar por WhatsApp</a>
             </div>
           </div>
           <div className="reveal-draw-center"><Rule /></div>
@@ -273,23 +335,23 @@ export default function VarianteC() {
       </section>
 
       {/* CONTACTO */}
-      <section id="contacto" className="reveal" style={{ background: "#091f40", padding: "80px 80px" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+      <section id="contacto" className="reveal px-5 py-16 sm:px-8 md:px-12 lg:px-20 md:py-20" style={{ background: "#091f40" }}>
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-start">
           <div>
-            <div className="reveal-draw" style={{ height: 1, width: 40, background: g.gold, marginBottom: 20, opacity: 0.5 }} />
-            <h2 className="reveal-blur reveal-d1" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 3.5vw, 52px)", color: g.ivory, margin: "0 0 40px 0" }}>
+            <div className="reveal-draw h-px w-10 mb-5" style={{ background: g.gold, opacity: 0.5 }} />
+            <h2 className="reveal-blur reveal-d1 mb-8 md:mb-10" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 3.5vw, 52px)", color: g.ivory, margin: 0 }}>
               Cómo<br /><em style={{ color: g.gold }}>llegar</em>
             </h2>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div className="flex flex-col">
               {[
                 { label: "Dirección", val: "Alvarado 950, Salta Capital" },
-                { label: "Teléfono", val: "(+54 387) 4-312211", href: "tel:+543874312211" },
+                { label: "Teléfono", val: "(387) 431-2211", href: "tel:+543874312211" },
                 { label: "Email", val: "info@wilsonhotel.com.ar", href: "mailto:info@wilsonhotel.com.ar" },
                 { label: "WhatsApp", val: "Consultas directas", href: "https://wa.me/543874312211" },
                 { label: "Check-in / out", val: "14:00 hs / 10:00 hs" },
               ].map(item => (
-                <div key={item.label} className="reveal reveal-d2" style={{ borderTop: "1px solid rgba(212,169,112,0.1)", padding: "18px 0", display: "flex", gap: 32 }}>
-                  <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, opacity: 0.9, width: 80, flexShrink: 0, paddingTop: 3 }}>{item.label}</span>
+                <div key={item.label} className="reveal reveal-d2 flex gap-6 md:gap-8 py-4 md:py-[18px]" style={{ borderTop: "1px solid rgba(212,169,112,0.1)" }}>
+                  <span className="flex-shrink-0 w-[72px] md:w-20 pt-0.5" style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, opacity: 0.9 }}>{item.label}</span>
                   {item.href ? (
                     <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer"
                       style={{ fontFamily: g.fontM, fontSize: 13, color: g.ivory, textDecoration: "none", opacity: 0.8 }}>{item.val}</a>
@@ -301,7 +363,7 @@ export default function VarianteC() {
               <div style={{ borderTop: "1px solid rgba(212,169,112,0.1)" }} />
             </div>
           </div>
-          <div style={{ height: 440, overflow: "hidden", opacity: 0.85 }}>
+          <div className="h-64 sm:h-80 md:h-[440px] overflow-hidden" style={{ opacity: 0.85 }}>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.9!2d-65.4095!3d-24.7859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQ3JzA5LjIiUyA2NcKwMjQnMzQuMiJX!5e0!3m2!1ses!2sar"
               width="100%" height="100%" style={{ border: 0, display: "block", filter: "invert(1) hue-rotate(180deg) brightness(0.8)" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Ubicación Wilson Hotel" />
           </div>
@@ -310,9 +372,9 @@ export default function VarianteC() {
 
       {/* FOOTER */}
       <footer style={{ background: "#050f1d", borderTop: "1px solid rgba(212,169,112,0.12)" }}>
-        <div style={{ maxWidth: 1400, margin: "0 auto", padding: "32px 80px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div className="max-w-[1400px] mx-auto px-5 py-6 sm:px-8 md:px-20 md:py-8 flex flex-col sm:flex-row justify-between items-center gap-3">
           <div><LogoIsotipo variant="gold" size={36} /></div>
-          <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65, textAlign: "center" }}>© {new Date().getFullYear()} Wilson Hotel S.A.</p>
+          <p className="text-center" style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65 }}>© {new Date().getFullYear()} Wilson Hotel S.A.</p>
           <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65 }}>IVA 21% incluido</p>
         </div>
       </footer>

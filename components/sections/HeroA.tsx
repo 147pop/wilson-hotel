@@ -88,15 +88,20 @@ export default function HeroA() {
           background: "linear-gradient(135deg, #0B2C57 0%, #123E7A 50%, #1a4f9a 100%)",
         }}
       >
-        {/* Background image overlay */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
+        {/* Background video overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/hotel/amenities/home/home-01.webp"
+            className="w-full h-full object-cover"
+            preload="metadata"
+          >
+            <source src="/hotel/amenities/home/home-video.mp4" type="video/mp4" />
+          </video>
+        </div>
 
         {/* Decorative corner elements */}
         <div className="absolute top-24 left-8 w-16 h-16 border-t border-l border-wilson-gold/30" />
