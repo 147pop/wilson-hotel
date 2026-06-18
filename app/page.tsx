@@ -13,7 +13,7 @@ const g = {
 const variants = [
   {
     href: "/variante-a",
-    label: "A",
+    label: "variante a",
     concept: "Grand Hôtel Editorial",
     tagline: "Revista de lujo · Marfil dominante",
     description: "Navbar centrado con logo en el medio. Hero asimétrico con gran tipografía y collage angular de fotos. Habitaciones como ensayo fotográfico alternado (01–05). Sección de tarifas en navy. CTA gold dramático.",
@@ -24,7 +24,7 @@ const variants = [
   },
   {
     href: "/variante-b",
-    label: "B",
+    label: "variante b",
     concept: "Contraste Arquitectónico",
     tagline: "Navy ↔ Marfil · Modular · Estructurado",
     description: "Hero dividido: navy oscuro izquierda con tipografía grande + estadísticas, foto full-height derecha. Secciones dramáticamente alternadas dark/light. Habitaciones como cards con foto full-bleed y overlay. Servicios con alternancia zigzag.",
@@ -35,7 +35,7 @@ const variants = [
   },
   {
     href: "/variante-c",
-    label: "C",
+    label: "variante c",
     concept: "La Madrugada",
     tagline: "Full dark · Gold como luz · Cinematic",
     description: "Todo fondo azul profundo. Hero con foto diagonal clip-path, tipografía enorme. Habitaciones como cards horizontales apilados. Galería con fotos cortadas en ángulo. CTA dramático con glow de oro. Mapa invertido (dark).",
@@ -87,7 +87,7 @@ export default function IndexPage() {
               </div>
 
               <div style={{ padding: "16px 20px 24px" }}>
-                <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 6 }}>Variante {v.label}</span>
+                <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, display: "block", marginBottom: 6 }}>{v.label}</span>
                 <h2 style={{ fontFamily: g.fontG, fontSize: 22, color: g.deep, margin: "0 0 4px 0" }}>{v.concept}</h2>
                 <p style={{ fontFamily: g.fontM, fontSize: 9, color: g.gold, letterSpacing: "0.1em", margin: "0 0 12px 0", textTransform: "uppercase", opacity: 0.8 }}>{v.tagline}</p>
                 <p style={{ fontFamily: g.fontM, fontSize: 11, color: g.deep, opacity: 0.6, lineHeight: 1.65, margin: "0 0 14px 0" }}>{v.description}</p>
