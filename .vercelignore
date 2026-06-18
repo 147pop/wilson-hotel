@@ -1,0 +1,9 @@
+node_modules
+.next
+media
+media-converted
+.Rhistory
+.claude
+.agents
+.codex
+.impeccable
