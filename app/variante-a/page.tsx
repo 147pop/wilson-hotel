@@ -306,7 +306,7 @@ export default function VarianteA() {
         </div>
 
         {/* Scroll cue */}
-        <div className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+        <div className="hidden md:flex absolute bottom-7 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-40">
           <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-wilson-blue-deep">
             Descubrí
           </span>

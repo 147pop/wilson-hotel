@@ -155,13 +155,18 @@ export default function HeroC() {
               {[
                 { num: "40+", label: "Años de trayectoria" },
                 { num: "5", label: "Tipos de habitación" },
-                { num: "★★★", label: "Hotel categoría" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="font-montserrat text-xl sm:text-2xl text-wilson-gold">{stat.num}</p>
                   <p className="font-montserrat text-xs text-wilson-sand/50 uppercase tracking-wider">{stat.label}</p>
                 </div>
               ))}
+              <div>
+                <div className="mb-1.5">
+                  <StarRating count={3} size={14} />
+                </div>
+                <p className="font-montserrat text-xs text-wilson-sand/50 uppercase tracking-wider">Hotel categoría</p>
+              </div>
             </div>
           </div>
         </div>
