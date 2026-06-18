@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue: #123E7A;
+  --blue-deep: #0B2C57;
+  --sand: #D8C2A0;
+  --ivory: #F5F1EA;
+  --graphite: #444444;
+  --gold: #d4a970;
+  --font-g: var(--font-garamond), Georgia, serif;
+  --font-m: var(--font-montserrat), sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+
+/* Hover helpers (inline style can't do :hover) */
+.img-zoom { transition: transform 0.6s ease; }
+.img-zoom:hover { transform: scale(1.06); }
+
+.link-gold { color: var(--gold); text-decoration: none; transition: opacity 0.2s; }
+.link-gold:hover { opacity: 0.7; }
+
+.btn-navy {
+  display: inline-block;
+  font-family: var(--font-m);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: var(--blue-deep);
+  padding: 14px 40px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid var(--blue-deep);
+}
+.btn-navy:hover { background: var(--gold); color: var(--blue-deep); border-color: var(--gold); }
+
+.btn-gold {
+  display: inline-block;
+  font-family: var(--font-m);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+  background: var(--gold);
+  padding: 14px 40px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-gold:hover { background: var(--ivory); }
+
+.btn-outline-gold {
+  display: inline-block;
+  font-family: var(--font-m);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  padding: 14px 40px;
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline-gold:hover { background: var(--gold); color: var(--blue-deep); }
+
+.btn-outline-ivory {
+  display: inline-block;
+  font-family: var(--font-m);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: transparent;
+  padding: 14px 40px;
+  text-decoration: none;
+  border: 1px solid rgba(245,241,234,0.5);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-outline-ivory:hover { background: var(--ivory); color: var(--blue-deep); border-color: var(--ivory); }
+
+/* Nav link styles */
+.nav-link-dark {
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue-deep);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.nav-link-dark:hover { opacity: 1; }
+
+.nav-link-light {
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.nav-link-light:hover { opacity: 1; }
+
+/* Card hover */
+.card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(11,44,87,0.15); }
+
+/* Fade in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.8s ease forwards; }
+.fade-up-1 { animation: fadeUp 0.8s 0.1s ease both; }
+.fade-up-2 { animation: fadeUp 0.8s 0.25s ease both; }
+.fade-up-3 { animation: fadeUp 0.8s 0.4s ease both; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ivory); }
+::-webkit-scrollbar-thumb { background: var(--sand); }
