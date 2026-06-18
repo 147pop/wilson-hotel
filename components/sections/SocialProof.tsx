@@ -13,10 +13,11 @@ function BookingScoreCard({ score, reviews, label }: {
   score: number; reviews: number; label: string;
 }) {
   return (
-    <div style={{
+    <div className="card-shimmer" style={{
       display: "flex",
       flexDirection: "column",
       width: 210,
+      position: "relative" as const,
       background: "linear-gradient(150deg, #003580 0%, #001F4D 100%)",
       borderRadius: 6,
       overflow: "hidden",
@@ -54,23 +55,25 @@ function DespegarScoreCard({ score, label }: { score: number; label: string }) {
   const LIGHT_PURPLE = "#C084FC";
 
   return (
-    <div style={{
+    <div className="card-shimmer" style={{
       display: "flex",
       flexDirection: "column",
       width: 210,
+      position: "relative" as const,
       background: `linear-gradient(150deg, ${PRIMARY} 0%, ${DARK} 100%)`,
       borderRadius: 6,
       overflow: "hidden",
       boxShadow: "0 6px 24px rgba(102,0,204,0.3)",
       fontFamily: fontM,
-    }}>
+      "--shimmer-delay": "0s",
+    } as React.CSSProperties}>
       <div style={{ padding: "13px 16px 10px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
             <ellipse cx="7.5" cy="10" rx="7.5" ry="10" fill="rgba(255,255,255,0.28)" />
             <ellipse cx="14.5" cy="10" rx="7.5" ry="10" fill="rgba(255,255,255,0.65)" />
           </svg>
-          <svg width="88" height="16" viewBox="0 0 88 16" fill="none">
+          <svg width="104" height="16" viewBox="0 0 104 16" fill="none" preserveAspectRatio="xMinYMid meet">
             <text x="0" y="13" fill="white" fontSize="12" fontFamily="Arial, sans-serif" fontWeight="700">despegar.com</text>
           </svg>
         </div>
@@ -98,16 +101,18 @@ function TripAdvisorScoreCard({ score, label }: { score: number; label: string }
   const denominator = 4;
 
   return (
-    <div style={{
+    <div className="card-shimmer" style={{
       display: "flex",
       flexDirection: "column",
       width: 210,
+      position: "relative" as const,
       background: "linear-gradient(150deg, #141414 0%, #000000 100%)",
       borderRadius: 6,
       overflow: "hidden",
       boxShadow: "0 6px 24px rgba(0,0,0,0.35)",
       fontFamily: fontM,
-    }}>
+      "--shimmer-delay": "0s",
+    } as React.CSSProperties}>
       <div style={{ padding: "13px 16px 10px", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <img
