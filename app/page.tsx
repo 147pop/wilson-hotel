@@ -50,7 +50,7 @@ export default function IndexPage() {
   return (
     <main style={{ minHeight: "100vh", background: g.ivory, color: g.deep }}>
       {/* Header */}
-      <header style={{ background: g.deep, padding: "48px 40px", textAlign: "center", borderBottom: `3px solid ${g.gold}` }}>
+      <header className="px-5 py-10 sm:px-10 sm:py-12 text-center" style={{ background: g.deep, borderBottom: `3px solid ${g.gold}` }}>
         <div style={{ fontFamily: g.fontG, fontSize: 28, letterSpacing: "0.5em", color: g.ivory, fontWeight: 600 }}>WILSON</div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, margin: "6px 0 20px" }}>
           <div style={{ height: 1, width: 32, background: g.gold, opacity: 0.5 }} />
@@ -63,7 +63,7 @@ export default function IndexPage() {
       </header>
 
       {/* Cards */}
-      <section style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 40px", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-5 py-12 sm:px-10 sm:py-16" style={{ maxWidth: 1200, margin: "0 auto" }}>
         {variants.map((v) => (
           <Link key={v.href} href={v.href} style={{ textDecoration: "none", color: "inherit", display: "block" }}>
             <div style={{ border: `1px solid ${g.sand}`, background: "white", overflow: "hidden", transition: "all 0.3s ease", cursor: "pointer" }}
@@ -129,12 +129,7 @@ export default function IndexPage() {
           </div>
 
           {/* Logo showcase grid */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1.4fr 1fr",
-            gap: 24,
-            alignItems: "stretch",
-          }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {/* 1. Logo Principal */}
             <div style={{
               background: "rgba(245,241,234,0.04)",

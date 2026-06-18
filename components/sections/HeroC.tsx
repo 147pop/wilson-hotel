@@ -151,14 +151,14 @@ export default function HeroC() {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-8 mt-12 pt-8 border-t border-white/10">
+            <div className="flex gap-4 sm:gap-8 mt-12 pt-8 border-t border-white/10">
               {[
                 { num: "40+", label: "Años de trayectoria" },
                 { num: "5", label: "Tipos de habitación" },
                 { num: "★★★", label: "Hotel categoría" },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-garamond text-2xl text-wilson-gold">{stat.num}</p>
+                  <p className="font-montserrat text-xl sm:text-2xl text-wilson-gold">{stat.num}</p>
                   <p className="font-montserrat text-xs text-wilson-sand/50 uppercase tracking-wider">{stat.label}</p>
                 </div>
               ))}

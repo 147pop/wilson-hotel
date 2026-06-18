@@ -106,10 +106,10 @@ export default function VarianteB() {
       {/* ── HERO ── bold split: navy left, photo right → stacks on mobile */}
       <section className="pt-[71px] min-h-screen grid grid-cols-1 md:grid-cols-2">
         {/* LEFT: dark navy */}
-        <div className="relative overflow-hidden flex flex-col justify-center px-6 py-16 sm:px-10 md:px-12 lg:px-16" style={{ background: g.deep }}>
+        <div className="relative overflow-hidden flex flex-col justify-between px-6 py-16 sm:px-10 md:px-12 lg:px-16" style={{ background: g.deep }}>
           <div style={{ position: "absolute", top: "-5%", left: "-8%", fontFamily: g.fontG, fontSize: "55vw", color: "white", opacity: 0.02, lineHeight: 1, userSelect: "none", pointerEvents: "none", fontWeight: 700 }}>W</div>
 
-          <div className="fade-up">
+          <div className="fade-up flex-1 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-8">
               <span style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold }}>Hotel 3 Estrellas · Salta</span>
               <div className="flex-1 h-px" style={{ background: g.gold, opacity: 0.3 }} />
@@ -132,15 +132,15 @@ export default function VarianteB() {
           </div>
 
           {/* Bottom stats */}
-          <div className="absolute bottom-0 left-0 right-0 grid grid-cols-3" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="grid grid-cols-3 mt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
             {[
               { num: "40+", label: "Años de trayectoria" },
               { num: "5", label: "Tipos de habitación" },
               { num: "★★★", label: "Hotel categoría" },
             ].map((s, i) => (
               <div key={i} className={`reveal reveal-d${i + 1} p-4 sm:p-5 md:px-6 md:py-5`} style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-                <div style={{ fontFamily: g.fontG, fontSize: 28, color: g.gold, lineHeight: 1 }}>{s.num}</div>
-                <div className="hidden sm:block" style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.15em", textTransform: "uppercase", color: g.sand, opacity: 0.78, marginTop: 4 }}>{s.label}</div>
+                <div style={{ fontFamily: g.fontM, fontSize: 26, color: g.gold, lineHeight: 1 }}>{s.num}</div>
+                <div style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.15em", textTransform: "uppercase", color: g.sand, opacity: 0.78, marginTop: 4 }}>{s.label}</div>
               </div>
             ))}
           </div>
