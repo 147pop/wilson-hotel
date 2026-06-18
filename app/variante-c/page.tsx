@@ -148,22 +148,19 @@ export default function VarianteC() {
             </div>
           </div>
 
-          {/* Bottom stats */}
-          <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-10 md:px-16 lg:px-20">
-            <div className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 py-5 md:py-6" style={{ borderTop: "1px solid rgba(212,169,112,0.15)" }}>
-              {[
-                { num: "40+", label: "Años de trayectoria" },
-                { num: "5", label: "Tipos de habitación" },
-                { num: "3", label: "Estrellas" },
-                { num: "✓", label: "Desayuno incluido" },
-              ].map((s, i) => (
-                <div key={i} className={`reveal reveal-d${i + 1} flex gap-3 items-center`}>
-                  <div style={{ fontFamily: g.fontG, fontSize: 24, color: g.gold, lineHeight: 1 }}>{s.num}</div>
-                  <div className="h-5 w-px" style={{ background: g.gold, opacity: 0.2 }} />
-                  <div className="hidden sm:block" style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.78, lineHeight: 1.3 }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
+          {/* Stats */}
+          <div className="mt-12 md:mt-16 grid grid-cols-2 sm:grid-cols-4" style={{ borderTop: "1px solid rgba(212,169,112,0.15)" }}>
+            {[
+              { num: "40+", label: "Años de trayectoria" },
+              { num: "5", label: "Tipos de habitación" },
+              { num: "★★★", label: "Hotel categoría" },
+              { num: "✓", label: "Desayuno incluido" },
+            ].map((s, i) => (
+              <div key={i} className={`reveal reveal-d${i + 1} pt-5 pb-4 pr-5 ${i < 3 ? "sm:border-r" : ""} ${i === 0 ? "border-r" : ""}`} style={{ borderColor: "rgba(212,169,112,0.15)" }}>
+                <div style={{ fontFamily: g.fontM, fontSize: 22, color: g.gold, lineHeight: 1, marginBottom: 6 }}>{s.num}</div>
+                <div style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.78, lineHeight: 1.4 }}>{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
