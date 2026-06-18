@@ -57,7 +57,7 @@ export default function VarianteC() {
         transition: "all 0.5s ease",
       }}>
         <div className="max-w-[1400px] mx-auto px-5 md:px-10 h-[76px] flex items-center justify-between">
-          <div><LogoHorizontal variant="light" size={40} /></div>
+          <div><LogoHorizontal variant="light" size={56} /></div>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex gap-10">
