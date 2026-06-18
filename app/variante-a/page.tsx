@@ -214,7 +214,8 @@ export default function VarianteA() {
       </header>
 
       {/* ── HERO ── editorial, ivory bg, clean asymmetric */}
-      <section className="min-h-screen pt-[72px] relative flex items-center">
+      <section className="min-h-screen pt-[72px] flex flex-col">
+        <div className="flex-1 flex items-center">
         <div className="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
 
           {/* LEFT: text */}
@@ -304,9 +305,10 @@ export default function VarianteA() {
             </div>
           </div>
         </div>
+        </div>
 
         {/* Scroll cue */}
-        <div className="hidden md:flex absolute bottom-7 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-40">
+        <div className="flex flex-col items-center gap-2 opacity-40 pb-8">
           <span className="font-montserrat text-[10px] tracking-[0.25em] uppercase text-wilson-blue-deep">
             Descubrí
           </span>
