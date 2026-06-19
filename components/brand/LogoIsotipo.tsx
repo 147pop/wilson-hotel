@@ -1,4 +1,4 @@
-import React from 'react';
+import Image from 'next/image';
 
 export interface LogoProps {
   variant?: "light" | "dark" | "gold" | "blue-bg";
@@ -6,24 +6,25 @@ export interface LogoProps {
   className?: string;
 }
 
+const filters: Record<string, string> = {
+  dark: '',
+  light: 'brightness(0) invert(1)',
+  'blue-bg': 'brightness(0) invert(1)',
+  gold: 'brightness(0) invert(1) sepia(1) saturate(4) brightness(0.82)',
+};
+
 export default function LogoIsotipo({ variant = "dark", size = 80, className = "" }: LogoProps) {
-  const mainColor = variant === "light" || variant === "blue-bg" ? "#F5F1EA" : variant === "gold" ? "#d4a970" : "#0B2C57";
-  const accentColor = "#d4a970";
-  const wText = variant === "dark" ? "#F5F1EA" : "#0B2C57";
+  const h = typeof size === 'number' ? size : parseInt(size as string) || 80;
+  const filter = filters[variant] ?? '';
 
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 80 80"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <Image
+      src="/logos/logohotel/finales%20png/logostars.png"
+      alt="Wilson Hotel"
+      width={140}
+      height={186}
       className={className}
-      aria-label="Wilson Hotel"
-    >
-      <circle cx="40" cy="40" r="36" fill={mainColor} />
-      <circle cx="40" cy="40" r="30" fill="none" stroke={accentColor} strokeWidth="2" />
-      <text x="40" y="53" textAnchor="middle" fill={wText} fontSize="40" fontFamily="Georgia, serif" fontWeight="700">W</text>
-    </svg>
+      style={{ height: h, width: 'auto', display: 'inline-block', ...(filter ? { filter } : {}) }}
+    />
   );
 }

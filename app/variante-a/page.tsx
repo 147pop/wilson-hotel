@@ -131,7 +131,7 @@ export default function VarianteA() {
           className="h-[2px]"
           style={{ background: "linear-gradient(90deg, transparent, #d4a970, transparent)" }}
         />
-        <div className="max-w-6xl mx-auto px-4 md:px-8 h-[72px] flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 h-[92px] flex items-center justify-between">
           {/* Left nav (desktop) */}
           <nav className="hidden lg:flex gap-9">
             {["Habitaciones", "Servicios"].map((l) => (
@@ -147,7 +147,7 @@ export default function VarianteA() {
 
           {/* Center logo */}
           <div className="text-center">
-            <LogoHorizontal variant="dark" size={60} />
+            <LogoHorizontal variant="dark" size={88} />
           </div>
 
           {/* Right nav (desktop) */}
@@ -617,7 +617,7 @@ export default function VarianteA() {
       <footer className="bg-wilson-blue-deep py-10 px-4 md:px-8">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-center md:text-left">
-            <LogoIsotipo variant="light" size={52} />
+            <LogoHorizontal variant="light" size={88} />
           </div>
           <p className="font-montserrat text-[10px] text-wilson-sand/70 text-center">
             © {new Date().getFullYear()} Wilson Hotel S.A. · Todos los derechos reservados

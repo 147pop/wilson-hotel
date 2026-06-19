@@ -56,8 +56,8 @@ export default function VarianteC() {
         borderBottom: scrolled ? "1px solid rgba(212,169,112,0.2)" : "none",
         transition: "all 0.5s ease",
       }}>
-        <div className="max-w-[1400px] mx-auto px-5 md:px-10 h-[76px] flex items-center justify-between">
-          <div><LogoHorizontal variant="light" size={56} /></div>
+        <div className="max-w-[1400px] mx-auto px-5 md:px-10 h-[98px] flex items-center justify-between">
+          <div><LogoHorizontal variant="light" size={94} /></div>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex gap-10">
@@ -370,7 +370,7 @@ export default function VarianteC() {
       {/* FOOTER */}
       <footer style={{ background: "#050f1d", borderTop: "1px solid rgba(212,169,112,0.12)" }}>
         <div className="max-w-[1400px] mx-auto px-5 py-6 sm:px-8 md:px-20 md:py-8 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <div><LogoIsotipo variant="gold" size={36} /></div>
+          <div><LogoHorizontal variant="light" size={88} /></div>
           <p className="text-center" style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65 }}>© {new Date().getFullYear()} Wilson Hotel S.A.</p>
           <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65 }}>IVA 21% incluido</p>
         </div>

@@ -46,9 +46,9 @@ export default function VarianteB() {
         borderBottom: `2px solid ${scrollY > 20 ? g.blue : g.sand}`,
         transition: "border-color 0.4s ease",
       }}>
-        <div className="max-w-[1400px] mx-auto px-5 md:px-10 h-[68px] flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-5 md:px-10 h-[88px] flex items-center justify-between">
           <div>
-            <LogoHorizontal variant="dark" size={56} />
+            <LogoHorizontal variant="dark" size={84} />
           </div>
 
           {/* Desktop nav */}
@@ -240,7 +240,7 @@ export default function VarianteB() {
       <section id="servicios" style={{ background: g.deep }}>
         {[
           { img: "/hotel/amenities/desayuno/desayuno-03.webp", title: "Desayuno buffet incluido", desc: "Cada mañana, un desayuno completo te espera. Jugos naturales, facturas, tostadas, fiambres, frutas y más. Incluido en todas las tarifas sin excepción.", reverse: false },
-          { img: "/hotel/amenities/fachada/fachada-01.webp", title: "Ubicación inmejorable", desc: "Alvarado 950, a dos cuadras de la Plaza 9 de Julio. El centro histórico de Salta a tu alcance: catedrales, museos, gastronomía y cultura a pasos del hotel.", reverse: true },
+          { img: "/hotel/amenities/fachada/fachada-mejorada-v2.webp", objPos: "center 30%", title: "Ubicación inmejorable", desc: "Alvarado 950, a dos cuadras de la Plaza 9 de Julio. El centro histórico de Salta a tu alcance: catedrales, museos, gastronomía y cultura a pasos del hotel.", reverse: true },
         ].map((s, i) => (
           <div key={i} className={`${i === 0 ? "reveal-slide-right" : "reveal-slide-left"} grid grid-cols-1 md:grid-cols-2`} style={{ borderTop: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none" }}>
             {s.reverse ? (
@@ -251,7 +251,7 @@ export default function VarianteB() {
                   <p className="max-w-[440px]" style={{ fontFamily: g.fontM, fontSize: 13, color: g.sand, lineHeight: 1.8, margin: 0, opacity: 0.8 }}>{s.desc}</p>
                 </div>
                 <div className="h-[260px] sm:h-[300px] md:h-[360px] overflow-hidden order-1 md:order-2">
-                  <img src={s.img} alt={s.title} loading="lazy" className="img-zoom w-full h-full object-cover block" />
+                  <img src={s.img} alt={s.title} loading="lazy" className="img-zoom w-full h-full object-cover block" style={s.objPos ? { objectPosition: s.objPos } : undefined} />
                 </div>
               </>
             ) : (
@@ -376,7 +376,7 @@ export default function VarianteB() {
         <div style={{ height: 3, background: `linear-gradient(90deg, ${g.deep}, ${g.gold}, ${g.deep})` }} />
         <div className="max-w-[1400px] mx-auto px-5 py-6 md:px-10 md:py-9 flex flex-col md:flex-row justify-between items-center gap-3">
           <div className="flex items-center gap-2.5">
-            <LogoHorizontal variant="light" size={50} />
+            <LogoHorizontal variant="light" size={88} />
           </div>
           <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.72 }}>© {new Date().getFullYear()} Wilson Hotel S.A.</p>
           <p className="text-center md:text-right" style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.72 }}>IVA 21% incluido · reservas@wilsonhotel.com.ar</p>

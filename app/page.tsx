@@ -51,11 +51,8 @@ export default function IndexPage() {
     <main style={{ minHeight: "100vh", background: g.ivory, color: g.deep }}>
       {/* Header */}
       <header className="px-5 py-10 sm:px-10 sm:py-12 text-center" style={{ background: g.deep, borderBottom: `3px solid ${g.gold}` }}>
-        <div style={{ fontFamily: g.fontG, fontSize: 28, letterSpacing: "0.5em", color: g.ivory, fontWeight: 600 }}>WILSON</div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, margin: "6px 0 20px" }}>
-          <div style={{ height: 1, width: 32, background: g.gold, opacity: 0.5 }} />
-          <span style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.4em", color: g.gold, textTransform: "uppercase" }}>HOTEL ★★★</span>
-          <div style={{ height: 1, width: 32, background: g.gold, opacity: 0.5 }} />
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+          <LogoPrincipal variant="light" size={120} />
         </div>
         <p style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: g.sand, opacity: 0.6, margin: 0 }}>
           Tres propuestas de landing page · Seleccionar variante
