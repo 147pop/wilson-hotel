@@ -46,13 +46,56 @@ const rooms = [
   },
 ];
 
+const G = "#d4a970";
+const SVG = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={G} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props} />
+);
 const services = [
-  { name: "Desayuno buffet", desc: "Incluido en todas las tarifas. Variedad de opciones cada mañana." },
-  { name: "WiFi de alta velocidad", desc: "Conectividad en habitaciones y áreas comunes del hotel." },
-  { name: "Salones de eventos", desc: "Espacios para reuniones, conferencias y celebraciones." },
-  { name: "Ubicación céntrica", desc: "A pasos de la Plaza 9 de Julio y el casco histórico." },
-  { name: "Más de 40 años", desc: "Cuatro décadas recibiendo huéspedes con dedicación." },
-  { name: "Cuotas y Mercado Pago", desc: "Hasta 3 cuotas sin interés. Visa, Mastercard, Amex y Mercado Pago." },
+  {
+    name: "Desayuno buffet",
+    desc: "Variedad de opciones cada mañana.",
+    icon: <SVG><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></SVG>,
+  },
+  {
+    name: "WiFi de alta velocidad",
+    desc: "Conectividad en habitaciones y áreas comunes del hotel.",
+    icon: <SVG><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill={G}/></SVG>,
+  },
+  {
+    name: "Salones de eventos",
+    desc: "Congresos, seminarios, lanzamientos, banquetes y más. Coordinación integral a medida.",
+    icon: <SVG><rect x="3" y="4" width="18" height="12" rx="1"/><path d="m15 20-3-3-3 3"/><line x1="3" y1="16" x2="21" y2="16"/></SVG>,
+  },
+  {
+    name: "Ubicación céntrica",
+    desc: "A pasos de la Plaza 9 de Julio y el casco histórico.",
+    icon: <SVG><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></SVG>,
+  },
+  {
+    name: "Más de 40 años",
+    desc: "Cuatro décadas recibiendo huéspedes con dedicación.",
+    icon: <SVG><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="11" x2="6" y2="22"/><line x1="18" y1="11" x2="18" y2="22"/><line x1="2" y1="11" x2="22" y2="11"/><polygon points="12 2 2 7 22 7"/><line x1="10" y1="14" x2="10" y2="22"/><line x1="14" y1="14" x2="14" y2="22"/></SVG>,
+  },
+  {
+    name: "Cuotas y Mercado Pago",
+    desc: "Hasta 3 cuotas sin interés. Visa, Mastercard, Amex y Mercado Pago.",
+    icon: <SVG><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></SVG>,
+  },
+  {
+    name: "Lavandería",
+    desc: "Servicio de lavandería y tintorería disponible.",
+    icon: <SVG><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="13" r="4"/><line x1="5" y1="6" x2="6" y2="6"/><line x1="8" y1="6" x2="9" y2="6"/></SVG>,
+  },
+  {
+    name: "Estacionamiento",
+    desc: "Sujeto a disponibilidad en el momento del check-in.",
+    icon: <SVG><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></SVG>,
+  },
+  {
+    name: "Personal bilingüe",
+    desc: "Atención en español e inglés.",
+    icon: <SVG><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></SVG>,
+  },
 ];
 
 const tariffs = [
@@ -69,7 +112,7 @@ const tariffs = [
     featured: true,
   },
   {
-    name: "No Reembolsable",
+    name: "Alojamiento y Desayuno No Reembolsable",
     tag: "10% descuento · Sin reembolso",
     desc: "Precio especial con pago anticipado. Sin posibilidad de reembolso una vez confirmada.",
     featured: false,
@@ -88,8 +131,9 @@ const contactInfo = [
   { label: "Dirección", text: "Alvarado 950, Salta Capital" },
   { label: "Teléfono", text: "(+54 387) 4-312211", href: "tel:+543874312211" },
   { label: "Email", text: "info@wilsonhotel.com.ar", href: "mailto:info@wilsonhotel.com.ar" },
-  { label: "WhatsApp", text: "Consultas directas", href: "https://wa.me/543874312211" },
+  { label: "WhatsApp", text: "Consultas directas", href: "https://wa.me/543876363326" },
   { label: "Instagram", text: "@wilsonhotel.salta", href: "https://instagram.com/wilsonhotel.salta" },
+  { label: "Facebook", text: "Wilson Hotel", href: "https://www.facebook.com/profile.php?id=100079646945697" },
 ];
 
 export default function VarianteA() {
@@ -120,11 +164,7 @@ export default function VarianteA() {
 
       {/* ── NAVBAR ── */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled
-            ? "bg-wilson-ivory/97 backdrop-blur-md border-b border-wilson-sand"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-wilson-ivory border-b border-wilson-sand"
       >
         {/* Gold top accent */}
         <div
@@ -229,13 +269,13 @@ export default function VarianteA() {
 
             <h1
               className="font-garamond text-wilson-blue-deep mb-1 leading-[0.88] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(3.5rem, 9vw, 6rem)" }}
+              style={{ fontSize: "clamp(2.75rem, 9vw, 6rem)" }}
             >
               Wilson
             </h1>
             <h1
               className="font-garamond text-[var(--blue-muted)] italic mb-8 md:mb-9 leading-[0.88] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(3.5rem, 9vw, 6rem)" }}
+              style={{ fontSize: "clamp(2.75rem, 9vw, 6rem)" }}
             >
               Hotel
             </h1>
@@ -254,7 +294,7 @@ export default function VarianteA() {
                 Reservar ahora
               </a>
               <a
-                href="https://wa.me/543874312211"
+                href="https://wa.me/543876363326"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-gold"
@@ -481,10 +521,10 @@ export default function VarianteA() {
               Todo lo que necesitás
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {services.map((s, i) => (
               <div key={i} className="py-2">
-                <div className="w-9 h-px bg-wilson-gold mb-5" />
+                <div className="mb-4">{s.icon}</div>
                 <h3 className="font-garamond text-xl md:text-2xl text-wilson-blue-deep mb-2.5">
                   {s.name}
                 </h3>
@@ -543,12 +583,11 @@ export default function VarianteA() {
           </span>
           <h2
             className="font-garamond text-wilson-ivory mb-3 leading-[0.88] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(3rem, 7vw, 5.5rem)" }}
+            style={{ fontSize: "clamp(2.25rem, 7vw, 5.5rem)" }}
           >
             Reservá<br /><em>tu estadía</em>
           </h2>
           <p className="font-montserrat text-sm text-wilson-sand/80 mt-6 mb-10 leading-7">
-            Desayuno buffet incluido en todas las tarifas.<br />
             Cancelación gratuita hasta 72hs antes del check-in.
           </p>
           <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold">
@@ -573,7 +612,7 @@ export default function VarianteA() {
                   key={item.label}
                   className="flex gap-6 border-b border-wilson-sand py-4"
                 >
-                  <span className="font-montserrat text-[10px] tracking-[0.22em] uppercase text-[var(--blue-muted)] w-[72px] flex-shrink-0 pt-0.5">
+                  <span className="font-montserrat text-[10px] tracking-[0.22em] uppercase text-[var(--blue-muted)] w-14 sm:w-[72px] flex-shrink-0 pt-0.5">
                     {item.label}
                   </span>
                   {item.href ? (
@@ -626,11 +665,31 @@ export default function VarianteA() {
             reservas@wilsonhotel.com.ar<br />IVA 21% incluido
           </p>
         </div>
+        <div className="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/[0.12] flex justify-center gap-10">
+          <a
+            href="https://instagram.com/wilsonhotel.salta"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2.5 font-montserrat text-[10px] tracking-[0.18em] uppercase text-wilson-gold/80 hover:text-wilson-gold transition-colors duration-200"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @wilsonhotel.salta
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=100079646945697"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2.5 font-montserrat text-[10px] tracking-[0.18em] uppercase text-wilson-gold/80 hover:text-wilson-gold transition-colors duration-200"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Wilson Hotel
+          </a>
+        </div>
       </footer>
 
       {/* ── WHATSAPP FLOTANTE ── */}
       <a
-        href="https://wa.me/543874312211"
+        href="https://wa.me/543876363326"
         target="_blank"
         rel="noopener noreferrer"
         title="Consultanos por WhatsApp"

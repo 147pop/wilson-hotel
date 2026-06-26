@@ -133,7 +133,7 @@ export default function VarianteC() {
               <div className="h-px w-10 md:w-14" style={{ background: g.gold, opacity: 0.6 }} />
               <span style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", color: g.gold }}>Alvarado 950 · Salta, Argentina</span>
             </div>
-            <h1 className="max-w-[70vw]" style={{ fontFamily: g.fontG, fontSize: "clamp(48px, 10vw, 148px)", lineHeight: 0.85, color: g.ivory, margin: "0 0 8px 0", letterSpacing: "-0.03em" }}>
+            <h1 className="max-w-[70vw]" style={{ fontFamily: g.fontG, fontSize: "clamp(36px, 10vw, 148px)", lineHeight: 0.85, color: g.ivory, margin: "0 0 8px 0", letterSpacing: "-0.03em" }}>
               En el<br />
               <em style={{ color: g.gold }}>corazón</em><br />
               de Salta
@@ -144,19 +144,18 @@ export default function VarianteC() {
             </p>
             <div className="flex gap-4 flex-wrap">
               <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ fontSize: 12, padding: "16px 44px" }}>Reservar ahora</a>
-              <a href="https://wa.me/543874312211" target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 12, padding: "16px 44px" }}>WhatsApp</a>
+              <a href="https://wa.me/543876363326" target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 12, padding: "16px 44px" }}>WhatsApp</a>
             </div>
           </div>
 
           {/* Stats */}
-          <div className="mt-12 md:mt-16 grid grid-cols-2 sm:grid-cols-4" style={{ borderTop: "1px solid rgba(212,169,112,0.15)" }}>
+          <div className="mt-12 md:mt-16 grid grid-cols-3" style={{ borderTop: "1px solid rgba(212,169,112,0.15)" }}>
             {[
               { num: "40+", label: "Años de trayectoria" },
               { num: "5", label: "Tipos de habitación" },
               { num: "★★★", label: "Hotel categoría" },
-              { num: "✓", label: "Desayuno incluido" },
             ].map((s, i) => (
-              <div key={i} className={`reveal reveal-d${i + 1} pt-5 pb-4 pr-5 ${i < 3 ? "sm:border-r" : ""} ${i === 0 ? "border-r" : ""}`} style={{ borderColor: "rgba(212,169,112,0.15)" }}>
+              <div key={i} className={`reveal reveal-d${i + 1} pt-5 pb-4 pr-5 ${i < 2 ? "border-r" : ""}`} style={{ borderColor: "rgba(212,169,112,0.15)" }}>
                 <div style={{ fontFamily: g.fontM, fontSize: 22, color: g.gold, lineHeight: 1, marginBottom: 6 }}>{s.num}</div>
                 <div style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.sand, opacity: 0.78, lineHeight: 1.4 }}>{s.label}</div>
               </div>
@@ -180,7 +179,7 @@ export default function VarianteC() {
               <div key={i} className={`reveal-clip reveal-d${i + 1} grid grid-cols-1 md:grid-cols-[240px_1fr] lg:grid-cols-[280px_1fr] overflow-hidden`}
                 style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.04)" }}>
                 {/* Room image */}
-                <div className="h-[200px] md:h-[200px] overflow-hidden relative">
+                <div className="h-[160px] sm:h-[180px] md:h-[200px] overflow-hidden relative">
                   <img src={room.img} alt={room.name} className="img-zoom w-full h-full object-cover block" style={{ filter: "brightness(0.85)" }} />
                   <div className="absolute inset-0 hidden md:block" style={{ background: "linear-gradient(to right, transparent 60%, rgba(9,31,64,0.3))" }} />
                 </div>
@@ -188,8 +187,8 @@ export default function VarianteC() {
                 <div className="p-5 sm:p-7 md:p-8 lg:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4" style={{ borderLeft: "none" }}>
                   <div className="md:border-l md:pl-8 lg:pl-12" style={{ borderColor: "rgba(212,169,112,0.1)" }}>
                     <span className="block mb-2" style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold, opacity: 0.9 }}>{room.occ}</span>
-                    <h3 style={{ fontFamily: g.fontG, fontSize: 32, color: g.ivory, margin: "0 0 10px 0" }}>{room.name}</h3>
-                    <p className="max-w-[400px]" style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, margin: 0, lineHeight: 1.7, opacity: 0.82 }}>{room.desc} Desayuno buffet incluido.</p>
+                    <h3 style={{ fontFamily: g.fontG, fontSize: "clamp(22px, 4vw, 32px)", color: g.ivory, margin: "0 0 10px 0" }}>{room.name}</h3>
+                    <p className="max-w-[400px]" style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, margin: 0, lineHeight: 1.7, opacity: 0.82 }}>{room.desc}</p>
                   </div>
                   <div className="flex-shrink-0 md:pl-8 lg:pl-12">
                     <div className="flex items-center gap-2 mb-1">
@@ -230,14 +229,17 @@ export default function VarianteC() {
             </h2>
             <div className="flex flex-col">
               {[
-                { name: "Desayuno buffet incluido", desc: "En todas las tarifas, sin excepción." },
-                { name: "WiFi gratuito", desc: "Alta velocidad en habitaciones y áreas comunes." },
-                { name: "Salones de eventos", desc: "Para grupos, reuniones y conferencias." },
-                { name: "Ubicación céntrica", desc: "Alvarado 950, a pasos de Plaza 9 de Julio." },
-                { name: "Pago con tarjeta", desc: "Visa, Mastercard y American Express." },
+                { name: "Desayuno buffet incluido", desc: "Variedad de opciones cada mañana.", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg> },
+                { name: "WiFi gratuito", desc: "Alta velocidad en habitaciones y áreas comunes.", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg> },
+                { name: "Salones de eventos", desc: "Congresos, seminarios, banquetes y más. Coordinación integral.", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> },
+                { name: "Ubicación céntrica", desc: "Alvarado 950, a pasos de Plaza 9 de Julio.", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> },
+                { name: "Pago con tarjeta", desc: "Visa, Mastercard y American Express.", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> },
+                { name: "Lavandería", desc: "Servicio de lavandería y tintorería.", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><circle cx="12" cy="13" r="4"/><circle cx="6" cy="7" r="1" fill="currentColor" stroke="none"/></svg> },
+                { name: "Estacionamiento", desc: "Sujeto a disponibilidad en check-in.", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg> },
+                { name: "Personal bilingüe", desc: "Atención en español e inglés.", icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> },
               ].map((s, i) => (
-                <div key={i} className={`reveal reveal-d${i + 1} flex gap-4 md:gap-5 items-center py-4 md:py-5`} style={{ borderTop: "1px solid rgba(212,169,112,0.12)" }}>
-                  <div className="w-1.5 h-1.5 flex-shrink-0" style={{ background: g.gold, transform: "rotate(45deg)", opacity: 0.7 }} />
+                <div key={i} className={`reveal reveal-d${Math.min(i + 1, 7)} flex gap-4 md:gap-5 items-start py-4 md:py-5`} style={{ borderTop: "1px solid rgba(212,169,112,0.12)" }}>
+                  <div className="flex-shrink-0 mt-1" style={{ color: g.gold, opacity: 0.75 }}>{s.icon}</div>
                   <div>
                     <span className="block" style={{ fontFamily: g.fontG, fontSize: 22, color: g.ivory }}>{s.name}</span>
                     <span style={{ fontFamily: g.fontM, fontSize: 11, color: g.sand, opacity: 0.82 }}>{s.desc}</span>
@@ -251,24 +253,35 @@ export default function VarianteC() {
           {/* Tarifas */}
           <div>
             <div className="reveal-draw h-px w-10 mb-5" style={{ background: g.gold, opacity: 0.5 }} />
-            <h2 className="reveal-blur mb-8 md:mb-10" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4vw, 56px)", color: g.ivory, margin: 0, lineHeight: 0.92 }}>
+            <h2 className="reveal-blur" style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4vw, 56px)", color: g.ivory, margin: "0 0 40px 0", lineHeight: 0.92 }}>
               Planes<br /><em style={{ color: g.gold }}>tarifarios</em>
             </h2>
-            <div className="flex flex-col gap-0.5">
+            <div className="flex flex-col gap-2">
               {[
                 { name: "Alojamiento y Desayuno", tag: "Reembolsable · Pago en hotel", featured: false },
                 { name: "Último Minuto", tag: "−15% · No reembolsable · Pago anticipado", featured: true },
-                { name: "No Reembolsable", tag: "−10% · Pago anticipado", featured: false },
+                { name: "Alojamiento y Desayuno No Reembolsable", tag: "−10% · Pago anticipado", featured: false },
               ].map((t, i) => (
-                <div key={i} className={`reveal reveal-d${i + 1} p-5 sm:p-6 md:p-7 relative`} style={{
+                <div key={i} className={`reveal reveal-d${i + 1} p-5 sm:p-6 md:p-7 relative flex flex-col gap-4`} style={{
                   background: t.featured ? "rgba(212,169,112,0.12)" : "rgba(255,255,255,0.03)",
                   border: t.featured ? "1px solid rgba(212,169,112,0.35)" : "1px solid rgba(255,255,255,0.05)",
                 }}>
                   {t.featured && (
                     <div className="absolute -top-px right-4" style={{ background: g.gold, padding: "3px 12px", fontFamily: g.fontM, fontSize: 7, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep }}>OFERTA</div>
                   )}
-                  <div className="mb-1.5" style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, opacity: 0.8 }}>{t.tag}</div>
-                  <div style={{ fontFamily: g.fontG, fontSize: 24, color: g.ivory }}>{t.name}</div>
+                  <div>
+                    <div className="mb-1.5" style={{ fontFamily: g.fontM, fontSize: 8, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, opacity: 0.8 }}>{t.tag}</div>
+                    <div style={{ fontFamily: g.fontG, fontSize: 24, color: g.ivory }}>{t.name}</div>
+                  </div>
+                  <a
+                    href={BOOKING}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={t.featured ? "btn-gold" : "btn-outline-gold"}
+                    style={{ fontSize: 9, padding: "10px 22px", alignSelf: "flex-start" }}
+                  >
+                    Reservar →
+                  </a>
                 </div>
               ))}
             </div>
@@ -315,16 +328,15 @@ export default function VarianteC() {
           <div className="reveal-draw-center"><Rule /></div>
           <div className="my-10 md:my-12">
             <span className="reveal reveal-d1 block mb-6" style={{ fontFamily: g.fontM, fontSize: 9, letterSpacing: "0.4em", textTransform: "uppercase", color: g.gold, opacity: 0.7 }}>Reservas online · Mejor precio directo</span>
-            <h2 className="reveal-blur mx-auto max-w-[900px]" style={{ fontFamily: g.fontG, fontSize: "clamp(44px, 9vw, 140px)", color: g.ivory, margin: "0 auto 24px", lineHeight: 0.85, letterSpacing: "-0.03em" }}>
+            <h2 className="reveal-blur mx-auto max-w-[900px]" style={{ fontFamily: g.fontG, fontSize: "clamp(36px, 9vw, 140px)", color: g.ivory, margin: "0 auto 24px", lineHeight: 0.85, letterSpacing: "-0.03em" }}>
               Reservá tu<br /><em style={{ color: g.gold }}>estadía</em>
             </h2>
             <p className="reveal reveal-d2 mx-auto max-w-[520px]" style={{ fontFamily: g.fontM, fontSize: 12, color: g.sand, opacity: 0.82, lineHeight: 1.7, margin: "0 auto 48px" }}>
-              Desayuno incluido · Cancelación gratuita 72hs antes<br />
-              IVA 21% incluido · Mejor precio garantizado
+              Desayuno incluido · Cancelación gratuita 72hs antes · IVA 21% incluido · Mejor precio garantizado
             </p>
             <div className="reveal reveal-d3 flex gap-4 md:gap-5 justify-center flex-wrap">
               <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ fontSize: 12, padding: "16px 36px" }}>Ver disponibilidad →</a>
-              <a href="https://wa.me/543874312211" target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 12, padding: "16px 36px" }}>Consultar por WhatsApp</a>
+              <a href="https://wa.me/543876363326" target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ fontSize: 12, padding: "16px 36px" }}>Consultar por WhatsApp</a>
             </div>
           </div>
           <div className="reveal-draw-center"><Rule /></div>
@@ -344,7 +356,9 @@ export default function VarianteC() {
                 { label: "Dirección", val: "Alvarado 950, Salta Capital" },
                 { label: "Teléfono", val: "(387) 431-2211", href: "tel:+543874312211" },
                 { label: "Email", val: "info@wilsonhotel.com.ar", href: "mailto:info@wilsonhotel.com.ar" },
-                { label: "WhatsApp", val: "Consultas directas", href: "https://wa.me/543874312211" },
+                { label: "WhatsApp", val: "Consultas directas", href: "https://wa.me/543876363326" },
+                { label: "Instagram", val: "@wilsonhotel.salta", href: "https://instagram.com/wilsonhotel.salta" },
+                { label: "Facebook", val: "Wilson Hotel", href: "https://www.facebook.com/profile.php?id=100079646945697" },
                 { label: "Check-in / out", val: "14:00 hs / 10:00 hs" },
               ].map(item => (
                 <div key={item.label} className="reveal reveal-d2 flex gap-6 md:gap-8 py-4 md:py-[18px]" style={{ borderTop: "1px solid rgba(212,169,112,0.1)" }}>
@@ -374,11 +388,31 @@ export default function VarianteC() {
           <p className="text-center" style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65 }}>© {new Date().getFullYear()} Wilson Hotel S.A.</p>
           <p style={{ fontFamily: g.fontM, fontSize: 10, color: g.sand, opacity: 0.65 }}>IVA 21% incluido</p>
         </div>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-20 pb-6 flex justify-center gap-10" style={{ borderTop: "1px solid rgba(212,169,112,0.2)", paddingTop: 20 }}>
+          <a href="https://instagram.com/wilsonhotel.salta" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-2.5 transition-opacity duration-200"
+            style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: g.gold, opacity: 0.8, textDecoration: "none" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.opacity = "1"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.opacity = "0.8"; }}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @wilsonhotel.salta
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100079646945697" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-2.5 transition-opacity duration-200"
+            style={{ fontFamily: g.fontM, fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: g.gold, opacity: 0.8, textDecoration: "none" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.opacity = "1"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.opacity = "0.8"; }}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Wilson Hotel
+          </a>
+        </div>
       </footer>
 
       {/* ── WHATSAPP FLOTANTE ── */}
       <a
-        href="https://wa.me/543874312211"
+        href="https://wa.me/543876363326"
         target="_blank"
         rel="noopener noreferrer"
         title="Consultanos por WhatsApp"
