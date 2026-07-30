@@ -28,6 +28,10 @@ next-env.d.ts
 .agents/
 .codex/
 .impeccable/
+
+# Credenciales (no deben subirse al repo)
+entrevista/credsmail.txt
+entrevista/*creds*
 skills-lock.json
 
 # Media originals

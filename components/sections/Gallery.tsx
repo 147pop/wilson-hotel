@@ -1,20 +1,14 @@
 import SectionDivider from "@/components/ui/SectionDivider";
+import { GALLERY_IMAGES } from "@/lib/hotel-images";
 
 interface GalleryProps {
   variant?: "light" | "dark";
 }
 
-const photos = [
-  { src: "/hotel/amenities/home/home-01.webp", alt: "Lobby del hotel", span: "col-span-2 row-span-2" },
-  { src: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp", alt: "Suite matrimonial", span: "" },
-  { src: "/hotel/amenities/desayuno/desayuno-01.webp", alt: "Desayuno buffet", span: "" },
-  { src: "/hotel/amenities/salon/salon-01.webp", alt: "Salón de eventos", span: "" },
-  { src: "/hotel/habitaciones/doble-single/doble-single-01.webp", alt: "Habitación twin", span: "" },
-  { src: "/hotel/amenities/fachada/fachada-01.webp", alt: "Fachada del hotel", span: "" },
-];
+const photos = GALLERY_IMAGES;
 
 export default function Gallery({ variant = "light" }: GalleryProps) {
-  const bg = variant === "dark" ? "bg-wilson-blue-deep" : "bg-wilson-ivory";
+  const bg = variant === "dark" ? "bg-wilson-blue" : "bg-wilson-ivory";
   const titleColor = variant === "dark" ? "text-wilson-ivory" : "text-wilson-blue-deep";
 
   return (
@@ -34,11 +28,12 @@ export default function Gallery({ variant = "light" }: GalleryProps) {
           {photos.map((photo, i) => (
             <div
               key={i}
-              className={`overflow-hidden group ${photo.span}`}
+              className={`overflow-hidden group ${"span" in photo ? photo.span : ""}`}
             >
               <img
                 src={photo.src}
                 alt={photo.alt}
+                loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>

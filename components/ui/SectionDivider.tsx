@@ -1,10 +1,11 @@
 interface SectionDividerProps {
   light?: boolean;
   className?: string;
+  color?: string;
 }
 
-export default function SectionDivider({ light = false, className = "" }: SectionDividerProps) {
-  const color = light ? "#F5F1EA" : "#d4a970";
+export default function SectionDivider({ light = false, className = "", color: colorProp }: SectionDividerProps) {
+  const color = colorProp ?? (light ? "#F5F1EA" : "#d4a970");
   return (
     <div className={`flex items-center justify-center gap-3 my-2 ${className}`}>
       <div className="h-px flex-1 max-w-20" style={{ backgroundColor: color }} />

@@ -149,6 +149,45 @@ function TripAdvisorScoreCard({ score, label }: { score: number; label: string }
   );
 }
 
+function GoogleScoreCard({ score, reviews, label }: { score: number; reviews: number; label: string }) {
+  return (
+    <div className="card-shimmer" style={{
+      display: "flex",
+      flexDirection: "column",
+      width: 210,
+      position: "relative" as const,
+      background: "linear-gradient(150deg, #ffffff 0%, #f1f3f4 100%)",
+      borderRadius: 6,
+      overflow: "hidden",
+      boxShadow: "0 6px 24px rgba(0,0,0,0.12)",
+      fontFamily: fontM,
+      border: "1px solid rgba(0,0,0,0.06)",
+    }}>
+      <div style={{ padding: "13px 16px 10px", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
+        <svg width="70" height="20" viewBox="0 0 74 24" fill="none">
+          <text x="0" y="18" fontSize="18" fontFamily="Arial, sans-serif" fontWeight="700">
+            <tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC05">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan>
+          </text>
+        </svg>
+      </div>
+      <div style={{ padding: "14px 16px 14px" }}>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 5, marginBottom: 3 }}>
+          <span style={{ fontSize: 46, color: "#202124", fontFamily: fontG, lineHeight: 1 }}>
+            {score.toFixed(1).replace(".", ",")}
+          </span>
+          <span style={{ fontSize: 13, color: "rgba(32,33,36,0.45)", paddingBottom: 6 }}>/5</span>
+        </div>
+        <div style={{ fontSize: 13, color: "#188038", fontWeight: 600, marginBottom: 5 }}>
+          {label}
+        </div>
+        <div style={{ fontSize: 10, color: "rgba(32,33,36,0.5)", letterSpacing: "0.04em" }}>
+          Basado en {reviews.toLocaleString("es-AR")} reseñas
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function SocialProof({
   variant = "light",
   score = 8.6,
@@ -218,6 +257,7 @@ export default function SocialProof({
           justifyContent: "center",
           flexWrap: "wrap",
         }}>
+          <GoogleScoreCard score={4.2} reviews={1473} label="Muy bueno" />
           <BookingScoreCard score={score} reviews={reviews} label={label} />
           <DespegarScoreCard score={8.1} label="Muy bueno" />
           <TripAdvisorScoreCard score={3.8} label="Excelente" />
