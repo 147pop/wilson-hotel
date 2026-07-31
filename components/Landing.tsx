@@ -303,7 +303,7 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
       <section id="servicios" style={{ background: g.blue }}>
         <div className="pt-8"><SectionDivider light /></div>
         {/* Header */}
-        <div className="px-6 pt-12 pb-4 md:px-10 md:pt-16 md:pb-6">
+        <div className="px-6 py-12 md:px-10 md:py-16" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
           <div className="max-w-[1400px] mx-auto flex flex-col items-center text-center gap-3">
             <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4.5vw, 64px)", color: g.ivory, margin: 0, lineHeight: 0.92, letterSpacing: "-0.01em" }}>
               Servicios
@@ -311,10 +311,10 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
             <span style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, opacity: 0.85 }}>
               Incluidos en tu estadía
             </span>
-            <h3 style={{ fontFamily: g.fontG, fontSize: "clamp(22px, 2.5vw, 32px)", color: g.ivory, margin: "8px 0 4px 0", lineHeight: 1.1 }}>
+            <h3 className="md:hidden" style={{ fontFamily: g.fontG, fontSize: "clamp(22px, 2.5vw, 32px)", color: g.ivory, margin: "8px 0 4px 0", lineHeight: 1.1 }}>
               Desayuno buffet
             </h3>
-            <p style={{ fontFamily: g.fontM, fontSize: 14, color: g.sand, lineHeight: 1.65, margin: 0, opacity: 0.88, maxWidth: "520px" }}>
+            <p className="md:hidden" style={{ fontFamily: g.fontM, fontSize: 14, color: g.sand, lineHeight: 1.65, margin: 0, opacity: 0.88, maxWidth: "520px" }}>
               Cada mañana, un desayuno completo. Jugos naturales, facturas, tostadas, fiambres, frutas y más.
             </p>
           </div>
@@ -343,7 +343,16 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
                 style={{ opacity: i === desayunoIdx ? 1 : 0 }}
               />
             ))}
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 50%)" }} />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 18%, transparent 40%)" }} />
+            <div className="hidden md:block absolute bottom-0 left-0 right-0 p-7 md:p-10">
+              <div className="w-8 h-px mb-6" style={{ background: g.sand }} />
+              <h3 style={{ fontFamily: g.fontG, fontSize: "clamp(28px, 3vw, 44px)", color: g.ivory, margin: "0 0 12px 0", lineHeight: 1 }}>
+                Desayuno buffet
+              </h3>
+              <p style={{ fontFamily: g.fontM, fontSize: 14, color: g.sand, lineHeight: 1.75, margin: 0, opacity: 0.88, maxWidth: "380px" }}>
+                Cada mañana, un desayuno completo. Jugos naturales, facturas, tostadas, fiambres, frutas y más.
+              </p>
+            </div>
           </div>
 
           {/* Amenities 2×3 */}
