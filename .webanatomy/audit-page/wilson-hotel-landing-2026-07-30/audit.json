@@ -1,0 +1,126 @@
+{
+  "schema": "webanatomy.audit-page.v2",
+  "target": "Wilson Hotel landing (app/page.tsx + components/Landing.tsx, Variante B en producción)",
+  "industry": "Hospitality / independent hotel booking",
+  "locale": "es",
+  "score": {
+    "overall": 47,
+    "band": [42, 52],
+    "coverage": 0.92,
+    "evidenceBacked": 0.51,
+    "evaluated": 45,
+    "naCount": 4,
+    "categoryScores": [
+      { "category": "Hero", "score": 33, "passCount": 2, "failCount": 4, "naCount": 1, "failedItemIds": ["hero.audience_clarity", "hero.numeric_proof", "hero.differentiation", "hero.risk_reducer"] },
+      { "category": "Value Proposition", "score": 42, "passCount": 3, "failCount": 4, "naCount": 0, "failedItemIds": ["value_prop.specific_promise", "value_prop.evidence_backed", "value_prop.problem_clarity", "value_prop.unlike_framing"] },
+      { "category": "Copywriting", "score": 54, "passCount": 5, "failCount": 4, "naCount": 0, "failedItemIds": ["copy.narrative", "copy.transformation", "copy.benefit_headings", "copy.consistent_cta"] },
+      { "category": "Trust & Credibility", "score": 36, "passCount": 3, "failCount": 6, "naCount": 0, "failedItemIds": ["trust.customer_logos", "trust.before_after_testimonial", "trust.niche_testimonials", "trust.human_social_proof", "trust.policy_transparency", "trust.linked_proof"] },
+      { "category": "Conversion", "score": 65, "passCount": 3, "failCount": 2, "naCount": 1, "failedItemIds": ["conversion.cta_dominance", "conversion.urgency"] },
+      { "category": "Design & UX", "score": 59, "passCount": 5, "failCount": 4, "naCount": 2, "failedItemIds": ["design.page_focus", "design.interactive_product", "design.faq", "design.footer"] }
+    ]
+  },
+  "currentSnapshot": [
+    { "label": "H1", "text": "Hospedate en el corazón de Salta" },
+    { "label": "Subhead", "text": "Alvarado 950 — a pasos de la Plaza 9 de Julio. Desayuno buffet, más de 40 años de trayectoria y atención personalizada." },
+    { "label": "Primary CTA", "text": "Reservar ahora (gold button, hero)" },
+    { "label": "Secondary CTA", "text": "WhatsApp (outline button, hero)" },
+    { "label": "Nav", "text": "Servicios, Habitaciones, Galería, Tarifas, Contacto + Reservar CTA" },
+    { "label": "Social proof", "text": "Google 4.2, Booking.com 8.6/479, Despegar 8.1, TripAdvisor 3.8 — score cards only, no named testimonials" }
+  ],
+  "strengths": [
+    { "section": "hero", "what": "Real property photography throughout (facade, lobby, rooms), no stock imagery.", "why": "Builds authentic trust for a small independent hotel; keep through any rework." },
+    { "section": "tarifas", "what": "Live room rates shown directly on the page, scraped from the booking engine.", "why": "Removes the 'consultar precio' click most independent hotel sites force; a real conversion asset." },
+    { "section": "page", "what": "Booking CTA repeats at every scroll depth: sticky nav, hero, rooms, tarifas cards, and a dedicated bottom CTA block.", "why": "The action is always one tap away regardless of where a visitor loses interest." },
+    { "section": "contacto", "what": "Phone, email, WhatsApp and address are all click-to-act with clear labels.", "why": "Low-friction path for visitors who want to talk to a human before booking." }
+  ],
+  "recommendations": [
+    {
+      "section": "trust",
+      "severity": "HIGH",
+      "kind": "copy",
+      "opportunity": "Add 3-4 real named guest testimonials (name + origin/reason for stay) next to the platform score cards.",
+      "why": "The page shows aggregate numbers only, no face or quote; numbers alone read as a stat, not proof from a real guest.",
+      "failedItemIds": ["trust.before_after_testimonial", "trust.niche_testimonials", "trust.human_social_proof", "trust.linked_proof"]
+    },
+    {
+      "section": "hero",
+      "severity": "HIGH",
+      "kind": "design",
+      "opportunity": "Pull the strongest review score (e.g. Booking.com 8.6/479) into the hero, near the CTA.",
+      "why": "Proof currently sits after rooms, gallery and tarifas; a cold visitor decides on the fold with zero social proof in sight.",
+      "failedItemIds": ["hero.numeric_proof", "trust.customer_logos"]
+    },
+    {
+      "section": "conversion",
+      "severity": "HIGH",
+      "kind": "design",
+      "opportunity": "Standardize every booking CTA to one button style and one label (\"Reservar ahora\").",
+      "why": "Three visual styles (navy solid, gold solid, gold outline) and four labels (Reservar, Reservar ahora, Ver disponibilidad, Ver disponibilidad online) currently split the same action across the page.",
+      "failedItemIds": ["conversion.cta_dominance", "copy.consistent_cta"]
+    },
+    {
+      "section": "hero",
+      "severity": "MEDIUM",
+      "kind": "copy",
+      "opportunity": "Name who the hotel is for (business travelers, couples, families visiting Salta) alongside the location claim.",
+      "why": "The hero states hotel type and address but never who should book it, so it reads generic to a scanning visitor.",
+      "failedItemIds": ["hero.audience_clarity"]
+    },
+    {
+      "section": "hero",
+      "severity": "MEDIUM",
+      "kind": "copy",
+      "opportunity": "State one concrete reason to pick Wilson over the other 3-star hotels in Salta centro.",
+      "why": "Trayectoria and location are the only claims made; neither differentiates from the many similar downtown hotels.",
+      "failedItemIds": ["hero.differentiation", "value_prop.unlike_framing"]
+    },
+    {
+      "section": "contacto",
+      "severity": "MEDIUM",
+      "kind": "copy",
+      "opportunity": "Add a short FAQ (check-in flexibility, pet policy, parking, group bookings) before the contact block.",
+      "why": "These are the objections a guest has right before booking; none are answered anywhere on the page today.",
+      "failedItemIds": ["design.faq", "copy.objection_handling"]
+    },
+    {
+      "section": "footer",
+      "severity": "MEDIUM",
+      "kind": "design",
+      "opportunity": "Add a labeled policy row to the footer (privacy, terms, cancellation policy).",
+      "why": "The footer only has social links and a copyright line; nothing reassures a visitor about data or refund terms before they leave the site to book.",
+      "failedItemIds": ["trust.policy_transparency", "design.footer"]
+    },
+    {
+      "section": "tarifas",
+      "severity": "MEDIUM",
+      "kind": "copy",
+      "opportunity": "Give the \"Último Minuto\" plan a real scarcity cue (rooms left, valid through a date) instead of just a discount tag.",
+      "why": "The only urgency signal on the page is a static discount label with no time or availability pressure behind it.",
+      "failedItemIds": ["conversion.urgency"]
+    },
+    {
+      "section": "page",
+      "severity": "LOW",
+      "kind": "design",
+      "opportunity": "Trim or consolidate the 12 major sections, or add a persistent mini-nav for long-scroll orientation.",
+      "why": "A page this long risks losing scanners partway down; a lighter structure or better wayfinding reduces drop-off.",
+      "failedItemIds": ["design.page_focus"]
+    },
+    {
+      "section": "habitaciones",
+      "severity": "LOW",
+      "kind": "copy",
+      "opportunity": "Reframe a few section H2s toward benefit language (e.g. \"Tu espacio en el centro\" instead of \"Nuestros espacios\").",
+      "why": "Most H2s are plain section labels; benefit-framed headings scan faster for a visitor comparing hotels.",
+      "failedItemIds": ["copy.benefit_headings"]
+    }
+  ],
+  "pageLevel": [
+    { "section": "page", "opportunity": "Build one canonical CTA component (one style, one label) and reuse it at all 6+ booking touchpoints.", "why": "Fixes the CTA-dominance and CTA-wording gaps at the source instead of patching each instance separately." }
+  ],
+  "sectorSpecific": [
+    { "section": "contacto", "opportunity": "Add a short reassurance line that card guarantee and payment happen on the booking engine's own secure page.", "why": "Guests are handed off to an external motor (Winpax) to pay; a small trust nudge before that jump reduces hesitation. Judgment call, not in the rubric." }
+  ],
+  "startHere": "hero",
+  "notes": "Industry inferred from content (independent hotel, Salta, AR). No live render available this session (browser extension not connected); visual-mode rubric items were scored from DOM/inline-style evidence where countable (nav, CTA repetition, footer, imagery) and marked n/a where a real screenshot was required (five-second test, color contrast, scannability). Coverage 0.92, evidence-backed 0.51 — treat the band as the honest range."
+}

@@ -3,7 +3,9 @@
 ## Contexto
 Wilson Hotel usa email corporativo alojado en un VPS compartido con la web, gestionado por un webmaster externo. El gerente prioriza seguridad y estabilidad, pero el webmaster actual no está haciendo mejoras. Se necesita migrar la gestión del email a una cuenta propia (Agustín), evaluando alternativas viables en precio y usabilidad, con migración completa de datos históricos.
 
-**ALERTA: El dominio wilsonhotel.com.ar expira el 15 de julio de 2026 (menos de 1 mes). Renovar es prerequisito absoluto.**
+**Actualización 2026-07-17:** el sitio nuevo es una landing estática en Next.js que se hostea en **Vercel**, no en el VPS actual. Esto cambia el problema — ver [Análisis Final](#análisis-final--camino-recomendado-2026-07-17) más abajo.
+
+**Nota sobre el dominio:** su renovación/gestión se está manejando por otra vía (no depende del webmaster). Este documento se enfoca en el email.
 
 ---
 
@@ -307,12 +309,64 @@ Wilson Hotel usa email corporativo alojado en un VPS compartido con la web, gest
 
 ---
 
+## Hallazgos del Acceso Real al Panel Ferozo (2026-07-17)
+
+El gerente entregó acceso de lectura al panel Ferozo actual. Esto confirma y actualiza el fingerprinting original.
+
+### Confirmado (coincide con fingerprint previo)
+| Componente | Detalle |
+|---|---|
+| Servidor | `vps-2193076-x.dattaweb.com` |
+| IP | 179.43.121.191 |
+| PHP actual | 7.4 FPM (EOL) |
+| Apache | 2.4.68 |
+| MySQL | 8.0.46 |
+| Dominio principal | wilsonhotel.com.ar |
+| Espacio usado | Web 523MB · Email 912MB · Backups 266MB |
+
+### Titularidad de la cuenta — ⚠️ hallazgo clave
+- **Email de contacto de la cuenta Ferozo:** `isadaniel@gmail.com` — gmail personal, no del hotel.
+- Esto indica que la cuenta de hosting/dominio está registrada a nombre del webmaster (o de alguien de su entorno), **no del hotel**. El hotel no es dueño legal de su propia cuenta hoy.
+- **Investigado:** el panel Ferozo **no tiene sección de facturación** — es solo el panel técnico (tipo cPanel) para manejar web/email/DB/FTP, no factura nada. Confirmado via soporte.donweb.com.
+- La facturación vive en una cuenta **separada**: el Área de Clientes de DonWeb (login en donweb.com, distinto del login de Ferozo). Desde ahí, en "Gestionar" → "Software y accesos" → pestaña "Panel Ferozo", es donde se generan/entregan las credenciales del panel que ya tenemos.
+- O sea: nos dieron el login técnico (Ferozo) pero no el login de facturación (DonWeb). Para saber quién paga hay que conseguir ese segundo acceso — probablemente sigue en poder de quien contrató originalmente el servicio.
+- 2FA está desactivado en la cuenta Ferozo — riesgo de seguridad adicional mientras siga bajo control externo.
+- **Nota:** el dominio se dejó de lado por ahora — lo está gestionando el gerente por otra vía, no depende del webmaster.
+
+### Cuentas de email reales (panel → Email → Cuentas de correo)
+Son **9 cuentas**, no 5 como surgió en la entrevista:
+
+| Cuenta | Uso / Capacidad | Nota |
+|---|---|---|
+| administracion@wilsonhotel.com.ar | 26MB / 100MB (26%) | Coincide con entrevista |
+| dastorga@wilsonhotel.com.ar | **846MB / 1000MB (85%)** | No estaba en entrevista. Mayor uso real de todas — probable cuenta de gerencia/dirección con nombre propio |
+| faresdagum@wilsonhotel.com.ar | 1MB / 100MB (1%) | No estaba en entrevista. Casi sin uso |
+| fdagum@wilsonhotel.com.ar | 14MB / 100MB (14%) | No estaba en entrevista. Posible duplicado/alias de faresdagum (misma persona, dos formatos) |
+| info@wilsonhotel.com.ar | 1MB / 100MB (1%) | Coincide con entrevista, pero casi sin uso pese a ser "consultas generales" |
+| no-reply@wilsonhotel.com.ar | 1MB / 100MB (1%) | No estaba en entrevista. **Sin botón Desactivar/Eliminar** → probable cuenta de sistema usada por WordPress o Winpax para notificaciones automáticas |
+| recepcion@wilsonhotel.com.ar | 1MB / 100MB (1%) | Coincide con entrevista |
+| reservas@wilsonhotel.com.ar | 1MB / 100MB (1%) | Coincide con entrevista |
+| web@wilsonhotel.com.ar | 1MB / 100MB (1%) | No estaba en entrevista. Probable notificaciones del formulario de contacto |
+
+**Discrepancia importante:** `gerencia@wilsonhotel.com.ar` (mencionada en la entrevista) **no existe** en el panel. Hipótesis: la persona de gerencia en realidad usa `dastorga@` o `fdagum@` como dirección con nombre propio, y en la entrevista se la nombró genéricamente como "gerencia".
+
+### Preguntas abiertas para el gerente
+- [ ] ¿A quién pertenecen `dastorga@`, `faresdagum@`, `fdagum@`? ¿Son la misma persona con alias duplicados?
+- [ ] ¿`dastorga@` es la cuenta que la entrevista llamó "gerencia"?
+- [ ] ¿`web@` y `no-reply@` están conectadas a integraciones (formulario WordPress, notificaciones Winpax)? Hay que replicarlas en el servidor nuevo antes del cutover o se rompen las notificaciones de reserva.
+- [ ] ¿Cuáles de las 9 cuentas siguen en uso activo? (varias tienen 1MB — pueden estar muertas)
+- [ ] Confirmar en sección Facturación del panel Ferozo qué método de pago está cargado y a nombre de quién.
+
+---
+
 ## Información Necesaria del Cliente para Ejecutar
-- [ ] Contraseñas actuales de las 5+ cuentas de email (para migración IMAP)
-- [ ] **URGENTE:** Confirmación de que el dominio fue renovado (expira 2026-07-15)
-- [ ] Acceso al panel Ferozo actual o contacto del webmaster para obtenerlo
+- [x] Acceso al panel Ferozo actual — **obtenido 2026-07-17**
+- [x] Lista completa de cuentas email — **obtenida: son 9, no 5** (ver hallazgos arriba)
+- [ ] Contraseñas actuales de las cuentas de email a migrar (para migración IMAP)
+- [ ] **URGENTE — VENCIDO:** el dominio expiraba 2026-07-15, hoy es 2026-07-17. Verificar YA si sigue activo o entró en período de gracia/suspensión
+- [ ] Confirmar en Facturación del panel quién paga hoy (tarjeta / titular)
 - [ ] Acceso a cuenta NIC Argentina (nic.ar) para gestionar DNS del dominio
-- [ ] Lista completa de cuentas email (pueden haber más que las 5 mencionadas en la entrevista)
+- [ ] Aclarar con gerente identidad de dastorga/faresdagum/fdagum y uso de web@/no-reply@
 - [ ] Decisión de ruta: DonWeb nueva cuenta (A1/A2/A3) o Google Workspace (B)
 - [ ] Si Google Workspace: aprobación presupuesto USD $35/mes
 - [ ] Definir quién será admin del nuevo servicio
@@ -322,13 +376,123 @@ Wilson Hotel usa email corporativo alojado en un VPS compartido con la web, gest
 ## Riesgos y Mitigación
 | Riesgo | Mitigación |
 |---|---|
-| Dominio expira 2026-07-15 (< 1 mes) | Renovar YA en nic.ar — prerequisito absoluto |
+| **Dominio ya venció (15/07) y hoy es 17/07** | Verificar estado YA en panel/nic.ar — puede seguir en gracia unos días pero es urgente |
+| Cuenta de hosting a nombre de terceros (`isadaniel@gmail.com`) | Migrar a cuenta propia del hotel cuanto antes; no depender de que el webmaster mantenga el pago |
 | Pérdida de emails durante cutover | Mantener servidor viejo activo 1 semana + re-sincronizar |
 | Webmaster no entrega accesos | Gerente tiene relación directa. Peor caso: crear todo nuevo y migrar por IMAP |
 | DonWeb soporte lento para migración interna | Tener plan B listo (imapsync manual) |
 | Emails históricos muy pesados | imapsync maneja volúmenes grandes; Google importa sin límite razonable |
 | Personal no se adapta (si se va a Google) | Capacitación + Gmail es familiar para la mayoría |
 | Cloud Server requiere mantenimiento | Solo elegir A3 si vos vas a administrar el servidor activamente |
+| Cuentas de sistema (`no-reply@`, `web@`) rotas al migrar | Identificar integraciones antes del cutover y replicarlas en servidor nuevo |
+
+---
+
+## Plan de Migración Definitivo (2026-07-17)
+
+### Contexto actualizado
+
+- **Web**: el sitio nuevo es Next.js estático, hosteado en **Vercel**. El VPS con WordPress queda obsoleto → no hace falta migrar ni pelear la titularidad del hosting.
+- **Email**: es lo único que hay que migrar. Destino: **DonWeb Correo Profesional Plan 10** (ya contratado).
+- **Infraestructura actual**: subcuenta dentro de un **plan Revendedor** del webmaster (no un hosting standalone). El webmaster es admin de todo y puede ver/revertir cambios en el panel Ferozo.
+- **DNS/dominio**: se gestiona por vía separada (no depende del webmaster).
+- **Acceso Ferozo**: tenemos acceso de gestión a las casillas de email (cambiar contraseñas, desactivar). Tenemos las contraseñas actuales de las cuentas.
+
+### Principios del plan
+
+1. **No depender de la cooperación del webmaster.** Ya tenemos contraseñas y acceso de gestión — eso alcanza.
+2. **Ejecutar la migración IMAP antes de tocar DNS.** Primero copiar todo el historial, después cambiar MX.
+3. **No pedir cambio de titular ni traslado de servicio.** No aplica a subcuentas de un plan Revendedor, y además no lo necesitamos.
+4. **No usar la "migración interna DonWeb"** (ticket a soporte). No funciona entre un plan Revendedor y un plan Correo Profesional — son productos incompatibles.
+
+### Cuentas a migrar (9 en total)
+
+| # | Cuenta | Volumen | Prioridad |
+|---|---|---|---|
+| 1 | dastorga@wilsonhotel.com.ar | 846MB | Alta — mayor volumen, migrar primero |
+| 2 | administracion@wilsonhotel.com.ar | 26MB | Normal |
+| 3 | fdagum@wilsonhotel.com.ar | 14MB | Normal |
+| 4 | info@wilsonhotel.com.ar | 1MB | Normal |
+| 5 | reservas@wilsonhotel.com.ar | 1MB | Normal |
+| 6 | recepcion@wilsonhotel.com.ar | 1MB | Normal |
+| 7 | faresdagum@wilsonhotel.com.ar | 1MB | Normal |
+| 8 | web@wilsonhotel.com.ar | 1MB | Baja — probable formulario WordPress |
+| 9 | no-reply@wilsonhotel.com.ar | 1MB | Baja — probable cuenta de sistema |
+
+### Ejecución paso a paso
+
+#### Fase 1 — Backup preventivo + migración IMAP (hoy)
+
+Antes de tocar nada en el panel Ferozo (sin resetear contraseñas, sin alertar al webmaster), migrar usando las contraseñas que ya tenemos:
+
+```bash
+# Por cada cuenta — ejemplo con dastorga (la más pesada, ~846MB):
+imapsync \
+  --host1 mail.wilsonhotel.com.ar --port1 993 --ssl1 \
+  --user1 dastorga@wilsonhotel.com.ar --password1 "[pass_actual]" \
+  --host2 [SERVIDOR_NUEVO] --port2 993 --ssl2 \
+  --user2 dastorga@wilsonhotel.com.ar --password2 "[pass_nueva]"
+```
+
+Repetir para las 9 cuentas. Empezar por `dastorga@` (la más pesada) para detectar problemas temprano.
+
+**Importante**: esto corre sin tocar el servidor de origen. El email sigue funcionando normalmente mientras migramos. El webmaster no tiene forma de saber que estamos leyendo por IMAP con credenciales legítimas.
+
+#### Fase 2 — Verificación
+
+1. Entrar al webmail del nuevo Correo Profesional y verificar para cada cuenta:
+   - Carpetas completas (Inbox, Enviados, Borradores, carpetas personalizadas)
+   - Adjuntos intactos
+   - Fechas correctas (no reescritas)
+2. Contar cantidad de mensajes origen vs destino (imapsync reporta esto al final)
+
+#### Fase 3 — Cambio de DNS (coordinar con gestión del dominio)
+
+Una vez confirmada la migración IMAP:
+
+1. Cambiar registros **MX** de `wilsonhotel.com.ar` para apuntar al nuevo servidor de Correo Profesional DonWeb (los valores exactos los da el panel del nuevo servicio)
+2. Cambiar **SPF** a lo que indique el nuevo servicio
+3. Configurar **DKIM** desde el panel del nuevo Correo Profesional (si lo soporta)
+4. Configurar **DMARC**: `v=DMARC1; p=quarantine; rua=mailto:[cuenta admin]@wilsonhotel.com.ar`
+5. Propagación DNS: 24-48 horas
+
+#### Fase 4 — Re-sincronización post-cutover
+
+1. Esperar 48 horas después del cambio de MX
+2. Correr `imapsync` una vez más para cada cuenta — captura los emails que entraron al servidor viejo durante la propagación DNS
+3. Verificar flujo completo: enviar/recibir prueba desde cada cuenta
+
+#### Fase 5 — Cierre
+
+1. Configurar email en dispositivos del personal (celulares, Outlook, Thunderbird) con los datos del nuevo servidor
+2. Activar **2FA** en la cuenta nueva de Correo Profesional
+3. Activar **backups diarios** (add-on de DonWeb, ~USD $0.45/mes — no viene por defecto)
+4. El hosting viejo del webmaster (VPS con WordPress) se deja morir solo — no hace falta dar de baja formalmente ni negociar nada
+
+#### Para el sitio web (separado del email)
+
+1. Deploy del Next.js en **Vercel Pro** (~USD $20/mes) — Hobby es solo para uso no-comercial
+2. Apuntar registro A/CNAME de `wilsonhotel.com.ar` → Vercel (en el mismo paso de DNS de Fase 3)
+3. Resolver cómo funciona el formulario de contacto sin backend WordPress (opciones: Vercel serverless function + SMTP, servicio externo tipo Resend/Formspree, o simple `mailto:`)
+
+### Riesgos actualizados
+
+| Riesgo | Probabilidad | Mitigación |
+|---|---|---|
+| Webmaster nota la migración IMAP | Baja — leer por IMAP no genera alertas | No tocar el panel Ferozo ni resetear contraseñas mientras migramos |
+| Webmaster corta el servicio antes de re-sync | Media | Fase 1 copia todo el historial; Fase 4 es solo para los rezagados del cutover |
+| DNS tarda más de 48hs | Baja | Re-sync en Fase 4 captura lo que caiga al viejo |
+| no-reply@ / web@ conectados a Winpax | Media | Crear las mismas cuentas en el nuevo servicio con SMTP configurado; coordinar con Winpax si sus notificaciones usan SMTP autenticado |
+| 50GB del plan no alcanza a futuro | Baja (hoy usan <1GB) | Monitorear; upgrade a plan mayor si necesario |
+
+### Comparativa de costos
+
+| | Hoy (plan Revendedor del webmaster) | Después |
+|---|---|---|
+| Web | WordPress en VPS — costo desconocido (lo paga el webmaster) | Vercel Pro ~USD $20/mes |
+| Email | Incluido en VPS (Courier-IMAP 2011, inseguro) | DonWeb Correo Profesional Plan 10 ~ARS $2,700/mes + backup ~USD $0.45/mes |
+| Seguridad | Sin DKIM, DMARC p=none, POP3 sin cifrar, PHP 7.4 EOL | DKIM+DMARC quarantine, TLS forzado, sin superficie WordPress |
+| Control | Ninguno — subcuenta de tercero | 100% propio |
 
 ---
 

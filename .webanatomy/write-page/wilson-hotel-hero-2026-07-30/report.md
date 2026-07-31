@@ -1,0 +1,88 @@
+# Wilson Hotel landing - Copy and design opportunities
+
+**TL;DR:** Built on the audit-page diagnosis from 2026-07-30 (score 47/100). Ungrounded: MCP not connected, no benchmark examples.
+
+- The hero names the hotel and the address but never who it's for or why pick it over another downtown 3-star.
+- Start here: rewrite the hero, then move proof into it and unify the CTA before touching anything else.
+
+## Recommendations
+
+### 1. Rewrite the hero H1 and subhead to name the audience and one differentiator [HIGH · copy] (start here)
+
+The hero states hotel type and address only. No visitor segment is named and nothing separates Wilson from other 3-star hotels in Salta centro.
+
+- Pick one of the 4 angles below, or blend two.
+- Keep every claim to facts already on the page (address, years, breakfast, reviews). Do not invent a stat.
+- Update app/page.tsx hero H1 (line ~158) and subhead (line ~164) only, no layout change.
+- Re-check hero.audience_clarity and hero.differentiation against the new copy before shipping.
+
+Prompt: `In components/Landing.tsx, replace the hero H1 (currently 'Hospedate en el corazón de Salta') and the paragraph right below it (currently starting 'Alvarado 950 — a pasos de la Plaza 9 de Julio...') with this pair, keeping the exact same JSX structure, styles and line breaks already in place:
+
+H1: 'El hotel del centro de Salta para viajes de trabajo y turismo'
+Subhead: 'En Alvarado 950, a pasos de la Plaza 9 de Julio. Desayuno buffet incluido, más de 40 años de trayectoria y atención personalizada en cada estadía.'
+
+Do not change the CTA buttons, the stats row below, or the carousel. Only the H1 text and the subhead paragraph text change.`
+
+### 2. Pull the strongest review score into the hero, next to the CTA [HIGH · design]
+
+Trust proof (Google 4.2, Booking 8.6/479, Despegar 8.1, TripAdvisor 3.8) only appears in the SocialProof section, after rooms, gallery and tarifas. A cold visitor decides on the fold with nothing to back the claims.
+
+- Add a small compact badge in the hero left panel, below the CTA row (after the WhatsApp/Reservar buttons, before the stats grid).
+- Reuse the existing BookingScoreCard pattern from components/sections/SocialProof.tsx, but a condensed single-line version: score + label + review count.
+- Keep it small enough not to compete with the H1 for attention; it supports the CTA, it does not lead the fold.
+- Do not duplicate the full 4-card SocialProof block. One proof point in the hero is enough; the full section stays where it is for visitors who want more.
+
+Prompt: `In components/Landing.tsx, inside the hero's left navy panel (the div with background g.deep), add a compact trust badge right after the CTA button row (after the div containing 'Reservar ahora' and 'WhatsApp' links, before the stats grid div). Show: 'Booking.com 8,6/10 · 479 reseñas' in small text (font-size ~12-13px, color g.sand for the label and g.gold for the score, fontFamily g.fontM), single line, no card chrome, no background box. Pull the score/reviews values from the same props SocialProof.tsx already uses (score=8.6, reviews=479) so the number stays in sync if it's ever made dynamic. Do not touch the SocialProof component itself or its position further down the page.`
+
+### 3. Add 3-4 real named guest testimonials near the platform score cards [HIGH · copy]
+
+SocialProof shows aggregate numbers only (8.6/10, 4.2/5, etc.), no quote or face behind them. Numbers alone read as a stat, not proof from an actual guest.
+
+- Do not write these quotes. Pull 3-4 real reviews already published on Google, Booking.com or TripAdvisor.
+- Ask reception or whoever manages the Booking/Google listings to export or screenshot the 4-5 strongest recent reviews.
+- For each: guest first name, city/country if shown, one sentence quoted verbatim (no paraphrasing, no invented detail), and which platform it's from.
+- Add them as a small row of 3-4 quote cards directly below or beside the existing SocialProof score cards in components/sections/SocialProof.tsx.
+- If getting real quotes takes time, ship the hero rewrite and CTA fix first; this one needs the source material before any code changes.
+
+Prompt: `Do not run this yet. Before touching code: collect 3-4 real guest reviews already public on Google/Booking.com/TripAdvisor for Wilson Hotel (first name, city/country if visible, one verbatim sentence, source platform). Once you have that list, come back and I'll add a testimonial row to components/sections/SocialProof.tsx below the existing score cards, matching the section's existing sand/dark variant styling. Never fabricate a quote or a guest name to fill this in.`
+
+### 4. Standardize every booking CTA to one button style and one label [HIGH · design]
+
+The primary action renders in 3 button styles (navy, gold, gold-outline) and 4 labels, splitting the same action across the page.
+
+- Pick one style: the hero's gold solid button (btn-gold) reads as the strongest, since it's the only warm color against the navy/blue sections.
+- Pick one label: 'Reservar ahora' works in every context (nav, hero, rooms, tarifas, bottom CTA).
+- Replace every booking-intent button (nav, hero, rooms, tarifas cards, bottom CTA) with the same class and label.
+- Keep WhatsApp and other secondary actions visually distinct (outline style) so the primary action still stands out as the one action.
+
+Prompt: `In components/Landing.tsx, every link pointing to BOOKING (the Winpax URL) currently uses a mix of classNames (btn-navy, btn-gold, btn-outline-gold) and label text (Reservar, Reservar ahora, Ver disponibilidad, Ver disponibilidad online). Standardize all of them to className="btn-gold" and label text "Reservar ahora", except keep sizing/padding overrides already set per instance (e.g. the room card CTAs can stay smaller via their existing inline style, just change class and label, not size). Do not change hrefs, targets, or rel attributes. Leave the WhatsApp links and other non-booking CTAs (email, phone, Salta tourism) exactly as they are.`
+
+## What's working (keep these)
+
+- Real property photography throughout the hero and rooms, no stock images.
+- Live room rates on the page itself, no "consultar precio" click.
+- Booking CTA already repeats at every scroll depth (nav, hero, rooms, tarifas, bottom).
+- Contact block (phone/email/WhatsApp/address) is fully click-to-act.
+
+## Gap analysis
+
+| Dimension | Current | Strong pattern | Gap |
+|---|---|---|---|
+| Hero audience/differentiation | Names hotel type + address only | Names who it's for and one concrete reason to pick it | HIGH |
+| Trust proof placement | Score cards appear after rooms/gallery/tarifas | Proof visible in or right after the fold | HIGH |
+| Testimonial depth | Aggregate scores only, no guest quotes | Named guest quotes with context | HIGH |
+| CTA consistency | 3 button styles, 4 labels for the same action | One style, one label, reused everywhere | HIGH |
+| Footer policy links | Social links + copyright only | Labeled privacy/terms/cancellation links | MEDIUM |
+| FAQ | None on page | 4-8 pre-booking questions answered | MEDIUM |
+
+## Current reality (context)
+
+- **H1.** Hospedate en el corazón de Salta
+- **Subhead.** Alvarado 950 — a pasos de la Plaza 9 de Julio. Desayuno buffet, más de 40 años de trayectoria y atención personalizada.
+- **Primary CTA labels found.** Reservar, Reservar ahora, Ver disponibilidad, Ver disponibilidad online
+- **Primary CTA classes found.** btn-navy, btn-gold, btn-outline-gold
+- **Social proof position.** After Hero, Servicios, Habitaciones, Galería, Tarifas, Salón de eventos (6 sections down)
+
+---
+
+Score baseline: audit-page 2026-07-30, 47/100 (band 42-52). This report is ungrounded (no live benchmark examples); recommendations rest on the CRO audit read, not benchmark comparison.

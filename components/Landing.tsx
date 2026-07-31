@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SocialProof from "@/components/sections/SocialProof";
 import Instituciones from "@/components/sections/Instituciones";
 import Gallery from "@/components/sections/Gallery";
@@ -33,6 +33,21 @@ const heroCarousel = [
   { src: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp", alt: "Suite Matrimonial" },
 ];
 
+const desayunoCarousel = [
+  { src: "/hotel/amenities/desayuno/desayuno-03.webp", alt: "Desayuno buffet" },
+  { src: "/hotel/amenities/desayuno/desayuno-05.webp", alt: "Desayuno buffet" },
+  { src: "/hotel/amenities/desayuno/desayuno-07.webp", alt: "Desayuno buffet" },
+  { src: "/hotel/amenities/desayuno/desayuno-09.webp", alt: "Desayuno buffet" },
+  { src: "/hotel/amenities/desayuno/desayuno-11.webp", alt: "Desayuno buffet" },
+];
+
+const salonMedia = [
+  { type: "image" as const, src: "/hotel/amenities/salon/salon-01.webp", alt: "Salón de eventos del Wilson Hotel" },
+  { type: "image" as const, src: "/hotel/amenities/salon/salon-02.webp", alt: "Salón de eventos del Wilson Hotel" },
+  { type: "image" as const, src: "/hotel/amenities/salon/salon-03.webp", alt: "Salón de eventos del Wilson Hotel" },
+  { type: "video" as const, src: "/hotel/amenities/salon/salon-video.mp4" },
+];
+
 const NAV_ITEMS = ["Servicios", "Habitaciones", "Galería", "Tarifas", "Contacto"];
 
 function PriceTag({ tarifa }: { tarifa: Tarifa | undefined }) {
@@ -56,6 +71,9 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
   const [scrollY, setScrollY] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [carouselIdx, setCarouselIdx] = useState(0);
+  const [desayunoIdx, setDesayunoIdx] = useState(0);
+  const [salonIdx, setSalonIdx] = useState(0);
+  const salonTouchX = useRef(0);
   useScrollReveal();
 
   const tarifaFor = (key: RoomKey) => tarifas.find(t => t.room === key);
@@ -63,6 +81,11 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
 
   useEffect(() => {
     const t = setInterval(() => setCarouselIdx(p => (p + 1) % heroCarousel.length), 5000);
+    return () => clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const t = setInterval(() => setDesayunoIdx(p => (p + 1) % desayunoCarousel.length), 4000);
     return () => clearInterval(t);
   }, []);
 
@@ -100,7 +123,15 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex gap-3 items-center">
+          <div className="hidden lg:flex gap-4 items-center">
+            <div className="flex gap-3 items-center" style={{ color: g.graphite, opacity: 0.75 }}>
+              <a href="https://instagram.com/wilsonhotel.salta" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="transition-opacity hover:opacity-60">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=100079646945697" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="transition-opacity hover:opacity-60">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
             <a href="tel:+543874312211" style={{ fontFamily: g.fontM, fontSize: 12, color: g.graphite, textDecoration: "none", opacity: 0.82, letterSpacing: "0.05em" }}>(387) 431-2211</a>
             <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ padding: "9px 22px" }}>Reservar ahora</a>
           </div>
@@ -138,6 +169,14 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
             >
               Reservar ahora
             </a>
+            <div className="flex gap-4 items-center pt-1" style={{ color: g.graphite, opacity: 0.75 }}>
+              <a href="https://instagram.com/wilsonhotel.salta" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=100079646945697" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
           </div>
         )}
 
@@ -243,7 +282,16 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-0.5">
           {/* Desayuno */}
           <div className="reveal-scale relative overflow-hidden h-[260px] sm:h-[380px] lg:h-[520px]">
-            <img src="/hotel/amenities/desayuno/desayuno-03.webp" alt="Desayuno buffet incluido" loading="lazy" className="img-zoom w-full h-full object-cover block" />
+            {desayunoCarousel.map((item, i) => (
+              <img
+                key={item.src}
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
+                className="img-zoom absolute inset-0 w-full h-full object-cover block transition-opacity duration-1000"
+                style={{ opacity: i === desayunoIdx ? 1 : 0 }}
+              />
+            ))}
             <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 18%, transparent 40%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
               <div className="w-8 h-px mb-6" style={{ background: g.sand }} />
@@ -271,7 +319,7 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
                 icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
               },
               {
-                name: "Salones de eventos", desc: "Congresos, seminarios y banquetes",
+                name: "Salones de eventos", desc: "Congresos, seminarios y capacitaciones",
                 icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
               },
               {
@@ -315,7 +363,6 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
               <span className="block mb-2.5" style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold }}>Habitaciones</span>
               <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(36px, 4.5vw, 64px)", color: g.ivory, margin: 0, lineHeight: 0.92 }}>Nuestros espacios</h2>
             </div>
-            <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold flex-shrink-0">Reservar ahora</a>
           </div>
 
           {/* Top 3 rooms */}
@@ -373,11 +420,11 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { name: "Alojamiento y Desayuno", tag: "Reembolsable", desc: "Cancelación gratuita 72hs antes. Garantía con tarjeta de crédito. Pago en el hotel.", border: g.sand, price: sglTarifa?.lista },
-              { name: "Último Minuto", tag: "Oferta — No reembolsable", desc: "15% de descuento sobre tarifa base. Pago anticipado con TC. Mejor precio garantizado.", border: g.gold, featured: true, price: sglTarifa?.oferta, priceTachado: sglTarifa?.lista },
+              { name: "Último Minuto", tag: "Oferta — No reembolsable", desc: "15% de descuento sobre tarifa base. Pago anticipado con tarjeta de crédito. Mejor precio garantizado.", border: g.gold, featured: true, price: sglTarifa?.oferta, priceTachado: sglTarifa?.lista },
               { name: "Alojamiento y Desayuno No Reembolsable", tag: "10% de descuento", desc: "Precio especial con pago anticipado total. Sin posibilidad de reembolso.", border: g.sand, price: sglTarifa?.noReemb },
             ].map((t, i) => (
               <div key={i}
-                className={`reveal reveal-d${i + 1} relative p-7 sm:p-8 transition-shadow hover:shadow-lg`}
+                className={`reveal reveal-d${i + 1} relative flex flex-col h-full p-7 sm:p-8 transition-shadow hover:shadow-lg`}
                 style={{ border: `2px solid ${t.featured ? g.gold : g.sand}`, background: t.featured ? "rgba(212,169,112,0.08)" : "white" }}>
                 {t.featured && <div className="absolute -top-3 left-6" style={{ background: g.gold, padding: "4px 16px", fontFamily: g.fontM, fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", color: g.deep }}>Recomendada</div>}
                 <span className="block mb-2.5" style={{ fontFamily: g.fontM, fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--blue-muted)" }}>{t.tag}</span>
@@ -392,7 +439,7 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
                     <span style={{ fontFamily: g.fontM, fontSize: 13, color: g.graphite, opacity: 0.6 }}>/ noche</span>
                   </div>
                 )}
-                <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block" style={{ fontSize: 12, padding: "10px 24px" }}>Reservar ahora</a>
+                <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mt-auto self-start" style={{ fontSize: 12, padding: "10px 24px" }}>Reservar ahora</a>
               </div>
             ))}
           </div>
@@ -404,17 +451,61 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
       </section>
 
       {/* ── SALÓN DE EVENTOS ── */}
-      <div style={{ background: g.sand }} className="pt-10"><SectionDivider color={g.blue} /></div>
       <section className="px-5 py-16 md:px-10 md:py-20" style={{ background: g.sand }}>
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div className="relative h-[280px] md:h-[420px] overflow-hidden order-2 md:order-1">
-            <img src="/hotel/amenities/salon/salon-01.webp" alt="Salón de eventos del Wilson Hotel" loading="lazy" className="w-full h-full object-cover block" />
+          <div
+            className="relative h-[280px] md:h-[420px] overflow-hidden order-2 md:order-1"
+            onTouchStart={(e) => { salonTouchX.current = e.touches[0].clientX; }}
+            onTouchEnd={(e) => {
+              const dx = e.changedTouches[0].clientX - salonTouchX.current;
+              if (Math.abs(dx) < 40) return;
+              setSalonIdx(p => (p + (dx < 0 ? 1 : -1) + salonMedia.length) % salonMedia.length);
+            }}
+          >
+            {salonMedia.map((item, i) =>
+              item.type === "video" ? (
+                <video
+                  key={item.src}
+                  src={item.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                  style={{ opacity: i === salonIdx ? 1 : 0 }}
+                />
+              ) : (
+                <img
+                  key={item.src}
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                  style={{ opacity: i === salonIdx ? 1 : 0 }}
+                />
+              )
+            )}
+            <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-2.5 z-10">
+              {salonMedia.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSalonIdx(i)}
+                  aria-label={`Slide ${i + 1}`}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: i === salonIdx ? 20 : 6,
+                    height: 6,
+                    background: i === salonIdx ? g.gold : "rgba(255,255,255,0.45)",
+                  }}
+                />
+              ))}
+            </div>
           </div>
           <div className="order-1 md:order-2">
             <span className="block mb-2.5" style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--blue-muted)" }}>Eventos y reuniones</span>
             <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 3.5vw, 52px)", color: g.deep, margin: "0 0 20px 0" }}>Salón de eventos</h2>
             <p style={{ fontFamily: g.fontM, fontSize: 15, color: g.graphite, lineHeight: 1.8, margin: "0 0 32px 0", opacity: 0.9 }}>
-              Espacio equipado para congresos, seminarios, capacitaciones y banquetes en pleno centro de Salta. Coordinamos catering, disposición de sala y equipamiento audiovisual a medida de tu evento.
+              Espacio equipado para congresos, seminarios y capacitaciones en pleno centro de Salta. Coordinamos catering, disposición de sala y equipamiento audiovisual a medida de tu evento.
             </p>
             <div className="flex gap-3 flex-wrap">
               <a
@@ -469,7 +560,7 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
           <span className="block mb-2.5" style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.3em", textTransform: "uppercase", color: g.gold }}>Más allá del hotel</span>
           <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 3.5vw, 52px)", color: g.ivory, margin: "0 0 20px 0" }}>Qué hacer en Salta</h2>
           <p style={{ fontFamily: g.fontM, fontSize: 15, color: g.sand, lineHeight: 1.8, margin: "0 0 32px 0", opacity: 0.85 }}>
-            Desde el Wilson Hotel estás a pasos de la Plaza 9 de Julio, el Cabildo, el teleférico al Cerro San Bernardo y los circuitos gastronómicos del centro histórico. El Ente de Turismo de la Ciudad de Salta reúne toda la agenda de paseos, excursiones y eventos culturales para armar tu estadía.
+            Desde el Wilson Hotel estás a pasos de la Plaza 9 de Julio, el Cabildo y los circuitos gastronómicos del centro histórico. El Ente de Turismo de la Ciudad de Salta reúne toda la agenda de paseos, excursiones y eventos culturales para armar tu estadía.
           </p>
           <a href={SALTA_TURISMO_URL} target="_blank" rel="noopener noreferrer" className="btn-outline-gold">Ver actividades en Salta</a>
         </div>

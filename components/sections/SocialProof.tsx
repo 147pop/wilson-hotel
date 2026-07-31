@@ -208,20 +208,6 @@ export default function SocialProof({
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         {/* Text block centered */}
         <div style={{ textAlign: "center", maxWidth: 560, margin: "0 auto 48px" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 16 }}>
-            <div style={{ height: 1, width: 28, background: goldColor, opacity: 0.5 }} />
-            <span style={{
-              fontFamily: fontM,
-              fontSize: 9,
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              color: labelColor,
-            }}>
-              Opiniones verificadas
-            </span>
-            <div style={{ height: 1, width: 28, background: goldColor, opacity: 0.5 }} />
-          </div>
-
           <h2 style={{
             fontFamily: fontG,
             fontSize: "clamp(28px, 3.5vw, 46px)",

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Wilson Hotel landing - Copy and design opportunities</title>
+<style>
+:root{--ink:#1f2328;--mut:#57606a;--line:#d0d7de;--soft:#eef4fb;--accent:#0969da;--high:#b91c1c;--med:#b45309;--low:#15803d}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:48px 24px 96px}
+header{padding-bottom:20px;margin-bottom:20px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:700}
+h1{font-size:clamp(28px,4vw,38px);line-height:1.15;margin:6px 0;letter-spacing:-.01em}
+h2{font-size:21px;margin:52px 0 16px}
+h3{font-size:18px;margin:0;flex:1;min-width:200px}
+p{margin:0 0 12px}a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+ul,ol{margin:0 0 12px;padding-left:22px}li{margin-bottom:5px}
+.meta{color:var(--mut);font-size:14px}
+.tldr{background:var(--soft);border-left:4px solid var(--accent);border-radius:4px;padding:18px 22px;margin:28px 0}
+.tldr p{margin:0}.tldr ul{margin:10px 0 0;padding-left:20px}.tldr li{margin-bottom:6px}
+.prompt pre{white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px 13px;margin:0;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink)}
+.copy-btn{font:600 12px/1 inherit;cursor:pointer;border:1px solid var(--accent);color:var(--accent);background:#fff;border-radius:6px;padding:5px 11px}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.rec{border-top:1px solid var(--line);padding:24px 0 28px}
+.rec-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.num{flex:none;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;background:#111;color:#fff;font-weight:700;font-size:14px;border-radius:6px}
+.ribbon{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:#111;color:#fff}
+.why{color:var(--mut);margin-bottom:10px}
+.how{margin-bottom:14px}
+.gap{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}
+.gap.high{background:#fee2e2;color:var(--high)}.gap.medium{background:#fef3c7;color:var(--med)}.gap.low{background:#dcfce7;color:var(--low)}
+.kind{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;background:#e0e7ff;color:#3730a3;text-transform:capitalize}
+.inspired{margin:14px 0}
+.inspired-label{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.refstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.refstrip.gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.refcard{margin:0;position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(31,35,40,.06)}
+.refcard .opt{position:absolute;top:8px;left:8px;z-index:2;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#111;color:#fff;font-weight:700;font-size:12px;border-radius:6px}
+.refcard .shot{display:block}
+.refcard img{display:block;width:100%;height:150px;object-fit:cover;object-position:top center;cursor:zoom-in}
+.refcard .noimg{height:150px;display:flex;align-items:center;justify-content:center;background:#f6f8fa;color:var(--mut);font-size:13px;padding:12px;text-align:center}
+.refcard figcaption{padding:8px 10px;font-size:12.5px;line-height:1.45;color:var(--mut)}
+.refcard figcaption strong{color:var(--ink);display:inline-block;margin-right:4px}
+.refcard figcaption span{display:block;margin-top:3px}
+.refcard .src{font-size:11px}
+.prompt{margin-top:12px;border:1px solid var(--line);border-radius:8px;background:#fafbfc}
+.prompt summary{cursor:pointer;padding:8px 12px;font-size:13px;font-weight:600;color:var(--accent)}
+.prompt-body{position:relative;padding:0 12px 12px}
+.prompt-body .copy-btn{position:absolute;top:8px;right:20px}
+.working{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:14px 16px 14px 34px;margin:0 0 12px}
+table{width:100%;border-collapse:collapse;margin:12px 0 24px;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:#f6f8fa;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut)}
+.snapshot{margin-top:40px;border:1px solid var(--line);border-radius:8px;padding:4px 14px;color:var(--mut)}
+.snapshot summary{cursor:pointer;padding:8px 0;font-weight:600;color:var(--ink)}
+.snapshot ul{padding:4px 0 10px 22px}
+#lightbox{position:fixed;inset:0;display:none;background:rgba(31,35,40,.92);z-index:50;cursor:zoom-out;padding:32px}
+#lightbox.open{display:flex;align-items:center;justify-content:center}
+#lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+.footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+</style></head><body><div class="wrap">
+<header><div class="eyebrow">Improve mode · Hospitality</div><h1>Wilson Hotel landing - Copy and design opportunities</h1><div class="meta">Hero rewrite, trust proof placement, and CTA consistency</div></header>
+<div class="tldr"><p><strong>TL;DR:</strong> Built on the audit-page diagnosis from 2026-07-30 (score 47/100). Ungrounded: MCP not connected, no benchmark examples.</p><ul><li>The hero names the hotel and the address but never who it&#39;s for or why pick it over another downtown 3-star.</li><li>Start here: rewrite the hero, then move proof into it and unify the CTA before touching anything else.</li></ul></div>
+<h2>What&#39;s working (keep these)</h2><ul class="working"><li>Real property photography throughout the hero and rooms, no stock images.</li><li>Live room rates on the page itself, no &quot;consultar precio&quot; click.</li><li>Booking CTA already repeats at every scroll depth (nav, hero, rooms, tarifas, bottom).</li><li>Contact block (phone/email/WhatsApp/address) is fully click-to-act.</li></ul>
+<h2>Recommendations</h2><section class="rec lead">
+<div class="rec-head"><span class="num">1</span><h3>Rewrite the hero H1 and subhead to name the audience and one differentiator</h3><span class="gap high">HIGH</span> <span class="kind">copy</span> <span class="ribbon">Start here</span></div>
+<p class="why">The hero states hotel type and address only. No visitor segment is named and nothing separates Wilson from other 3-star hotels in Salta centro.</p>
+<ul class="how"><li>Pick one of the 4 angles below, or blend two.</li><li>Keep every claim to facts already on the page (address, years, breakfast, reviews). Do not invent a stat.</li><li>Update app/page.tsx hero H1 (line ~158) and subhead (line ~164) only, no layout change.</li><li>Re-check hero.audience_clarity and hero.differentiation against the new copy before shipping.</li></ul><details class="prompt copyable"><summary>Copy this prompt into your agent</summary><div class="prompt-body"><button type="button" class="copy-btn">Copy</button><pre>In components/Landing.tsx, replace the hero H1 (currently &#39;Hospedate en el corazón de Salta&#39;) and the paragraph right below it (currently starting &#39;Alvarado 950 — a pasos de la Plaza 9 de Julio...&#39;) with this pair, keeping the exact same JSX structure, styles and line breaks already in place:
+
+H1: &#39;El hotel del centro de Salta para viajes de trabajo y turismo&#39;
+Subhead: &#39;En Alvarado 950, a pasos de la Plaza 9 de Julio. Desayuno buffet incluido, más de 40 años de trayectoria y atención personalizada en cada estadía.&#39;
+
+Do not change the CTA buttons, the stats row below, or the carousel. Only the H1 text and the subhead paragraph text change.</pre></div></details>
+</section>
+<section class="rec">
+<div class="rec-head"><span class="num">2</span><h3>Pull the strongest review score into the hero, next to the CTA</h3><span class="gap high">HIGH</span> <span class="kind">design</span></div>
+<p class="why">Trust proof (Google 4.2, Booking 8.6/479, Despegar 8.1, TripAdvisor 3.8) only appears in the SocialProof section, after rooms, gallery and tarifas. A cold visitor decides on the fold with nothing to back the claims.</p>
+<ul class="how"><li>Add a small compact badge in the hero left panel, below the CTA row (after the WhatsApp/Reservar buttons, before the stats grid).</li><li>Reuse the existing BookingScoreCard pattern from components/sections/SocialProof.tsx, but a condensed single-line version: score + label + review count.</li><li>Keep it small enough not to compete with the H1 for attention; it supports the CTA, it does not lead the fold.</li><li>Do not duplicate the full 4-card SocialProof block. One proof point in the hero is enough; the full section stays where it is for visitors who want more.</li></ul><details class="prompt copyable"><summary>Copy this prompt into your agent</summary><div class="prompt-body"><button type="button" class="copy-btn">Copy</button><pre>In components/Landing.tsx, inside the hero&#39;s left navy panel (the div with background g.deep), add a compact trust badge right after the CTA button row (after the div containing &#39;Reservar ahora&#39; and &#39;WhatsApp&#39; links, before the stats grid div). Show: &#39;Booking.com 8,6/10 · 479 reseñas&#39; in small text (font-size ~12-13px, color g.sand for the label and g.gold for the score, fontFamily g.fontM), single line, no card chrome, no background box. Pull the score/reviews values from the same props SocialProof.tsx already uses (score=8.6, reviews=479) so the number stays in sync if it&#39;s ever made dynamic. Do not touch the SocialProof component itself or its position further down the page.</pre></div></details>
+</section>
+<section class="rec">
+<div class="rec-head"><span class="num">3</span><h3>Add 3-4 real named guest testimonials near the platform score cards</h3><span class="gap high">HIGH</span> <span class="kind">copy</span></div>
+<p class="why">SocialProof shows aggregate numbers only (8.6/10, 4.2/5, etc.), no quote or face behind them. Numbers alone read as a stat, not proof from an actual guest.</p>
+<ul class="how"><li>Do not write these quotes. Pull 3-4 real reviews already published on Google, Booking.com or TripAdvisor.</li><li>Ask reception or whoever manages the Booking/Google listings to export or screenshot the 4-5 strongest recent reviews.</li><li>For each: guest first name, city/country if shown, one sentence quoted verbatim (no paraphrasing, no invented detail), and which platform it&#39;s from.</li><li>Add them as a small row of 3-4 quote cards directly below or beside the existing SocialProof score cards in components/sections/SocialProof.tsx.</li><li>If getting real quotes takes time, ship the hero rewrite and CTA fix first; this one needs the source material before any code changes.</li></ul><details class="prompt copyable"><summary>Copy this prompt into your agent</summary><div class="prompt-body"><button type="button" class="copy-btn">Copy</button><pre>Do not run this yet. Before touching code: collect 3-4 real guest reviews already public on Google/Booking.com/TripAdvisor for Wilson Hotel (first name, city/country if visible, one verbatim sentence, source platform). Once you have that list, come back and I&#39;ll add a testimonial row to components/sections/SocialProof.tsx below the existing score cards, matching the section&#39;s existing sand/dark variant styling. Never fabricate a quote or a guest name to fill this in.</pre></div></details>
+</section>
+<section class="rec">
+<div class="rec-head"><span class="num">4</span><h3>Standardize every booking CTA to one button style and one label</h3><span class="gap high">HIGH</span> <span class="kind">design</span></div>
+<p class="why">The primary action renders in 3 button styles (navy, gold, gold-outline) and 4 labels, splitting the same action across the page.</p>
+<ul class="how"><li>Pick one style: the hero&#39;s gold solid button (btn-gold) reads as the strongest, since it&#39;s the only warm color against the navy/blue sections.</li><li>Pick one label: &#39;Reservar ahora&#39; works in every context (nav, hero, rooms, tarifas, bottom CTA).</li><li>Replace every booking-intent button (nav, hero, rooms, tarifas cards, bottom CTA) with the same class and label.</li><li>Keep WhatsApp and other secondary actions visually distinct (outline style) so the primary action still stands out as the one action.</li></ul><details class="prompt copyable"><summary>Copy this prompt into your agent</summary><div class="prompt-body"><button type="button" class="copy-btn">Copy</button><pre>In components/Landing.tsx, every link pointing to BOOKING (the Winpax URL) currently uses a mix of classNames (btn-navy, btn-gold, btn-outline-gold) and label text (Reservar, Reservar ahora, Ver disponibilidad, Ver disponibilidad online). Standardize all of them to className=&quot;btn-gold&quot; and label text &quot;Reservar ahora&quot;, except keep sizing/padding overrides already set per instance (e.g. the room card CTAs can stay smaller via their existing inline style, just change class and label, not size). Do not change hrefs, targets, or rel attributes. Leave the WhatsApp links and other non-booking CTAs (email, phone, Salta tourism) exactly as they are.</pre></div></details>
+</section>
+<h2>Gap analysis</h2><table><thead><tr><th>Dimension</th><th>Current</th><th>Strong pattern</th><th>Gap</th></tr></thead><tbody><tr><td>Hero audience/differentiation</td><td>Names hotel type + address only</td><td>Names who it&#39;s for and one concrete reason to pick it</td><td><span class="gap high">HIGH</span></td></tr>
+<tr><td>Trust proof placement</td><td>Score cards appear after rooms/gallery/tarifas</td><td>Proof visible in or right after the fold</td><td><span class="gap high">HIGH</span></td></tr>
+<tr><td>Testimonial depth</td><td>Aggregate scores only, no guest quotes</td><td>Named guest quotes with context</td><td><span class="gap high">HIGH</span></td></tr>
+<tr><td>CTA consistency</td><td>3 button styles, 4 labels for the same action</td><td>One style, one label, reused everywhere</td><td><span class="gap high">HIGH</span></td></tr>
+<tr><td>Footer policy links</td><td>Social links + copyright only</td><td>Labeled privacy/terms/cancellation links</td><td><span class="gap medium">MEDIUM</span></td></tr>
+<tr><td>FAQ</td><td>None on page</td><td>4-8 pre-booking questions answered</td><td><span class="gap medium">MEDIUM</span></td></tr></tbody></table>
+
+<details class="snapshot"><summary>Current reality (context)</summary><ul><li><strong>H1.</strong> Hospedate en el corazón de Salta</li>
+<li><strong>Subhead.</strong> Alvarado 950 — a pasos de la Plaza 9 de Julio. Desayuno buffet, más de 40 años de trayectoria y atención personalizada.</li>
+<li><strong>Primary CTA labels found.</strong> Reservar, Reservar ahora, Ver disponibilidad, Ver disponibilidad online</li>
+<li><strong>Primary CTA classes found.</strong> btn-navy, btn-gold, btn-outline-gold</li>
+<li><strong>Social proof position.</strong> After Hero, Servicios, Habitaciones, Galería, Tarifas, Salón de eventos (6 sections down)</li></ul></details>
+<div class="footer">Score baseline: audit-page 2026-07-30, 47/100 (band 42-52). This report is ungrounded (no live benchmark examples); recommendations rest on the CRO audit read, not benchmark comparison.</div>
+</div>
+<div id="lightbox"><img alt="" /></div>
+<script>
+function fallbackCopy(text, done) {
+  const area = document.createElement("textarea");
+  area.value = text;
+  document.body.appendChild(area);
+  area.select();
+  try { document.execCommand("copy"); } catch {}
+  area.remove();
+  done();
+}
+document.addEventListener("click", (event) => {
+  const btn = event.target.closest(".copy-btn");
+  if (btn) {
+    const text = btn.closest(".copyable").querySelector("pre").innerText;
+    const done = () => { btn.textContent = "Copied"; setTimeout(() => { btn.textContent = "Copy"; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+    } else {
+      fallbackCopy(text, done);
+    }
+    return;
+  }
+  const shotLink = event.target.closest("a.shot");
+  if (shotLink) {
+    const img = shotLink.querySelector("img");
+    if (!img) return;
+    event.preventDefault();
+    const overlay = document.getElementById("lightbox");
+    overlay.querySelector("img").src = img.src;
+    overlay.classList.add("open");
+    return;
+  }
+  const overlay = event.target.closest("#lightbox");
+  if (overlay) overlay.classList.remove("open");
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") document.getElementById("lightbox").classList.remove("open");
+});
+</script>
+</body></html>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { GALLERY_IMAGES } from "@/lib/hotel-images";
 
@@ -26,9 +27,10 @@ export default function Gallery({ variant = "light" }: GalleryProps) {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 auto-rows-[200px]">
           {photos.map((photo, i) => (
-            <div
+            <Link
               key={i}
-              className={`overflow-hidden group ${"span" in photo ? photo.span : ""}`}
+              href="/galeria"
+              className={`overflow-hidden group block ${"span" in photo ? photo.span : ""}`}
             >
               <img
                 src={photo.src}
@@ -36,13 +38,19 @@ export default function Gallery({ variant = "light" }: GalleryProps) {
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-            </div>
+            </Link>
           ))}
         </div>
 
         <p className="font-montserrat text-xs text-center text-wilson-gold uppercase tracking-widest mt-6 opacity-70">
           @wilsonhotel.salta
         </p>
+
+        <div className="text-center mt-8">
+          <Link href="/galeria" className="btn-outline-gold">
+            Ver galería completa
+          </Link>
+        </div>
       </div>
     </section>
   );

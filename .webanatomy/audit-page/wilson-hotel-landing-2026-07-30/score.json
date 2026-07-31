@@ -1,0 +1,92 @@
+{
+  "schema": "webanatomy.score.v1",
+  "overall": 47,
+  "band": [
+    42,
+    52
+  ],
+  "coverage": 0.92,
+  "evidenceBacked": 0.51,
+  "evaluated": 45,
+  "naCount": 4,
+  "categoryScores": [
+    {
+      "category": "Hero",
+      "score": 33,
+      "passCount": 2,
+      "failCount": 4,
+      "naCount": 1,
+      "failedItemIds": [
+        "hero.audience_clarity",
+        "hero.numeric_proof",
+        "hero.differentiation",
+        "hero.risk_reducer"
+      ]
+    },
+    {
+      "category": "Value Proposition",
+      "score": 42,
+      "passCount": 3,
+      "failCount": 4,
+      "naCount": 0,
+      "failedItemIds": [
+        "value_prop.specific_promise",
+        "value_prop.evidence_backed",
+        "value_prop.problem_clarity",
+        "value_prop.unlike_framing"
+      ]
+    },
+    {
+      "category": "Copywriting",
+      "score": 54,
+      "passCount": 5,
+      "failCount": 4,
+      "naCount": 0,
+      "failedItemIds": [
+        "copy.narrative",
+        "copy.transformation",
+        "copy.benefit_headings",
+        "copy.consistent_cta"
+      ]
+    },
+    {
+      "category": "Trust & Credibility",
+      "score": 36,
+      "passCount": 3,
+      "failCount": 6,
+      "naCount": 0,
+      "failedItemIds": [
+        "trust.customer_logos",
+        "trust.before_after_testimonial",
+        "trust.niche_testimonials",
+        "trust.human_social_proof",
+        "trust.policy_transparency",
+        "trust.linked_proof"
+      ]
+    },
+    {
+      "category": "Conversion",
+      "score": 65,
+      "passCount": 3,
+      "failCount": 2,
+      "naCount": 1,
+      "failedItemIds": [
+        "conversion.cta_dominance",
+        "conversion.urgency"
+      ]
+    },
+    {
+      "category": "Design & UX",
+      "score": 59,
+      "passCount": 5,
+      "failCount": 4,
+      "naCount": 2,
+      "failedItemIds": [
+        "design.page_focus",
+        "design.interactive_product",
+        "design.faq",
+        "design.footer"
+      ]
+    }
+  ]
+}

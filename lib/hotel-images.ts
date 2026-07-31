@@ -127,6 +127,136 @@ export const HERO_IMAGES = {
   c: "/hotel/amenities/home/home-01.webp",
 } as const;
 
+// Categorías de la galería completa (/galeria). Independiente de ROOM_IMAGES/
+// AMENITY_IMAGES: esas agrupan por código de tarifa (ROOM_IMAGES.JRS mezcla
+// dos slugs físicos distintos), mientras que esto necesita 1 slug = 1 carpeta
+// física = 1 tab. Los arrays `photos` se completan corriendo
+// scripts/convert-gallery-photos.mjs y pegando su output acá.
+export type GalleryCategory = {
+  slug: string;
+  label: string;
+  photos: string[];
+};
+
+export const GALLERY_CATEGORIES: GalleryCategory[] = [
+  {
+    slug: "triple-ms",
+    label: "Triple",
+    photos: [
+      "/hotel/galeria/habitaciones/triple-ms/triple-ms-01.webp",
+      "/hotel/galeria/habitaciones/triple-ms/triple-ms-02.webp",
+      "/hotel/galeria/habitaciones/triple-ms/triple-ms-03.webp",
+    ],
+  },
+  {
+    slug: "triple-simple",
+    label: "Triple Simple",
+    photos: [
+      "/hotel/galeria/habitaciones/triple-simple/triple-simple-01.webp",
+      "/hotel/galeria/habitaciones/triple-simple/triple-simple-02.webp",
+      "/hotel/galeria/habitaciones/triple-simple/triple-simple-03.webp",
+      "/hotel/galeria/habitaciones/triple-simple/triple-simple-04.webp",
+    ],
+  },
+  {
+    slug: "single-standard",
+    label: "Habitación Simple",
+    photos: [
+      "/hotel/galeria/habitaciones/single-standard/single-standard-01.webp",
+      "/hotel/galeria/habitaciones/single-standard/single-standard-02.webp",
+      "/hotel/galeria/habitaciones/single-standard/single-standard-03.webp",
+    ],
+  },
+  {
+    slug: "doble-single",
+    label: "Doble Twin",
+    photos: [
+      "/hotel/galeria/habitaciones/doble-single/doble-single-01.webp",
+      "/hotel/galeria/habitaciones/doble-single/doble-single-02.webp",
+      "/hotel/galeria/habitaciones/doble-single/doble-single-03.webp",
+    ],
+  },
+  {
+    slug: "doble-suite-sillas",
+    label: "Suite con Sillas",
+    photos: [
+      "/hotel/galeria/habitaciones/doble-suite-sillas/doble-suite-sillas-01.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillas/doble-suite-sillas-02.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillas/doble-suite-sillas-03.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillas/doble-suite-sillas-04.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillas/doble-suite-sillas-05.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillas/doble-suite-sillas-06.webp",
+    ],
+  },
+  {
+    slug: "doble-standard",
+    label: "Doble Matrimonial",
+    photos: [
+      "/hotel/galeria/habitaciones/doble-standard/doble-standard-01.webp",
+      "/hotel/galeria/habitaciones/doble-standard/doble-standard-02.webp",
+    ],
+  },
+  {
+    slug: "doble-suite-sillones",
+    label: "Suite Matrimonial",
+    photos: [
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-01.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-02.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-03.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-04.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-06.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-07.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-08.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-09.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-10.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-11.webp",
+      "/hotel/galeria/habitaciones/doble-suite-sillones/doble-suite-sillones-12.webp",
+    ],
+  },
+  {
+    slug: "fachada",
+    label: "Fachada",
+    photos: [
+      "/hotel/galeria/amenities/fachada/fachada-01.webp",
+      "/hotel/galeria/amenities/fachada/fachada-02.webp",
+      "/hotel/galeria/amenities/fachada/fachada-03.webp",
+    ],
+  },
+  {
+    slug: "desayuno",
+    label: "Desayuno",
+    photos: [
+      "/hotel/galeria/amenities/desayuno/desayuno-01.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-02.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-03.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-04.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-05.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-06.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-07.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-08.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-09.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-10.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-11.webp",
+      "/hotel/galeria/amenities/desayuno/desayuno-12.webp",
+    ],
+  },
+  {
+    slug: "home",
+    label: "Lobby",
+    photos: ["/hotel/galeria/amenities/home/home-01.webp"],
+  },
+  {
+    slug: "salon",
+    label: "Salón de Eventos",
+    photos: [
+      "/hotel/galeria/amenities/salon/salon-01.webp",
+      "/hotel/galeria/amenities/salon/salon-02.webp",
+      "/hotel/galeria/amenities/salon/salon-03.webp",
+    ],
+  },
+];
+
 export const GALLERY_IMAGES = [
   { src: "/hotel/amenities/home/home-01.webp", alt: "Lobby del hotel", span: "col-span-2 row-span-2" },
   { src: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp", alt: "Suite matrimonial" },
@@ -134,4 +264,6 @@ export const GALLERY_IMAGES = [
   { src: "/hotel/amenities/salon/salon-01.webp", alt: "Salón de eventos" },
   { src: "/hotel/habitaciones/doble-single/doble-single-01.webp", alt: "Habitación twin" },
   { src: "/hotel/amenities/fachada/fachada-01.webp", alt: "Fachada del hotel" },
+  { src: "/hotel/habitaciones/triple-ms/triple-ms-01.webp", alt: "Habitación triple" },
+  { src: "/hotel/amenities/fachada/fachada-02.webp", alt: "Fachada del hotel de noche" },
 ] as const;

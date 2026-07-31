@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+        <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="">
+
+    <title>Wilson Hotel</title>
+    <link rel="stylesheet" href="https://motor.winpax.com.ar/css/estilos.css">
+    <link rel="stylesheet" href="https://motor.winpax.com.ar/css/jquery.css">
+    <link rel="stylesheet" href="https://motor.winpax.com.ar/css/font-awesome-4.6.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://motor.winpax.com.ar/css/icon-amenities/style.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,700">
+    <link rel="stylesheet" href="https://motor.winpax.com.ar/css/daterangepicker.min.css">
+    <link href='https://winpax-files.s3.amazonaws.com/projects-storage/motor/uploads/133/style.css' rel='stylesheet'>    <link href="https://motor.winpax.com.ar/css/mobile.css" rel="stylesheet">
+
+    <script src="https://motor.winpax.com.ar/js/jquery.js"></script>
+    <script src="https://motor.winpax.com.ar/js/general.js"></script>
+    <script src="https://motor.winpax.com.ar/js/moment.min.js"></script>
+    <script src="https://motor.winpax.com.ar/js/jquery.daterangepicker.min.js"></script>
+    <script src="https://motor.winpax.com.ar/js/validations.js"></script>
+</head>
+
+<body id=''>
+        <div id="loading">
+        <div></div>
+    </div>
+    <div id="dialog"></div>
+    <div id="load"></div>
+
+            <header>
+            <h1><a href="https://wilsonhotel.com.ar/">Wilson Hotel</a></h1>        </header>
+    
+    <main>
+    <div id="search">
+        <h2>Buscar</h2>
+
+        <form autocomplete="off">
+            <input type="hidden" name="hotel_id" value="133">
+            <input type="hidden" id="lang" name="lang" value="">
+            <input type="hidden" id="currency_code" name="currency_code" value="">
+
+            <span id="calendar" style="display: block;">
+                <label>
+                    <h5>Desde</h5>
+                    <input type="text" id="from" name="date_from" readonly="readonly" value="30-07-2026">
+                </label>
+    
+                <label>
+                    <h5>Hasta</h5>
+                    <input type="text" id="to" name="date_to" readonly="readonly" value="31-07-2026">
+                </label>
+            </span>
+            <span id="adults_kids" style="display: none;">
+                <label>
+                    <h5>Adultos</h5>
+                    <input type="number" id="adults" name="adults" value="">
+                </label>
+    
+                <label>
+                    <h5>Menores</h5>
+                    <input type="number" id="kids" name="kids" value="">
+                </label>
+            </span>
+            <input type="hidden" name="guest_id" value="">
+            <input type="hidden" name="act" value="">
+            
+            <p>
+                <input type="submit" name="search" value="Buscar">
+            </p>
+            <p>
+                <a class='modify' href='modify/?hotel_id=133'>&raquo; Modificar / Cancelar una reserva</a>
+                <a class='insert_search_rate'>&raquo; Ingresar Código Promocional</a>
+                <input class="search_rate" type="text" name="search_rate" value="" 
+                    placeholder="Código Promocional" >
+            </p>
+        </form>
+
+        <nav><div id='currencies'><a ><strong>ARS</strong></a><ul rel='curr'><li><a rel='USD' ><strong>USD</strong> Dólar estadounidense</a></li><li><a rel='EUR' ><strong>EUR</strong> Euro</a></li><li><a rel='ARS' class='active'><strong>ARS</strong> Peso Argentino</a></li></ul></div> <div id='lang'><a><img src='img/flags/es.png' alt='es'></a><ul rel='lang'><li><a rel='es' class='active'><img src='img/flags/es.png' alt='es'> Español</a></li><li><a rel='en' ><img src='img/flags/en.png' alt='en'> Inglés</a></li><li><a rel='pt' ><img src='img/flags/pt.png' alt='pt'> Portugués</a></li></ul></div></nav>
+    </div>
+    
+    <div id='room_price'>
+        <div class='show'>
+            <h6>Seleccione al menos una habitación</h6>
+            <p><span class='btn'>Reservar</span></p>
+        </div>
+
+        <div class='hide'></div>
+        <div class='load'></div>
+    </div>
+    <div id='room_price_link'>
+        <span class='fa fa-shopping-cart'></span><span class='badge'>0</span>
+    </div><style>#loading { display: block; }</style><div id="rooms" ><h2>Habitaciones</h2>
+            <div id="SGL" class="rooms no-bedding" rel="SGL" data-id="8191">
+                <div>
+                    <div class="room_picture">
+                        <figure style="background-image:url('https://winpax-files.s3.amazonaws.com/projects-storage/motor/uploads/133/rooms/8191.jpg')" title="Ver detalles de la habitación"></figure>
+                        <div class="buttons-container">
+                        <div class="button-radio"></div><div class="button-radio"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room_title">
+                    <h3>
+                        Habitación Single
+                        <span class="tip room_max_pax" title="Ocupación máxima:<br> 1 Huesped" style="background-image: none;">
+                            <span class="fa fa-user" style="background-image: none;"></span>
+                        </span>
+                    </h3>
+                    <p class="room_availability"></p>
+                    <p>Habitación Single</p>
+                    <ul class="icons-amenities">
+                        <li><i class="icon-digital-phone" title="Teléfono "></i></li><li><i class="icon-television-screen" title="TV LED"></i></li><li><i class="icon-television" title="TV por cable "></i></li><li><i class="icon-wifi" title="WiFi"></i></li><li><i class="icon-hotel-elevator-sign" title="Acceso por ascesor"></i></li><li><i class="icon-upstairs" title="Acceso por escalera"></i></li><li><i class="icon-thermometer-cold-temperature" title="Aire Acondicionado"></i></li><li><i class="icon-bathtub-with-water-dropping" title="Bañera"></i></li><li><i class="icon-security-box2" title="Caja fuerte"></i></li><li><i class="icon-security-safe-box" title="Caja Fuerte"></i></li><li><i class="icon-hotel-keycard" title="Cerradura magnética "></i></li><li><i class="icon-teacup" title="Desayuno Incluido"></i></li><li><i class="icon-no-smoking" title="Habitación libre de humo"></i></li><li><i class="icon-information-sign" title="Información turística"></i></li><li><i class="icon-wifi" title="Internet Wi - Fi"></i></li><li><i class="icon-hotel-maid" title="Servicio de mucama"></i></li>
+                    </ul>
+                    
+                </div>
+                <div class="room_rates">
+                    
+                <div class="rates " rel="BBARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento  y Desayuno
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 63223.14</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 63223.14</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="1" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates promo_search_2" rel="LST" data-is-day-use="">
+                    <div class="rate_descr tip" title="Último Minuto ">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Último Minuto <br><span class='promo_search'>OFERTA</span>
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 53739.67</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 53739.67</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="1" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates " rel="NRARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno No Reembolsable">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento y Desayuno No Reembolsable
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 56900.83</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 56900.83</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="1" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                </div>             
+            </div>
+             
+            <div id="MAT" class="rooms no-bedding" rel="MAT" data-id="4487">
+                <div>
+                    <div class="room_picture">
+                        <figure style="background-image:url('https://winpax-files.s3.amazonaws.com/projects-storage/motor/uploads/133/rooms/4487.JPG')" title="Ver detalles de la habitación"></figure>
+                        <div class="buttons-container">
+                        <div class="button-radio"></div><div class="button-radio"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room_title">
+                    <h3>
+                        Habitación Doble Matrimonial
+                        <span class="tip room_max_pax" title="Ocupación máxima:<br> 2 huéspedes" style="background-image: none;">
+                            <span class="fa fa-user" style="background-image: none;"></span><span class="fa fa-user" style="background-image: none;"></span>
+                        </span>
+                    </h3>
+                    <p class="room_availability"></p>
+                    <p>Habitacion doble matrimonial</p>
+                    <ul class="icons-amenities">
+                        <li><i class="icon-digital-phone" title="Teléfono "></i></li><li><i class="icon-television-screen" title="TV LED"></i></li><li><i class="icon-television" title="TV por cable "></i></li><li><i class="icon-wifi" title="WiFi"></i></li><li><i class="icon-hotel-elevator-sign" title="Acceso por ascesor"></i></li><li><i class="icon-upstairs" title="Acceso por escalera"></i></li><li><i class="icon-thermometer-cold-temperature" title="Aire Acondicionado"></i></li><li><i class="icon-bathtub-with-water-dropping" title="Bañera"></i></li><li><i class="icon-security-box2" title="Caja fuerte"></i></li><li><i class="icon-hotel-keycard" title="Cerradura magnética "></i></li><li><i class="icon-teacup" title="Desayuno Incluido"></i></li><li><i class="icon-no-smoking" title="Habitación libre de humo"></i></li><li><i class="icon-information-sign" title="Información turística"></i></li><li><i class="icon-wifi" title="Internet Wi - Fi"></i></li><li><i class="icon-no-animals-allowed" title="NO se admiten mascotas"></i></li><li><i class="icon-sweeping-broom" title="Servicio de Limpieza"></i></li>
+                    </ul>
+                    
+                </div>
+                <div class="room_rates">
+                    
+                <div class="rates " rel="BBARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento  y Desayuno
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 98347.11</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 98347.11</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="2" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates promo_search_2" rel="LST" data-is-day-use="">
+                    <div class="rate_descr tip" title="Último Minuto ">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Último Minuto <br><span class='promo_search'>OFERTA</span>
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 83595.04</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 83595.04</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="2" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates " rel="NRARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno No Reembolsable">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento y Desayuno No Reembolsable
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 88512.4</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 88512.4</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="2" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                </div>             
+            </div>
+             
+            <div id="TWN" class="rooms no-bedding" rel="TWN" data-id="8194">
+                <div>
+                    <div class="room_picture">
+                        <figure style="background-image:url('https://winpax-files.s3.amazonaws.com/projects-storage/motor/uploads/133/rooms/8194.jpg')" title="Ver detalles de la habitación"></figure>
+                        <div class="buttons-container">
+                        <div class="button-radio"></div><div class="button-radio"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room_title">
+                    <h3>
+                        Habitacion Doble Twin
+                        <span class="tip room_max_pax" title="Ocupación máxima:<br> 3 huéspedes" style="background-image: none;">
+                            <span class="fa fa-user" style="background-image: none;"></span><span class="fa fa-user" style="background-image: none;"></span><span class="fa fa-user" style="background-image: none;"></span>
+                        </span>
+                    </h3>
+                    <p class="room_availability"></p>
+                    <p>Habitacion Doble Twin</p>
+                    <ul class="icons-amenities">
+                        <li><i class="icon-digital-phone" title="Teléfono "></i></li><li><i class="icon-television-screen" title="TV LED"></i></li><li><i class="icon-television" title="TV por cable "></i></li><li><i class="icon-wifi" title="WiFi"></i></li><li><i class="icon-hotel-elevator-sign" title="Acceso por ascesor"></i></li><li><i class="icon-upstairs" title="Acceso por escalera"></i></li><li><i class="icon-thermometer-cold-temperature" title="Aire Acondicionado"></i></li><li><i class="icon-hair-scissors-and-comb" title="Artículos de tocador gratuitos."></i></li><li><i class="icon-bathtub-with-water-dropping" title="Bañera"></i></li><li><i class="icon-security-box2" title="Caja fuerte"></i></li><li><i class="icon-security-safe-box" title="Caja Fuerte"></i></li><li><i class="icon-hotel-keycard" title="Cerradura magnética "></i></li><li><i class="icon-teacup" title="Desayuno Incluido"></i></li><li><i class="icon-no-smoking" title="Habitación libre de humo"></i></li><li><i class="icon-information-sign" title="Información turística"></i></li><li><i class="icon-wifi" title="Internet Wi - Fi"></i></li><li><i class="icon-no-animals-allowed" title="NO se admiten mascotas"></i></li>
+                    </ul>
+                    
+                </div>
+                <div class="room_rates">
+                    
+                <div class="rates " rel="BBARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento  y Desayuno
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 98347.11</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 98347.11</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates promo_search_2" rel="LST" data-is-day-use="">
+                    <div class="rate_descr tip" title="Último Minuto ">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Último Minuto <br><span class='promo_search'>OFERTA</span>
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 83595.04</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 83595.04</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates " rel="NRARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno No Reembolsable">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento y Desayuno No Reembolsable
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 88512.4</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 88512.4</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                </div>             
+            </div>
+             
+            <div id="JRS" class="rooms no-bedding" rel="JRS" data-id="8197">
+                <div>
+                    <div class="room_picture">
+                        <figure style="background-image:url('https://winpax-files.s3.amazonaws.com/projects-storage/motor/uploads/133/rooms/8197.JPG')" title="Ver detalles de la habitación"></figure>
+                        <div class="buttons-container">
+                        <div class="button-radio"></div><div class="button-radio"></div><div class="button-radio"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room_title">
+                    <h3>
+                        Junior Suite Matrimonial
+                        <span class="tip room_max_pax" title="Ocupación máxima:<br> 3 huéspedes" style="background-image: none;">
+                            <span class="fa fa-user" style="background-image: none;"></span><span class="fa fa-user" style="background-image: none;"></span><span class="fa fa-user" style="background-image: none;"></span>
+                        </span>
+                    </h3>
+                    <p class="room_availability"></p>
+                    <p>Junior Suite Matrimonial</p>
+                    <ul class="icons-amenities">
+                        <li><i class="icon-digital-phone" title="Teléfono "></i></li><li><i class="icon-television-screen" title="TV LED"></i></li><li><i class="icon-television" title="TV por cable "></i></li><li><i class="icon-wifi" title="WiFi"></i></li><li><i class="icon-hotel-elevator-sign" title="Acceso por ascesor"></i></li><li><i class="icon-upstairs" title="Acceso por escalera"></i></li><li><i class="icon-thermometer-cold-temperature" title="Aire Acondicionado"></i></li><li><i class="icon-bathtub-with-water-dropping" title="Bañera"></i></li><li><i class="icon-security-box2" title="Caja fuerte"></i></li><li><i class="icon-security-safe-box" title="Caja Fuerte"></i></li><li><i class="icon-bed" title="Cama King size"></i></li><li><i class="icon-hotel-keycard" title="Cerradura magnética "></i></li><li><i class="icon-teacup" title="Desayuno Incluido"></i></li><li><i class="icon-no-smoking" title="Habitación libre de humo"></i></li><li><i class="icon-information-sign" title="Información turística"></i></li><li><i class="icon-wifi" title="Internet Wi - Fi"></i></li><li><i class="icon-drinks" title="Mini heladera"></i></li><li><i class="icon-no-animals-allowed" title="NO se admiten mascotas"></i></li><li><i class="icon-hair-dryer3" title="Secador de cabello"></i></li><li><i class="icon-bed3" title="Sofa"></i></li><li><i class="icon-clothes-hanger2" title=" Vestidor"></i></li>
+                    </ul>
+                    
+                </div>
+                <div class="room_rates">
+                    
+                <div class="rates " rel="BBARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento  y Desayuno
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 119421.49</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 119421.49</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates promo_search_2" rel="LST" data-is-day-use="">
+                    <div class="rate_descr tip" title="Último Minuto ">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Último Minuto <br><span class='promo_search'>OFERTA</span>
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 101508.26</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 101508.26</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates " rel="NRARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno No Reembolsable">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento y Desayuno No Reembolsable
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 107479.34</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 107479.34</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                </div>             
+            </div>
+             
+            <div id="TPL" class="rooms no-bedding" rel="TPL" data-id="27221">
+                <div>
+                    <div class="room_picture">
+                        <figure style="background-image:url('https://winpax-files.s3.amazonaws.com/projects-storage/motor/uploads/133/rooms/27221.jpg')" title="Ver detalles de la habitación"></figure>
+                        <div class="buttons-container">
+                        <div class="button-radio"></div><div class="button-radio"></div><div class="button-radio"></div><div class="button-radio"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room_title">
+                    <h3>
+                        Triple
+                        <span class="tip room_max_pax" title="Ocupación máxima:<br> 3 huéspedes" style="background-image: none;">
+                            <span class="fa fa-user" style="background-image: none;"></span><span class="fa fa-user" style="background-image: none;"></span><span class="fa fa-user" style="background-image: none;"></span>
+                        </span>
+                    </h3>
+                    <p class="room_availability"></p>
+                    <p> </p>
+                    <ul class="icons-amenities">
+                        <li><i class="icon-digital-phone" title="Teléfono "></i></li><li><i class="icon-television-screen" title="TV LED"></i></li><li><i class="icon-television" title="TV por cable "></i></li><li><i class="icon-wifi" title="WiFi"></i></li><li><i class="icon-hotel-elevator-sign" title="Acceso por ascesor"></i></li><li><i class="icon-upstairs" title="Acceso por escalera"></i></li><li><i class="icon-thermometer-cold-temperature" title="Aire Acondicionado"></i></li><li><i class="icon-security-box2" title="Caja fuerte"></i></li><li><i class="icon-security-safe-box" title="Caja Fuerte"></i></li><li><i class="icon-hotel-keycard" title="Cerradura magnética "></i></li><li><i class="icon-teacup" title="Desayuno Incluido"></i></li><li><i class="icon-no-smoking" title="Habitación libre de humo"></i></li><li><i class="icon-information-sign" title="Información turística"></i></li><li><i class="icon-wifi" title="Internet Wi - Fi"></i></li><li><i class="icon-no-animals-allowed" title="NO se admiten mascotas"></i></li>
+                    </ul>
+                    
+                </div>
+                <div class="room_rates">
+                    
+                <div class="rates " rel="BBARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento  y Desayuno
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 119421.49</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 119421.49</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates promo_search_2" rel="LST" data-is-day-use="">
+                    <div class="rate_descr tip" title="Último Minuto ">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Último Minuto <br><span class='promo_search'>OFERTA</span>
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 101508.26</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 101508.26</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                <div class="rates " rel="NRARS" data-is-day-use="">
+                    <div class="rate_descr tip" title="Alojamiento y Desayuno No Reembolsable">
+                    <span class="fa fa-info-circle"></span>
+                        <br>
+                        Alojamiento y Desayuno No Reembolsable
+                    </div>
+                    <div class="rate_price tip" title="<div><span>Jueves 30</span> - 107479.34</div>">
+                        <span class="fa fa-info-circle"></span>
+                        <h4><small>ARS</small> 107479.34</h4>
+                    </div>
+                    <div class="rate_qty" data-max-pax="3" data-min-pax="1" data-max-pax-no-ocupan="0">
+                        <label class="label_rate_qty">Habitaciones </label>
+                        <select class="rate_select" data-total="0"><option value='0'  selected>0</option><option value='1' >1</option><option value='2' >2</option><option value='3' >3</option><option value='4' >4</option><option value='5' >5</option><option value='6' >6</option></select>
+
+                        <div class="div_pax">
+                        </div>
+                    </div>
+                </div>
+                </div>             
+            </div>
+              </div>
+            <div id='hotel_amenities'>
+                <h2>Amenities de Hotel</h2>
+                <div class='contenedor'>
+                    
+                <div>
+                    <ul class='col-3'>
+                        <li><h3><i class='icon-hotel-1'></i> General</h3></li>
+                        <li><span class='fa fa-check'></span> Ascensor</li><li><span class='fa fa-check'></span> Estacionamiento (sujeto a disponibilidad)</li><li><span class='fa fa-check'></span> Servicio medico de urgencia</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class='col-3'>
+                        <li><h3><i class='icon-valet-head'></i> Idiomas</h3></li>
+                        <li><span class='fa fa-check'></span> Inglés</li><li><span class='fa fa-check'></span> Español</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class='col-3'>
+                        <li><h3><i class='icon-wifi'></i> Internet</h3></li>
+                        <li><span class='fa fa-check'></span> WIFI</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class='col-3'>
+                        <li><h3><i class='icon-hotel-receptionist'></i> Servicios de Recepción</h3></li>
+                        <li><span class='fa fa-check'></span> Información turística</li><li><span class='fa fa-check'></span> Recepción 24 Hs</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+<div id="reload_session_booking"></div>
+
+<script>
+        hotel = JSON.parse('{"chain_id":20963,"hotel_id":133,"name":"Wilson Hotel","active":true,"calendar":{"status":false},"search_availability":{"status":false},"winpax":{"host_ip":["108.181.188.80"],"cards_security":false,"cards_security_encryption":true},"feature":{"search_adults_kids":false,"real_availability":{"status":false,"percentages":{"motor":100,"external":100}}},"email_confirm_fields":{"phone":false,"room_number":false},"agents":{"send_email_to_guest":false},"checkout_fields":{"phone_number":true,"document_type":true,"nationality":true,"postal_address":true,"postal_code":true,"document_number":true,"commentary":true,"city":true,"country":true},"central_fields":{"phone_number":true,"document_type":true,"nationality":true,"postal_address":true,"postal_code":true,"document_number":true,"commentary":true,"city":true,"country":true},"online_payments":{"ms_payments_client_id":"","expire":5},"firstdata":{"show_voucher":""},"afip":{"ms_afip_client_id":"","voucher_type":""},"email_origin_recipients":[],"home_assistant":{"client_id":""},"channex":{"expedia_commission":0},"currencies":{"USD":{"id":3008,"code":"USD","lang_name":245,"quotation":1},"EUR":{"id":3010,"code":"EUR","lang_name":247,"quotation":0.8713},"ARS":{"id":36571,"code":"ARS","lang_name":31803,"quotation":1515}},"languages":{"es":{"id":3013,"code":"es","lang_name":248},"en":{"id":3014,"code":"en","lang_name":249},"pt":{"id":9883,"code":"pt","lang_name":6114}},"email_contact":["info@wilsonhotel.com.ar"],"email_from":"reservas@wilsonhotel.com.ar","max_age_kid":3,"payment_type":1,"round_rate":false,"tax":21,"has_winpax":true,"payment_cft":0,"type_search_price":2,"show_tax":true,"accept_modify":true,"auto_confirm":true,"price_per_pax":true,"accept_search_code":true,"prices_with_tax":false,"email_recipient":["info@wilsonhotel.com.ar"],"support":true,"checkin_time":"03:00 PM","checkout_time":"10:00 AM","default_currency":"ARS","default_language":"es","analytics":[""],"additional_scripts":"","checkin_time_parsed":"2026-07-30 15:00","checkout_time_parsed":"2026-07-30        10:00","contact":{"country":"5","state":"1834","city":"571774","address":"Alvarado 950","latitude":null,"longitude":null,"phone":"0387-4312211"},"room_types":{"TPL":{"id":27221,"code":"TPL","external_code":"","default_bedding":"M","occupancy":{"search_alert":{"status":false,"minimum":0},"search_pax_base":2,"min":1,"max":3,"max_occupy":3,"max_extra_bed":0,"max_not_occupy":0,"advanced":{"status":false,"config":[]}},"max_per_reservation":6,"default":false,"overbooking":false,"block":"","category":"","influences_availability":false,"internet":true,"internet_stock":false,"share_availability_with":"","derives_availability_from":"","share_rate_base_with":"","discount_type":"P","discount_action":"R","discount":"","lang_name":24239,"lang_description":24240,"lang_payment_terms":null,"picture":"27221.jpg","max_hab_agents":0,"bedding":false,"order":6,"minimum_amount":10,"vertical":"M","mappings":{"channex":"e7928846-1731-44c5-955d-399a190e16ae"},"payment_terms":null,"active":true,"receives_inventory":null,"share_inventory":null,"details":[{"lang_detail":24241}],"pictures":[{"picture":"39354.jpg","lang_description":35123,"order":1},{"picture":"39360.jpg","lang_description":35129,"order":2},{"picture":"39363.jpg","lang_description":35132,"order":3},{"picture":"39364.jpg","lang_description":35133,"order":4}],"amenities":[{"id":3591,"code":"icon-digital-phone","lang_name":1167},{"id":3687,"code":"icon-television-screen","lang_name":1265},{"id":3572,"code":"icon-television","lang_name":1147},{"id":3473,"code":"icon-wifi","lang_name":1024},{"id":29264,"code":"icon-hotel-elevator-sign","lang_name":25343},{"id":29263,"code":"icon-upstairs","lang_name":25342},{"id":3589,"code":"icon-thermometer-cold-temperature","lang_name":1165},{"id":3688,"code":"icon-security-box2","lang_name":1266},{"id":33787,"code":"icon-security-safe-box","lang_name":29558},{"id":3689,"code":"icon-hotel-keycard","lang_name":1267},{"id":27553,"code":"icon-teacup","lang_name":24579},{"id":19098,"code":"icon-no-smoking","lang_name":15720},{"id":3575,"code":"icon-information-sign","lang_name":1150},{"id":27551,"code":"icon-wifi","lang_name":24577},{"id":8362,"code":"icon-no-animals-allowed","lang_name":5075}]},"JRS":{"id":8197,"code":"JRS","external_code":"","default_bedding":"M","occupancy":{"search_alert":{"status":false,"minimum":0},"search_pax_base":2,"min":1,"max":2,"max_occupy":2,"max_extra_bed":1,"max_not_occupy":0,"advanced":{"status":false,"config":[]}},"max_per_reservation":6,"default":false,"overbooking":false,"block":"","category":"","influences_availability":false,"internet":true,"internet_stock":false,"share_availability_with":"","derives_availability_from":"","share_rate_base_with":"","discount_type":"P","discount_action":"R","discount":"","lang_name":4883,"lang_description":4884,"lang_payment_terms":null,"picture":"8197.JPG","max_hab_agents":0,"bedding":false,"order":5,"minimum_amount":8000,"vertical":"M","mappings":{"channex":"dbde429a-4254-4197-8125-8ae44068a908"},"payment_terms":null,"active":true,"receives_inventory":null,"share_inventory":null,"details":[{"lang_detail":4885}],"pictures":[{"picture":"38609.jpeg","lang_description":34148,"order":1},{"picture":"39366.jpg","lang_description":35135,"order":2},{"picture":"39367.jpg","lang_description":35136,"order":3}],"amenities":[{"id":3591,"code":"icon-digital-phone","lang_name":1167},{"id":3687,"code":"icon-television-screen","lang_name":1265},{"id":3572,"code":"icon-television","lang_name":1147},{"id":3473,"code":"icon-wifi","lang_name":1024},{"id":29264,"code":"icon-hotel-elevator-sign","lang_name":25343},{"id":29263,"code":"icon-upstairs","lang_name":25342},{"id":3589,"code":"icon-thermometer-cold-temperature","lang_name":1165},{"id":3590,"code":"icon-bathtub-with-water-dropping","lang_name":1166},{"id":3688,"code":"icon-security-box2","lang_name":1266},{"id":33787,"code":"icon-security-safe-box","lang_name":29558},{"id":19100,"code":"icon-bed","lang_name":15722},{"id":3689,"code":"icon-hotel-keycard","lang_name":1267},{"id":27553,"code":"icon-teacup","lang_name":24579},{"id":19098,"code":"icon-no-smoking","lang_name":15720},{"id":3575,"code":"icon-information-sign","lang_name":1150},{"id":27551,"code":"icon-wifi","lang_name":24577},{"id":27552,"code":"icon-drinks","lang_name":24578},{"id":8362,"code":"icon-no-animals-allowed","lang_name":5075},{"id":3571,"code":"icon-hair-dryer3","lang_name":1146},{"id":7161,"code":"icon-bed3","lang_name":4494},{"id":17533,"code":"icon-clothes-hanger2","lang_name":13812}]},"TWN":{"id":8194,"code":"TWN","external_code":"","default_bedding":"M","occupancy":{"search_alert":{"status":false,"minimum":0},"search_pax_base":2,"min":1,"max":2,"max_occupy":2,"max_extra_bed":1,"max_not_occupy":0,"advanced":{"status":false,"config":[]}},"max_per_reservation":6,"default":false,"overbooking":false,"block":"","category":"","influences_availability":false,"internet":true,"internet_stock":false,"share_availability_with":"","derives_availability_from":"","share_rate_base_with":"","discount_type":"P","discount_action":"R","discount":"","lang_name":4879,"lang_description":4880,"lang_payment_terms":null,"picture":"8194.jpg","max_hab_agents":0,"bedding":false,"order":4,"minimum_amount":8000,"vertical":"M","mappings":{"channex":"d10013f4-80f0-4559-868c-1cc4cdb86b5a"},"payment_terms":null,"active":true,"receives_inventory":null,"share_inventory":null,"details":[{"lang_detail":4881}],"pictures":[{"picture":"39368.jpg","lang_description":35137,"order":1},{"picture":"39369.jpg","lang_description":35138,"order":2}],"amenities":[{"id":3591,"code":"icon-digital-phone","lang_name":1167},{"id":3687,"code":"icon-television-screen","lang_name":1265},{"id":3572,"code":"icon-television","lang_name":1147},{"id":3473,"code":"icon-wifi","lang_name":1024},{"id":29264,"code":"icon-hotel-elevator-sign","lang_name":25343},{"id":29263,"code":"icon-upstairs","lang_name":25342},{"id":3589,"code":"icon-thermometer-cold-temperature","lang_name":1165},{"id":7150,"code":"icon-hair-scissors-and-comb","lang_name":4480},{"id":3590,"code":"icon-bathtub-with-water-dropping","lang_name":1166},{"id":3688,"code":"icon-security-box2","lang_name":1266},{"id":33787,"code":"icon-security-safe-box","lang_name":29558},{"id":3689,"code":"icon-hotel-keycard","lang_name":1267},{"id":27553,"code":"icon-teacup","lang_name":24579},{"id":19098,"code":"icon-no-smoking","lang_name":15720},{"id":3575,"code":"icon-information-sign","lang_name":1150},{"id":27551,"code":"icon-wifi","lang_name":24577},{"id":8362,"code":"icon-no-animals-allowed","lang_name":5075}]},"SGL":{"id":8191,"code":"SGL","external_code":"","default_bedding":"T","occupancy":{"search_alert":{"status":false,"minimum":0},"search_pax_base":2,"min":1,"max":1,"max_occupy":1,"max_extra_bed":0,"max_not_occupy":0,"advanced":{"status":false,"config":[]}},"max_per_reservation":6,"default":false,"overbooking":false,"block":"","category":"","influences_availability":false,"internet":true,"internet_stock":false,"share_availability_with":"","derives_availability_from":"","share_rate_base_with":"","discount_type":"P","discount_action":"R","discount":"","lang_name":4875,"lang_description":4876,"lang_payment_terms":null,"picture":"8191.jpg","max_hab_agents":0,"bedding":false,"order":2,"minimum_amount":4800,"vertical":"M","mappings":{"channex":"e4192f2e-495e-4beb-94f2-725f2615eadf"},"payment_terms":null,"active":true,"receives_inventory":null,"share_inventory":null,"details":[{"lang_detail":4877}],"pictures":[{"picture":"39371.jpg","lang_description":35140,"order":1},{"picture":"39372.jpg","lang_description":35141,"order":2}],"amenities":[{"id":3591,"code":"icon-digital-phone","lang_name":1167},{"id":3687,"code":"icon-television-screen","lang_name":1265},{"id":3572,"code":"icon-television","lang_name":1147},{"id":3473,"code":"icon-wifi","lang_name":1024},{"id":29264,"code":"icon-hotel-elevator-sign","lang_name":25343},{"id":29263,"code":"icon-upstairs","lang_name":25342},{"id":3589,"code":"icon-thermometer-cold-temperature","lang_name":1165},{"id":3590,"code":"icon-bathtub-with-water-dropping","lang_name":1166},{"id":3688,"code":"icon-security-box2","lang_name":1266},{"id":33787,"code":"icon-security-safe-box","lang_name":29558},{"id":3689,"code":"icon-hotel-keycard","lang_name":1267},{"id":27553,"code":"icon-teacup","lang_name":24579},{"id":19098,"code":"icon-no-smoking","lang_name":15720},{"id":3575,"code":"icon-information-sign","lang_name":1150},{"id":27551,"code":"icon-wifi","lang_name":24577},{"id":3573,"code":"icon-hotel-maid","lang_name":1148}]},"MAT":{"id":4487,"code":"MAT","external_code":"","default_bedding":"M","occupancy":{"search_alert":{"status":false,"minimum":0},"search_pax_base":2,"min":1,"max":2,"max_occupy":2,"max_extra_bed":0,"max_not_occupy":0,"advanced":{"status":false,"config":[]}},"max_per_reservation":6,"default":false,"overbooking":false,"block":"","category":"","influences_availability":false,"internet":true,"internet_stock":false,"share_availability_with":"","derives_availability_from":"","share_rate_base_with":"","discount_type":"P","discount_action":"R","discount":"","lang_name":2264,"lang_description":2265,"lang_payment_terms":null,"picture":"4487.JPG","max_hab_agents":0,"bedding":false,"order":3,"minimum_amount":6400,"vertical":"M","mappings":{"channex":"5a64b875-84e5-4ff3-b7f3-18a33b8be39e"},"payment_terms":null,"active":true,"receives_inventory":null,"share_inventory":null,"details":[{"lang_detail":2266}],"pictures":[{"picture":"39005.jpg","lang_description":34695,"order":1},{"picture":"39370.jpg","lang_description":35139,"order":2}],"amenities":[{"id":3591,"code":"icon-digital-phone","lang_name":1167},{"id":3687,"code":"icon-television-screen","lang_name":1265},{"id":3572,"code":"icon-television","lang_name":1147},{"id":3473,"code":"icon-wifi","lang_name":1024},{"id":29264,"code":"icon-hotel-elevator-sign","lang_name":25343},{"id":29263,"code":"icon-upstairs","lang_name":25342},{"id":3589,"code":"icon-thermometer-cold-temperature","lang_name":1165},{"id":3590,"code":"icon-bathtub-with-water-dropping","lang_name":1166},{"id":3688,"code":"icon-security-box2","lang_name":1266},{"id":3689,"code":"icon-hotel-keycard","lang_name":1267},{"id":27553,"code":"icon-teacup","lang_name":24579},{"id":19098,"code":"icon-no-smoking","lang_name":15720},{"id":3575,"code":"icon-information-sign","lang_name":1150},{"id":27551,"code":"icon-wifi","lang_name":24577},{"id":8362,"code":"icon-no-animals-allowed","lang_name":5075},{"id":33811,"code":"icon-sweeping-broom","lang_name":29595}]}},"rate_plans":{"LM":{"id":26907,"code":"LM","central":{"show":false},"winbot":{"show":false},"winpax":{"send_description":false},"is_day_use":false,"lang_name":23939,"lang_description":23940,"lang_payment_terms":2375,"refundable":false,"private":true,"order":null,"vertical":"M","mappings":{"channex":{"MAT":"0ebdc18a-c220-4fb4-ac5c-7485d6578840","SGL":"db7092ed-4f26-4b99-82d3-f7ff39097ff0","TWN":"429bf269-ec13-40c5-a582-8896efd8a65f","JRS":"f7bcdde7-fb4f-455d-971e-4592e4d306b1","TPL":"883cedd5-5114-4377-b50f-abb9c692b5a0"}},"highlight":false,"currency_show":null,"currency_rates":"USD","payment_terms":4584,"active":true,"only_agency":false,"derived_from":"BB"},"NR":{"id":26285,"code":"NR","central":{"show":false},"winpax":{"send_description":false},"is_day_use":false,"lang_name":23355,"lang_description":23356,"lang_payment_terms":2376,"refundable":false,"private":true,"order":null,"vertical":"M","mappings":{"channex":{"JRS":"0838c5b3-a596-42b2-8cd7-f4ceffb71ca3","MAT":"e0be9a9a-bf83-4b04-ad7b-f46aa5cc770d","SGL":"a49a5f50-263b-4fd9-9d60-cbc1df6fbdd9","TWN":"da0eaf19-e607-4e6f-9472-386c04bce8cc","APA":"6920a08e-b868-4b6a-b709-f5b28313bfe0","TPL":"1ed4f17e-f964-4acd-bc0b-c2f66abc0ee4"}},"highlight":false,"currency_show":null,"currency_rates":"USD","payment_terms":4585,"active":true,"only_agency":false,"derived_from":"BB"},"BB":{"id":26284,"code":"BB","central":{"show":false},"winpax":{"send_description":false},"is_day_use":false,"lang_name":23353,"lang_description":23354,"lang_payment_terms":2376,"refundable":true,"private":true,"order":null,"vertical":"M","mappings":{"channex":{"JRS":"6504dd94-5125-46c6-a498-5106ed34fe79","MAT":"848071c8-eb4c-406f-be45-98c1b251c7ae","SGL":"36520ddc-17d4-45d6-be3e-38be0312472e","TWN":"c4d8cd51-e56c-40d9-9521-a6a164b2529a","APA":"23b0f3c5-21d4-4b7b-9d5c-bf4d725f35be","TPL":"10d842c4-f836-4bb9-b2aa-3d91efacebd3"}},"highlight":false,"currency_show":null,"currency_rates":"USD","payment_terms":4585,"active":true,"only_agency":false,"derived_from":""},"NRARS":{"id":4589,"code":"NRARS","winpax":{"send_description":false},"is_day_use":false,"lang_name":2383,"lang_description":2384,"lang_payment_terms":2375,"refundable":false,"private":false,"order":null,"vertical":"M","mappings":null,"highlight":false,"currency_show":null,"currency_rates":"ARS","payment_terms":4584,"active":true,"only_agency":false,"derived_from":"BBARS"},"LST":{"id":4587,"code":"LST","winpax":{"send_description":false},"is_day_use":false,"lang_name":2379,"lang_description":2380,"lang_payment_terms":2375,"refundable":false,"private":false,"order":null,"vertical":"M","mappings":null,"highlight":true,"currency_show":null,"currency_rates":"ARS","payment_terms":4584,"active":true,"only_agency":false,"derived_from":"BBARS"},"BBARS":{"id":4586,"code":"BBARS","winpax":{"send_description":false},"is_day_use":false,"lang_name":2377,"lang_description":2378,"lang_payment_terms":2376,"refundable":true,"private":false,"order":null,"vertical":"M","mappings":null,"highlight":false,"currency_show":null,"currency_rates":"ARS","payment_terms":4585,"active":true,"only_agency":false,"derived_from":""}},"services":[],"kids":{"7":{"min":0,"max":2,"pay_as_adult":false}},"promotional_codes":[],"policies_cancellations":{"8160":{"description":"No reembolsable","lang_description":4845,"number":100,"type":83},"8159":{"description":"Reembolsable","lang_description":4844,"number":1,"type":84}},"terms":{"4585":{"description":"Pago en el hotel, Garant\u00eda con Tarjeta de Cr\u00e9dito","lang_description":2376},"4584":{"description":"Pago por adelantado con Tarjeta de Cr\u00e9dito (monto total)","lang_description":2375}},"guarantee_status":[],"bed_types":[]}');
+    var lang_16 = "Huesped";
+    var lang_903 = "huéspedes";
+    var lang_63 = "Adulto";
+    var lang_64 = "Menor";
+    var lang_65 = "Menores";
+    var lang_178 = "Debe seleccionar al menos un huésped por habitación.";
+    var lang_177 = "Lo sentimos, ha superado el maximo de huéspedes para la habitación.";
+    var lang_179 = "Lo sentimos, no se pueden tomar reservas sin adultos.";
+    var lang_180 = "Indique las edades";
+    var lang_900 = "Atención: ha elegido un rate plan day use que no incluye la noche.";
+    var lang_904 = "Mientras esté seleccionado un producto rate plans de tipo day use no puedes seleccionar otro producto.";
+    var limit_of_children_1 = "Ha excedido el limite de niños menores a ";
+    var limit_of_children_2 = " años.";
+    var lang_kids = "Menores";
+    var lang_adults = "Adultos";
+    var lang_bedding = "Tipo de cama";
+    var lang_date = "Fecha";
+    var lang_hour = "Hora";
+    var lang_night = "noche";
+    var lang_nights = "noches";
+    var lang_date_not_available = "Fecha no disponible";
+    var lang_error_occupancy_advanced = "La combinación de adultos y niños seleccionada no es válida";
+    var search_lang = "es";
+    var hotel_max_age_kid = "3";
+    var user_type = 0;
+    var hotelId = "133";
+    var isDayUse = "";
+    var bedTypes = [];
+</script>
+
+<script src="js/search.js"></script>
+
+
+    </main>
+
+    <footer><p>
+  <strong>Wilson Hotel</strong> - Alvarado 950 - Salta Argentina (+54 387) 4-312211 - info@wilsonhotel.com.ar
+  <br>
+  <strong>Wilson Apart Hotel</strong> - Alvarado 1013 - Salta Argentina (+54 387) 4-317770 - info@wilsonaparthotel.com.ar
+</p></footer>
+				<!-- <script async src='https://www.googletagmanager.com/gtag/js?id=UA-89361264-2'></script> -->
+				<script>
+					$(document).ready(function(){
+						var hotel_id = '133';
+						var page = url = $(location).attr('pathname');
+
+						page = page.replace('/', '');
+						page = page.replace('.php', '');
+						page = page.replace('911hoteles.com.ar', '');
+						page = page.replace('/', '');
+
+						if(page==='search' || page==='checkout' || page==='confirm'){
+							
+							(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})
+							(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+							ga('create', 'UA-89361264-2', 'auto');
+
+							ga('set', 'page', page);
+
+							ga('send', 'pageview', {
+							  'dimension1': hotel_id
+							});
+							
+							/*
+							window.dataLayer = window.dataLayer || [];
+							function gtag(){dataLayer.push(arguments);}
+							gtag('js', new Date());
+
+							gtag('config', 'UA-89361264-2');
+
+							gtag('set', 'page', page);
+
+							gtag('send', 'pageview', {
+							  'dimension1': hotel_id
+							});
+							*/
+						}
+					});
+				</script>
+			
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+            <script>
+                var page = url = $(location).attr('pathname');
+
+                page = page.replace('/', '');
+                page = page.replace('.php', '');
+                page = page.replace('911hoteles.com.ar', '');
+                page = page.replace('motor.winpax.com.ar', '');
+                page = page.replace('/', '');
+
+                if(page==='search' || page==='checkout' || page==='confirm'){
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', '', {
+                        'page_title': 'Motor WinPAX - '+page[0].toUpperCase() + page.slice(1),
+                        'page_path': page,
+                        'page_location': url 
+                    });
+                }
+            </script>
+                <a id="gotop"><i class="fa fa-caret-up"></i></a>
+    
+        </body>
+</html>
