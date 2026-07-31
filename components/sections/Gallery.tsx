@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { GALLERY_IMAGES } from "@/lib/hotel-images";
 
@@ -30,13 +31,14 @@ export default function Gallery({ variant = "light" }: GalleryProps) {
             <Link
               key={i}
               href="/galeria"
-              className={`overflow-hidden group block ${"span" in photo ? photo.span : ""}`}
+              className={`overflow-hidden group block relative ${"span" in photo ? photo.span : ""}`}
             >
-              <img
+              <Image
                 src={photo.src}
                 alt={photo.alt}
-                loading="lazy"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </Link>
           ))}

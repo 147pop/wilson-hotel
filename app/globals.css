@@ -28,83 +28,98 @@ html { scroll-behavior: smooth; }
 .btn-navy {
   display: inline-block;
   font-family: var(--font-m);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ivory);
   background: var(--blue-deep);
-  padding: 14px 40px;
+  padding: 16px 36px;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
   border: 1px solid var(--blue-deep);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
 }
 .btn-navy:hover { background: var(--gold); color: var(--blue-deep); border-color: var(--gold); }
 
 .btn-gold {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-m);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--blue-deep);
   background: var(--gold);
-  padding: 14px 40px;
+  padding: 16px 36px;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
+  min-height: 48px;
 }
 .btn-gold:hover { background: var(--ivory); }
 
 .btn-outline-gold {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-m);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
   background: transparent;
-  padding: 14px 40px;
+  padding: 16px 36px;
   text-decoration: none;
   border: 1px solid var(--gold);
   transition: background 0.2s, color 0.2s;
+  min-height: 48px;
 }
 .btn-outline-gold:hover { background: var(--gold); color: var(--blue-deep); }
 
 /* Secondary CTA on light/ivory backgrounds — navy border + text → 8.8:1 on ivory */
 .btn-outline-deep {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-m);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--blue-deep);
   background: transparent;
-  padding: 14px 40px;
+  padding: 16px 36px;
   text-decoration: none;
   border: 1px solid var(--blue-deep);
   transition: background 0.2s, color 0.2s;
+  min-height: 48px;
 }
 .btn-outline-deep:hover { background: var(--blue-deep); color: var(--ivory); }
 
 .btn-outline-ivory {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-m);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 13px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ivory);
   background: transparent;
-  padding: 14px 40px;
+  padding: 16px 36px;
   text-decoration: none;
   border: 1px solid rgba(245,241,234,0.5);
   transition: background 0.2s, color 0.2s, border-color 0.2s;
+  min-height: 48px;
 }
 .btn-outline-ivory:hover { background: var(--ivory); color: var(--blue-deep); border-color: var(--ivory); }
 
 /* Nav link styles */
 .nav-link-dark {
   font-family: var(--font-m);
-  font-size: 10px;
-  letter-spacing: 0.2em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--blue-muted); /* explicit muted navy → 6.2:1 on ivory, no opacity trick */
   text-decoration: none;
@@ -114,8 +129,8 @@ html { scroll-behavior: smooth; }
 
 .nav-link-light {
   font-family: var(--font-m);
-  font-size: 10px;
-  letter-spacing: 0.2em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ivory);
   text-decoration: none;

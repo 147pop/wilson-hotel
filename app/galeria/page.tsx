@@ -17,16 +17,17 @@ export default function GaleriaPage() {
   return (
     <main className="bg-wilson-ivory min-h-screen">
       <header className="border-b-2 border-wilson-sand">
-        <div className="max-w-6xl mx-auto px-5 md:px-10 h-[88px] flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-5 md:px-10 h-[72px] md:h-[88px] flex items-center justify-between">
           <Link href="/">
-            <LogoHorizontal variant="dark" size={72} />
+            <LogoHorizontal variant="dark" size={56} />
           </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/" className="nav-link-dark">
+          <div className="flex items-center gap-3 sm:gap-6">
+            <Link href="/" className="nav-link-dark hidden sm:inline">
               Volver al inicio
             </Link>
-            <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ padding: "9px 22px" }}>
-              Reservar ahora
+            <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold text-center" style={{ padding: "12px 20px", fontSize: 11 }}>
+              <span className="hidden sm:inline">Reservar ahora</span>
+              <span className="sm:hidden">Reservar</span>
             </a>
           </div>
         </div>
