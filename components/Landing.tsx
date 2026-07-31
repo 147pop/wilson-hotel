@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import SocialProof from "@/components/sections/SocialProof";
 import Instituciones from "@/components/sections/Instituciones";
 import Gallery from "@/components/sections/Gallery";
@@ -74,6 +75,8 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
   const [desayunoIdx, setDesayunoIdx] = useState(0);
   const [salonIdx, setSalonIdx] = useState(0);
   const salonTouchX = useRef(0);
+  const heroTouchX = useRef(0);
+  const desayunoTouchX = useRef(0);
   useScrollReveal();
 
   const tarifaFor = (key: RoomKey) => tarifas.find(t => t.room === key);
@@ -94,6 +97,15 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -138,9 +150,12 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden text-wilson-blue-deep"
+            className="lg:hidden text-wilson-blue-deep flex items-center justify-center"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menú"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            style={{ minHeight: 48, minWidth: 48 }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               {menuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
@@ -149,13 +164,22 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
         </div>
 
         {/* Mobile menu */}
-        {menuOpen && (
-          <div className="lg:hidden border-t px-5 py-4 space-y-3" style={{ background: g.ivory, borderColor: g.sand }}>
+        <div
+          id="mobile-menu"
+          className="lg:hidden overflow-hidden transition-all duration-300 ease-in-out border-t"
+          style={{
+            background: g.ivory,
+            borderColor: g.sand,
+            maxHeight: menuOpen ? "500px" : "0",
+            opacity: menuOpen ? 1 : 0,
+          }}
+        >
+          <div className="px-5 py-4 space-y-3">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item}
                 onClick={() => scrollTo(item.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""))}
-                className="block w-full text-left font-montserrat text-sm hover:text-wilson-gold transition-colors py-1"
+                className="block w-full text-left font-montserrat text-sm hover:text-wilson-gold transition-colors py-2"
                 style={{ color: g.deep }}
               >
                 {item}
@@ -165,26 +189,26 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
               href={BOOKING}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full btn-gold text-xs py-2.5 text-center mt-2"
+              className="block w-full btn-gold text-center mt-2"
             >
               Reservar ahora
             </a>
             <div className="flex gap-4 items-center pt-1" style={{ color: g.graphite, opacity: 0.75 }}>
-              <a href="https://instagram.com/wilsonhotel.salta" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://instagram.com/wilsonhotel.salta" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center justify-center" style={{ minHeight: 44, minWidth: 44 }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
-              <a href="https://www.facebook.com/profile.php?id=100079646945697" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=100079646945697" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center justify-center" style={{ minHeight: 44, minWidth: 44 }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
               </a>
             </div>
           </div>
-        )}
+        </div>
 
         <div style={{ height: 3, background: `linear-gradient(90deg, ${g.deep} 0%, ${g.gold} 50%, ${g.deep} 100%)` }} />
       </header>
 
       {/* ── HERO ── bold split: navy left, photo right → stacks on mobile */}
-      <section className="pt-[71px] min-h-screen grid grid-cols-1 md:grid-cols-2">
+      <section className="pt-[88px] min-h-screen grid grid-cols-1 md:grid-cols-2">
         {/* LEFT: dark navy */}
         <div className="relative overflow-hidden flex flex-col justify-between px-6 py-16 sm:px-10 md:px-12 lg:px-16" style={{ background: g.deep }}>
           <div style={{ position: "absolute", top: "-5%", left: "-8%", fontFamily: g.fontG, fontSize: "55vw", color: "white", opacity: 0.02, lineHeight: 1, userSelect: "none", pointerEvents: "none", fontWeight: 700 }}>W</div>
@@ -224,37 +248,49 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
               { num: "5", label: "Tipos de habitación" },
               { num: "★★★", label: "Hotel categoría" },
             ].map((s, i) => (
-              <div key={i} className={`reveal reveal-d${i + 1} p-4 sm:p-5 md:px-6 md:py-5`} style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-                <div style={{ fontFamily: g.fontM, fontSize: 26, color: g.gold, lineHeight: 1 }}>{s.num}</div>
-                <div style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.15em", textTransform: "uppercase", color: g.sand, opacity: 0.78, marginTop: 4 }}>{s.label}</div>
+              <div key={i} className={`reveal reveal-d${i + 1} p-3 sm:p-5 md:px-6 md:py-5`} style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
+                <div style={{ fontFamily: g.fontM, fontSize: "clamp(20px, 5vw, 26px)", color: g.gold, lineHeight: 1 }}>{s.num}</div>
+                <div style={{ fontFamily: g.fontM, fontSize: "clamp(9px, 2.5vw, 13px)", letterSpacing: "0.1em", textTransform: "uppercase", color: g.sand, opacity: 0.78, marginTop: 4 }}>{s.label}</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* RIGHT: carousel full height */}
-        <div className="relative overflow-hidden h-[300px] sm:h-[400px] md:h-auto">
+        <div
+          className="relative overflow-hidden h-[300px] sm:h-[400px] md:h-[600px] lg:h-[700px]"
+          onTouchStart={(e) => { heroTouchX.current = e.touches[0].clientX; }}
+          onTouchEnd={(e) => {
+            const dx = e.changedTouches[0].clientX - heroTouchX.current;
+            if (Math.abs(dx) < 40) return;
+            setCarouselIdx(p => (p + (dx < 0 ? 1 : -1) + heroCarousel.length) % heroCarousel.length);
+          }}
+        >
           {heroCarousel.map((img, i) => (
-            <img
+            <Image
               key={i}
               src={img.src}
               alt={img.alt}
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-opacity duration-1000"
               style={{ opacity: i === carouselIdx ? 1 : 0 }}
             />
           ))}
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(0,0,0,0.12) 0%, transparent 60%)" }} />
           {/* Dots */}
-          <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-2.5 z-10">
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1 z-10">
             {heroCarousel.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCarouselIdx(i)}
                 aria-label={`Imagen ${i + 1}`}
-                className="rounded-full transition-all duration-300"
+                className="rounded-full transition-all duration-300 flex items-center justify-center"
                 style={{
                   width: i === carouselIdx ? 20 : 6,
                   height: 6,
+                  minHeight: 44,
+                  minWidth: 44,
                   background: i === carouselIdx ? g.gold : "rgba(255,255,255,0.45)",
                 }}
               />
@@ -281,14 +317,23 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
         {/* Bento: imagen destacada + grilla de amenities */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-0.5">
           {/* Desayuno */}
-          <div className="reveal-scale relative overflow-hidden h-[260px] sm:h-[380px] lg:h-[520px]">
+          <div
+            className="reveal-scale relative overflow-hidden h-[260px] sm:h-[380px] lg:h-[520px]"
+            onTouchStart={(e) => { desayunoTouchX.current = e.touches[0].clientX; }}
+            onTouchEnd={(e) => {
+              const dx = e.changedTouches[0].clientX - desayunoTouchX.current;
+              if (Math.abs(dx) < 40) return;
+              setDesayunoIdx(p => (p + (dx < 0 ? 1 : -1) + desayunoCarousel.length) % desayunoCarousel.length);
+            }}
+          >
             {desayunoCarousel.map((item, i) => (
-              <img
+              <Image
                 key={item.src}
                 src={item.src}
                 alt={item.alt}
-                loading="lazy"
-                className="img-zoom absolute inset-0 w-full h-full object-cover block transition-opacity duration-1000"
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="object-cover transition-opacity duration-1000"
                 style={{ opacity: i === desayunoIdx ? 1 : 0 }}
               />
             ))}
@@ -368,17 +413,17 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
           {/* Top 3 rooms */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0.5">
             {rooms.slice(0, 3).map((room, i) => (
-              <div key={i} className={`reveal-scale reveal-d${i + 1} relative h-[320px] sm:h-[360px] lg:h-[380px] overflow-hidden`}>
-                <img src={room.img} alt={room.name} loading="lazy" className="img-zoom w-full h-full object-cover block" />
+              <div key={i} className={`reveal-scale reveal-d${i + 1} relative h-[340px] sm:h-[360px] lg:h-[380px] overflow-hidden`}>
+                <Image src={room.img} alt={room.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.12) 55%, transparent 100%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-7 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 sm:gap-4">
                   <div>
-                    <span className="block mb-1.5" style={{ fontFamily: g.fontM, fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold }}>{room.occ}</span>
-                    <h3 style={{ fontFamily: g.fontG, fontSize: 24, color: g.ivory, margin: "0 0 8px 0" }}>{room.name}</h3>
+                    <span className="inline-block mb-1.5" style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, background: "rgba(0,0,0,0.55)", padding: "4px 10px", borderRadius: 0, backdropFilter: "blur(4px)" }}>{room.occ}</span>
+                    <h3 style={{ fontFamily: g.fontG, fontSize: "clamp(20px, 4vw, 24px)", color: g.ivory, margin: "0 0 8px 0" }}>{room.name}</h3>
                     <p className="hidden sm:block" style={{ fontFamily: g.fontM, fontSize: 13, color: g.sand, lineHeight: 1.6, margin: "0 0 10px 0", opacity: 0.85 }}>{room.desc}</p>
                     <PriceTag tarifa={tarifaFor(room.key)} />
                   </div>
-                  <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold flex-shrink-0 whitespace-nowrap" style={{ fontSize: 9, padding: "10px 20px" }}>Reservar ahora</a>
+                  <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold flex-shrink-0 whitespace-nowrap" style={{ fontSize: 11, padding: "12px 18px" }}>Reservar ahora</a>
                 </div>
               </div>
             ))}
@@ -387,17 +432,17 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
           {/* Bottom 2 rooms */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0.5 mt-0.5">
             {rooms.slice(3).map((room, i) => (
-              <div key={i} className={`reveal-scale reveal-d${i + 1} relative h-[280px] sm:h-[300px] overflow-hidden`}>
-                <img src={room.img} alt={room.name} loading="lazy" className="img-zoom w-full h-full object-cover block" />
+              <div key={i} className={`reveal-scale reveal-d${i + 1} relative h-[300px] sm:h-[300px] overflow-hidden`}>
+                <Image src={room.img} alt={room.name} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.08) 50%, transparent 100%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 sm:gap-4">
                   <div>
-                    <span className="block mb-1.5" style={{ fontFamily: g.fontM, fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold }}>{room.occ}</span>
-                    <h3 style={{ fontFamily: g.fontG, fontSize: 24, color: g.ivory, margin: "0 0 8px 0" }}>{room.name}</h3>
+                    <span className="inline-block mb-1.5" style={{ fontFamily: g.fontM, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: g.gold, background: "rgba(0,0,0,0.55)", padding: "4px 10px", borderRadius: 0, backdropFilter: "blur(4px)" }}>{room.occ}</span>
+                    <h3 style={{ fontFamily: g.fontG, fontSize: "clamp(20px, 4vw, 24px)", color: g.ivory, margin: "0 0 8px 0" }}>{room.name}</h3>
                     <p className="hidden sm:block" style={{ fontFamily: g.fontM, fontSize: 13, color: g.sand, lineHeight: 1.6, margin: "0 0 10px 0", opacity: 0.85 }}>{room.desc}</p>
                     <PriceTag tarifa={tarifaFor(room.key)} />
                   </div>
-                  <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold flex-shrink-0 whitespace-nowrap" style={{ fontSize: 9, padding: "10px 20px" }}>Reservar ahora</a>
+                  <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold flex-shrink-0 whitespace-nowrap" style={{ fontSize: 11, padding: "12px 18px" }}>Reservar ahora</a>
                 </div>
               </div>
             ))}
@@ -439,7 +484,7 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
                     <span style={{ fontFamily: g.fontM, fontSize: 13, color: g.graphite, opacity: 0.6 }}>/ noche</span>
                   </div>
                 )}
-                <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mt-auto self-start" style={{ fontSize: 12, padding: "10px 24px" }}>Reservar ahora</a>
+                <a href={BOOKING} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mt-auto self-start" style={{ fontSize: 12, padding: "14px 24px" }}>Reservar ahora</a>
               </div>
             ))}
           </div>
@@ -475,26 +520,29 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
                   style={{ opacity: i === salonIdx ? 1 : 0 }}
                 />
               ) : (
-                <img
+                <Image
                   key={item.src}
                   src={item.src}
                   alt={item.alt}
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-opacity duration-1000"
                   style={{ opacity: i === salonIdx ? 1 : 0 }}
                 />
               )
             )}
-            <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-2.5 z-10">
+            <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1 z-10">
               {salonMedia.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setSalonIdx(i)}
                   aria-label={`Slide ${i + 1}`}
-                  className="rounded-full transition-all duration-300"
+                  className="rounded-full transition-all duration-300 flex items-center justify-center"
                   style={{
                     width: i === salonIdx ? 20 : 6,
                     height: 6,
+                    minHeight: 44,
+                    minWidth: 44,
                     background: i === salonIdx ? g.gold : "rgba(255,255,255,0.45)",
                   }}
                 />
@@ -543,7 +591,7 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
             </a>
             <a href="https://wa.me/543876363326" target="_blank" rel="noopener noreferrer"
               className="flex items-center justify-center gap-2.5 py-4 px-8 transition-opacity hover:opacity-90"
-              style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.15em", textTransform: "uppercase", color: g.deep, textDecoration: "none", background: g.gold, borderRadius: 2 }}>
+              style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.15em", textTransform: "uppercase", color: g.deep, textDecoration: "none", background: g.gold, borderRadius: 0, minHeight: 48 }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill={g.deep}><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
               Consultar por WhatsApp
             </a>
