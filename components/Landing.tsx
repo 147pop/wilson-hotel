@@ -226,7 +226,7 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
             </h1>
 
             <p className="max-w-[400px]" style={{ fontFamily: g.fontM, fontSize: 15, color: g.sand, lineHeight: 1.75, margin: "0 0 44px 0", opacity: 0.8 }}>
-              Alvarado 950 — a pasos de la Plaza 9 de Julio. Desayuno buffet, más de 40 años de trayectoria y atención personalizada.
+              Alvarado 950 — a pasos de la Plaza 9 de Julio. Desayuno buffet y atención personalizada.
             </p>
 
             <div className="flex gap-3.5 flex-wrap">
@@ -242,13 +242,12 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
           </div>
 
           {/* Bottom stats */}
-          <div className="grid grid-cols-3 mt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="grid grid-cols-2 mt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
             {[
-              { num: "40+", label: "Años de trayectoria" },
               { num: "5", label: "Tipos de habitación" },
               { num: "★★★", label: "Hotel categoría" },
             ].map((s, i) => (
-              <div key={i} className={`reveal reveal-d${i + 1} p-3 sm:p-5 md:px-6 md:py-5`} style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
+              <div key={i} className={`reveal reveal-d${i + 1} p-3 sm:p-5 md:px-6 md:py-5`} style={{ borderRight: i < 1 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
                 <div style={{ fontFamily: g.fontM, fontSize: "clamp(20px, 5vw, 26px)", color: g.gold, lineHeight: 1 }}>{s.num}</div>
                 <div style={{ fontFamily: g.fontM, fontSize: "clamp(9px, 2.5vw, 13px)", letterSpacing: "0.1em", textTransform: "uppercase", color: g.sand, opacity: 0.78, marginTop: 4 }}>{s.label}</div>
               </div>
@@ -302,21 +301,21 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
       </section>
 
       {/* ── SERVICIOS ── */}
-      <section id="servicios" style={{ background: g.blue }}>
-        <div className="pt-8"><SectionDivider light /></div>
+      <section id="servicios" style={{ background: g.ivory }}>
+        <div className="pt-8"><SectionDivider /></div>
         {/* Header */}
-        <div className="px-6 py-12 md:px-10 md:py-16" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+        <div className="px-6 py-12 md:px-10 md:py-16" style={{ borderBottom: "1px solid rgba(11,44,87,0.12)" }}>
           <div className="max-w-[1400px] mx-auto flex flex-col items-center text-center gap-3">
-            <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4.5vw, 64px)", color: g.ivory, margin: 0, lineHeight: 0.92, letterSpacing: "-0.01em" }}>
+            <h2 style={{ fontFamily: g.fontG, fontSize: "clamp(32px, 4.5vw, 64px)", color: g.deep, margin: 0, lineHeight: 0.92, letterSpacing: "-0.01em" }}>
               Servicios
             </h2>
-            <span style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.25em", textTransform: "uppercase", color: g.gold, opacity: 0.85 }}>
+            <span style={{ fontFamily: g.fontM, fontSize: 13, letterSpacing: "0.25em", textTransform: "uppercase", color: g.blue, opacity: 0.85 }}>
               Incluidos en tu estadía
             </span>
-            <h3 className="md:hidden" style={{ fontFamily: g.fontG, fontSize: "clamp(22px, 2.5vw, 32px)", color: g.ivory, margin: "8px 0 4px 0", lineHeight: 1.1 }}>
+            <h3 className="md:hidden" style={{ fontFamily: g.fontG, fontSize: "clamp(22px, 2.5vw, 32px)", color: g.deep, margin: "8px 0 4px 0", lineHeight: 1.1 }}>
               Desayuno buffet
             </h3>
-            <p className="md:hidden" style={{ fontFamily: g.fontM, fontSize: 14, color: g.sand, lineHeight: 1.65, margin: 0, opacity: 0.88, maxWidth: "520px" }}>
+            <p className="md:hidden" style={{ fontFamily: g.fontM, fontSize: 14, color: g.graphite, lineHeight: 1.65, margin: 0, maxWidth: "520px" }}>
               Cada mañana, un desayuno completo. Jugos naturales, facturas, tostadas, fiambres, frutas y más.
             </p>
           </div>
@@ -393,14 +392,14 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
                 className={`reveal reveal-d${i + 1} flex flex-col justify-between p-5 md:p-6 lg:p-8`}
                 style={{
                   minHeight: 140,
-                  borderRight: i % 2 === 0 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                  borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                  borderRight: i % 2 === 0 ? "1px solid rgba(11,44,87,0.12)" : "none",
+                  borderBottom: i < 4 ? "1px solid rgba(11,44,87,0.12)" : "none",
                 }}
               >
-                <div style={{ color: g.gold, opacity: 0.8 }}>{s.icon}</div>
+                <div style={{ color: g.blue }}>{s.icon}</div>
                 <div>
-                  <h4 style={{ fontFamily: g.fontG, fontSize: 20, color: g.ivory, margin: "0 0 4px 0" }}>{s.name}</h4>
-                  <p className="hidden sm:block" style={{ fontFamily: g.fontM, fontSize: 13, color: g.sand, margin: 0, opacity: 0.82, lineHeight: 1.5 }}>{s.desc}</p>
+                  <h4 style={{ fontFamily: g.fontG, fontSize: 20, color: g.deep, margin: "0 0 4px 0" }}>{s.name}</h4>
+                  <p className="hidden sm:block" style={{ fontFamily: g.fontM, fontSize: 13, color: g.graphite, margin: 0, lineHeight: 1.5 }}>{s.desc}</p>
                 </div>
               </div>
             ))}
