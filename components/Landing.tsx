@@ -258,7 +258,7 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
 
         {/* RIGHT: carousel full height */}
         <div
-          className="relative overflow-hidden h-[300px] sm:h-[400px] md:h-[600px] lg:h-[700px]"
+          className="relative overflow-hidden h-[300px] sm:h-[400px] md:h-auto md:min-h-[600px]"
           onTouchStart={(e) => { heroTouchX.current = e.touches[0].clientX; }}
           onTouchEnd={(e) => {
             const dx = e.changedTouches[0].clientX - heroTouchX.current;
@@ -285,15 +285,17 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
                 key={i}
                 onClick={() => setCarouselIdx(i)}
                 aria-label={`Imagen ${i + 1}`}
-                className="rounded-full transition-all duration-300 flex items-center justify-center"
-                style={{
-                  width: i === carouselIdx ? 20 : 6,
-                  height: 6,
-                  minHeight: 44,
-                  minWidth: 44,
-                  background: i === carouselIdx ? g.gold : "rgba(255,255,255,0.45)",
-                }}
-              />
+                className="flex items-center justify-center p-[19px]"
+              >
+                <span
+                  className="rounded-full transition-all duration-300 block"
+                  style={{
+                    width: i === carouselIdx ? 20 : 6,
+                    height: 6,
+                    background: i === carouselIdx ? g.gold : "rgba(255,255,255,0.45)",
+                  }}
+                />
+              </button>
             ))}
           </div>
         </div>
@@ -543,15 +545,17 @@ export default function Landing({ tarifas, live }: { tarifas: Tarifa[]; live: bo
                   key={i}
                   onClick={() => setSalonIdx(i)}
                   aria-label={`Slide ${i + 1}`}
-                  className="rounded-full transition-all duration-300 flex items-center justify-center"
-                  style={{
-                    width: i === salonIdx ? 20 : 6,
-                    height: 6,
-                    minHeight: 44,
-                    minWidth: 44,
-                    background: i === salonIdx ? g.gold : "rgba(255,255,255,0.45)",
-                  }}
-                />
+                  className="flex items-center justify-center p-[19px]"
+                >
+                  <span
+                    className="rounded-full transition-all duration-300 block"
+                    style={{
+                      width: i === salonIdx ? 20 : 6,
+                      height: 6,
+                      background: i === salonIdx ? g.gold : "rgba(255,255,255,0.45)",
+                    }}
+                  />
+                </button>
               ))}
             </div>
           </div>
