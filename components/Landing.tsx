@@ -14,11 +14,11 @@ const GOOGLE_REVIEW_URL = "https://www.google.com/maps/search/?api=1&query=Wilso
 const SALTA_TURISMO_URL = "https://saltaciudad.travel/";
 
 const rooms: { key: RoomKey; name: string; occ: string; img: string; desc: string }[] = [
-  { key: "SGL", name: "Habitación Simple", occ: "1 persona", img: "/hotel/habitaciones/single-standard/single-standard-03.webp", desc: "Confort y privacidad para el viajero individual. Cama matrimonial, baño privado, AC y WiFi." },
-  { key: "MAT", name: "Doble Matrimonial", occ: "1–2 personas", img: "/hotel/habitaciones/doble-standard/doble-standard-01.webp", desc: "Ambiente acogedor para parejas. Cama king, baño renovado, TV LED y refrigerador." },
-  { key: "TWN", name: "Doble Twin", occ: "1–2 + extra", img: "/hotel/habitaciones/doble-single/doble-single-01.webp", desc: "Dos camas individuales, luminoso y espacioso. Cama extra disponible a pedido." },
-  { key: "JRS", name: "Suite Matrimonial", occ: "1–2 + extra", img: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp", desc: "La más amplia del hotel. Mayor espacio, decoración refinada y vista mejorada." },
-  { key: "TPL", name: "Triple", occ: "1–3 personas", img: "/hotel/habitaciones/triple-ms/triple-ms-01.webp", desc: "Tres plazas en ambiente funcional y acogedor. Ideal para familias y grupos pequeños." },
+  { key: "SGL", name: "Habitación Single Estándar", occ: "1 persona", img: "/hotel/habitaciones/single-standard/single-standard-03.webp", desc: "Confort y privacidad para el viajero individual. Cama individual, baño privado, AC y WiFi." },
+  { key: "MAT", name: "Habitación Doble Matrimonial Estándar", occ: "1–2 personas", img: "/hotel/habitaciones/doble-standard/doble-standard-01.webp", desc: "Ambiente acogedor para parejas. Cama queen, baño renovado, TV LED y refrigerador." },
+  { key: "TWN", name: "Habitación Doble Twin Estándar", occ: "1–2 + extra", img: "/hotel/habitaciones/doble-single/doble-single-01.webp", desc: "Dos camas individuales, luminoso y espacioso. Cama extra disponible a pedido." },
+  { key: "JRS", name: "Habitación Doble Matrimonial Junior Suite", occ: "1–2 + extra", img: "/hotel/habitaciones/doble-suite-sillones/doble-suite-sillones-05.webp", desc: "La más amplia del hotel. Mayor espacio, decoración refinada y vista mejorada." },
+  { key: "TPL", name: "Habitación Triple Matrimonial Estándar", occ: "1–3 personas", img: "/hotel/habitaciones/triple-ms/triple-ms-01.webp", desc: "Tres plazas en ambiente funcional y acogedor. Ideal para familias y grupos pequeños." },
 ];
 
 const g = {
